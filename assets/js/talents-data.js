@@ -6,7 +6,7 @@ const officialTalents = [{
         name: "SkeeterJean",
         slug: "skeeterjean",
         bio: "Lifestyle & Comedy Creator known for engaging content across multiple platforms.",
-        image: "/assets/images/talents/SkeeterJean2.webp",
+        image: "/assets/images/talents/skeeterjean.jpg",
         platforms: [
             { platform: "TikTok", followers: 1200000 },
             { platform: "Instagram", followers: 850000 },
@@ -38,7 +38,7 @@ const officialTalents = [{
         name: "Packgod",
         slug: "packgod",
         bio: "Master of Discord roasting and rapid-fire comedy content. Known for legendary roast battles.",
-        image: "/assets/images/talents/packgod.webp",
+        image: "/assets/images/talents/packgod.png",
         platforms: [
             { platform: "YouTube", followers: 3910000 },
             { platform: "TikTok", followers: 2500000 },
