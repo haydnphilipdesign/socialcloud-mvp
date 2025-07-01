@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard | SocialCloud Pro</title>
+    <meta name="description" content="Real-time analytics and performance insights for talent management.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/socialcloud-logo.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Dashboard specific styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(26, 26, 26, 0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--color-brand-accent);
+            opacity: 0.5;
+        }
+
+        .chart-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-4);
+            height: 300px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            gap: var(--spacing-2);
+        }
+
+        .chart-bar {
+            width: 40px;
+            background: linear-gradient(to top, var(--color-brand-accent), var(--color-brand-primary));
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .chart-bar:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.2);
+        }
+
+        .metric-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-1);
+            padding: var(--spacing-1) var(--spacing-2);
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: var(--radius-full);
+            color: #10b981;
+            font-size: var(--text-sm);
+            font-weight: 600;
+        }
+
+        .metric-trend.down {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-2) var(--spacing-4);
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-sm);
+            color: #10b981;
+        }
+
+        .live-indicator::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
+        <div class="container" style="padding: var(--spacing-4) var(--spacing-6);">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="/socialcloud-logo.png" alt="SocialCloud Management" style="height: 40px; width: auto;">
+                </a>
+                <nav class="desktop-nav flex gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="analytics-dashboard.html" class="nav-link active">Analytics</a>
+                    <a href="media-kit.html" class="nav-link">Media Kit</a>
+                    <a href="proposal.html" class="nav-link">Proposal</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Hero -->
+    <section class="section" style="margin-top: 80px; padding-top: var(--spacing-12); background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);">
+        <div class="container">
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h1 class="mb-4">Analytics <span class="text-gradient">Dashboard</span></h1>
+                    <p style="font-size: var(--text-xl); color: var(--color-text-secondary);">
+                        Real-time performance insights across all platforms
+                    </p>
+                </div>
+                <div class="live-indicator">
+                    Live Data
+                </div>
+            </div>
+
+            <!-- Key Metrics Grid -->
+            <div class="dashboard-grid">
+                <div class="metric-card">
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-2);">Total Reach</p>
+                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">47.3M</h2>
+                    <span class="metric-trend">↑ 12.5%</span>
+                </div>
+
+                <div class="metric-card">
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-2);">Engagement Rate</p>
+                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">8.7%</h2>
+                    <span class="metric-trend">↑ 2.1%</span>
+                </div>
+
+                <div class="metric-card">
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-2);">Active Campaigns</p>
+                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">24</h2>
+                    <span class="metric-trend">↑ 6</span>
+                </div>
+
+                <div class="metric-card">
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-2);">Revenue Generated</p>
+                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">$2.4M</h2>
+                    <span class="metric-trend">↑ 18.3%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Performance -->
+    <section class="section">
+        <div class="container">
+            <h2 class="mb-8">Platform <span class="text-gradient">Performance</span></h2>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Growth Chart -->
+                <div class="glass-effect" style="padding: var(--spacing-6); border-radius: var(--radius-xl);">
+                    <h3 class="mb-6">Monthly Growth Trend</h3>
+                    <div class="chart-container">
+                        <div class="chart-bar" style="height: 60%;"></div>
+                        <div class="chart-bar" style="height: 75%;"></div>
+                        <div class="chart-bar" style="height: 70%;"></div>
+                        <div class="chart-bar" style="height: 85%;"></div>
+                        <div class="chart-bar" style="height: 90%;"></div>
+                        <div class="chart-bar" style="height: 95%;"></div>
+                    </div>
+                </div>
+
+                <!-- Platform Breakdown -->
+                <div class="glass-effect" style="padding: var(--spacing-6); border-radius: var(--radius-xl);">
+                    <h3 class="mb-6">Platform Distribution</h3>
+                    <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>YouTube</span>
+                                <span style="color: var(--color-brand-accent);">42%</span>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); height: 8px; border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 42%; height: 100%; background: var(--color-brand-accent);"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>TikTok</span>
+                                <span style="color: var(--color-brand-accent);">31%</span>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); height: 8px; border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 31%; height: 100%; background: var(--color-brand-accent);"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Instagram</span>
+                                <span style="color: var(--color-brand-accent);">18%</span>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); height: 8px; border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 18%; height: 100%; background: var(--color-brand-accent);"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Other</span>
+                                <span style="color: var(--color-brand-accent);">9%</span>
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); height: 8px; border-radius: var(--radius-full); overflow: hidden;">
+                                <div style="width: 9%; height: 100%; background: var(--color-brand-accent);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Performers -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <h2 class="mb-8">Top <span class="text-gradient">Performers</span></h2>
+            
+            <div class="grid grid-cols-3 gap-6">
+                <div class="card" style="text-align: center;">
+                    <img src="/assets/images/talents/packgod.png" alt="Packgod" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto var(--spacing-4); object-fit: cover;">
+                    <h3>Packgod</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Gaming & Comedy</p>
+                    <div style="display: flex; justify-content: space-around; padding-top: var(--spacing-4); border-top: 1px solid var(--color-bg-accent);">
+                        <div>
+                            <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-accent);">15.2%</p>
+                            <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Engagement</p>
+                        </div>
+                        <div>
+                            <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-accent);">+28%</p>
+                            <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Growth</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <img src="/assets/images/talents/Deji.png" alt="Deji" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto var(--spacing-4); object-fit: cover;">
+                    <h3>Deji</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Gaming & Sports</p>
+                    <div style="display: flex; justify-content: space-around; padding-top: var(--spacing-4); border-top: 1px solid var(--color-bg-accent);">
+                        <div>
+                            <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-accent);">11.8%</p>
+                            <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Engagement</p>
+                        </div>
+                        <div>
+                            <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-accent);">+22%</p>
+                            <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Growth</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <img src="/assets/images/talents/skeeterjean.jpg" alt="SkeeterJean" style="width: 100px; height: 100px; border-radius: 50%; margin: 0 auto var(--spacing-4); object-fit: cover;">
+                    <h3>SkeeterJean</h3>
+                    <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-4);">Lifestyle & Comedy</p>
+                    <div style="display: flex; justify-content: space-around; padding-top: var(--spacing-4); border-top: 1px solid var(--color-bg-accent);">
+                        <div>
+                            <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-accent);">13.4%</p>
+                            <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Engagement</p>
+                        </div>
+                        <div>
+                            <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-accent);">+19%</p>
+                            <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Growth</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Features CTA -->
+    <section class="section">
+        <div class="container text-center">
+            <div class="gradient-border" style="max-width: 800px; margin: 0 auto;">
+                <div style="padding: var(--spacing-12);">
+                    <h2 class="mb-4">Unlock <span class="text-gradient">Advanced Analytics</span></h2>
+                    <p class="mb-8" style="font-size: var(--text-xl);">
+                        Get deeper insights with AI-powered predictions, sentiment analysis, and custom reporting
+                    </p>
+                    <a href="proposal.html" class="btn btn-gradient">View Full Proposal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-bg-secondary); padding: var(--spacing-8) 0; border-top: 1px solid var(--color-bg-accent);">
+        <div class="container text-center">
+            <p style="color: var(--color-text-muted);">
+                © 2025 SocialCloud Management. Premium Demo.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Animate numbers on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const metrics = document.querySelectorAll('.metric-card h2');
+            metrics.forEach(metric => {
+                const value = metric.textContent;
+                metric.textContent = '0';
+                
+                setTimeout(() => {
+                    metric.style.transition = 'all 2s ease-out';
+                    metric.textContent = value;
+                }, 500);
+            });
+
+            // Animate chart bars
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach((bar, index) => {
+                const height = bar.style.height;
+                bar.style.height = '0';
+                
+                setTimeout(() => {
+                    bar.style.transition = 'height 1s ease-out';
+                    bar.style.height = height;
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Kit Generator | SocialCloud Pro</title>
+    <meta name="description" content="Automated media kit generation for talent and brand partnerships.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/socialcloud-logo.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .media-kit-preview {
+            background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(26, 26, 26, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .media-kit-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .template-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--color-brand-accent);
+        }
+
+        .template-card.selected {
+            border-color: var(--color-brand-accent);
+            background: rgba(201, 169, 97, 0.1);
+        }
+
+        .template-card.selected::after {
+            content: '✓';
+            position: absolute;
+            top: var(--spacing-3);
+            right: var(--spacing-3);
+            width: 24px;
+            height: 24px;
+            background: var(--color-brand-accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .export-option {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            padding: var(--spacing-4);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .export-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: var(--spacing-4);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-brand-accent), var(--color-brand-primary));
+            width: 0%;
+            transition: width 2s ease-out;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-brand-accent), var(--color-brand-primary));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-2xl);
+            margin-bottom: var(--spacing-4);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
+        <div class="container" style="padding: var(--spacing-4) var(--spacing-6);">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="/socialcloud-logo.png" alt="SocialCloud Management" style="height: 40px; width: auto;">
+                </a>
+                <nav class="desktop-nav flex gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="analytics-dashboard.html" class="nav-link">Analytics</a>
+                    <a href="media-kit.html" class="nav-link active">Media Kit</a>
+                    <a href="proposal.html" class="nav-link">Proposal</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="section" style="margin-top: 80px; padding-top: var(--spacing-12); background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);">
+        <div class="container">
+            <div class="text-center mb-12">
+                <h1 class="mb-4">Automated <span class="text-gradient">Media Kit</span> Generation</h1>
+                <p style="font-size: var(--text-xl); max-width: 600px; margin: 0 auto;">
+                    Create professional media kits in seconds with real-time data and custom branding
+                </p>
+            </div>
+
+            <!-- Live Preview -->
+            <div class="media-kit-preview">
+                <div class="grid grid-cols-2 gap-8" style="position: relative; z-index: 1;">
+                    <div>
+                        <h2 class="mb-6">Live Preview</h2>
+                        <div style="background: white; border-radius: var(--radius-lg); padding: var(--spacing-6); color: black;">
+                            <div style="display: flex; align-items: center; gap: var(--spacing-4); margin-bottom: var(--spacing-6);">
+                                <img src="/assets/images/talents/packgod.png" alt="Talent" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                                <div>
+                                    <h3 style="color: black; margin-bottom: var(--spacing-1);">PACKGOD</h3>
+                                    <p style="color: #666;">Gaming & Entertainment Creator</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-4); margin-bottom: var(--spacing-6);">
+                                <div style="background: #f5f5f5; padding: var(--spacing-4); border-radius: var(--radius-md);">
+                                    <p style="color: #666; font-size: 0.875rem;">Total Reach</p>
+                                    <p style="color: black; font-size: 1.5rem; font-weight: bold;">7.3M</p>
+                                </div>
+                                <div style="background: #f5f5f5; padding: var(--spacing-4); border-radius: var(--radius-md);">
+                                    <p style="color: #666; font-size: 0.875rem;">Engagement</p>
+                                    <p style="color: black; font-size: 1.5rem; font-weight: bold;">12.5%</p>
+                                </div>
+                            </div>
+
+                            <div style="font-size: 0.75rem; color: #999; text-align: center;">
+                                Generated by SocialCloud Pro • Updated in Real-Time
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="mb-6">Customization Options</h3>
+                        
+                        <div class="mb-6">
+                            <label style="display: block; margin-bottom: var(--spacing-2); font-size: var(--text-sm); color: var(--color-text-muted);">Brand Colors</label>
+                            <div class="flex gap-3">
+                                <div style="width: 40px; height: 40px; background: #c9a961; border-radius: var(--radius-md); cursor: pointer;"></div>
+                                <div style="width: 40px; height: 40px; background: #6366f1; border-radius: var(--radius-md); cursor: pointer;"></div>
+                                <div style="width: 40px; height: 40px; background: #10b981; border-radius: var(--radius-md); cursor: pointer;"></div>
+                                <div style="width: 40px; height: 40px; background: #ef4444; border-radius: var(--radius-md); cursor: pointer;"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label style="display: block; margin-bottom: var(--spacing-2); font-size: var(--text-sm); color: var(--color-text-muted);">Include Sections</label>
+                            <label class="flex items-center gap-3 mb-2" style="cursor: pointer;">
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                <span>Platform Statistics</span>
+                            </label>
+                            <label class="flex items-center gap-3 mb-2" style="cursor: pointer;">
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                <span>Audience Demographics</span>
+                            </label>
+                            <label class="flex items-center gap-3 mb-2" style="cursor: pointer;">
+                                <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                <span>Brand Partnerships</span>
+                            </label>
+                        </div>
+
+                        <button class="btn btn-gradient" style="width: 100%;" onclick="generateMediaKit()">
+                            Generate Media Kit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="mb-8 text-center">Professional <span class="text-gradient">Templates</span></h2>
+            
+            <div class="grid grid-cols-3 gap-6 mb-12">
+                <div class="template-card selected">
+                    <h3 class="mb-4">Executive Brief</h3>
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-4);">
+                        Clean, professional layout perfect for corporate partnerships
+                    </p>
+                    <div style="background: rgba(255, 255, 255, 0.1); height: 120px; border-radius: var(--radius-md);"></div>
+                </div>
+
+                <div class="template-card">
+                    <h3 class="mb-4">Creative Showcase</h3>
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-4);">
+                        Visual-focused design highlighting content and creativity
+                    </p>
+                    <div style="background: rgba(255, 255, 255, 0.1); height: 120px; border-radius: var(--radius-md);"></div>
+                </div>
+
+                <div class="template-card">
+                    <h3 class="mb-4">Data-Driven</h3>
+                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-4);">
+                        Analytics-heavy format with charts and detailed metrics
+                    </p>
+                    <div style="background: rgba(255, 255, 255, 0.1); height: 120px; border-radius: var(--radius-md);"></div>
+                </div>
+            </div>
+
+            <!-- Export Options -->
+            <h3 class="mb-6 text-center">Export Options</h3>
+            <div class="grid grid-cols-4 gap-4" style="max-width: 800px; margin: 0 auto;">
+                <div class="export-option">
+                    <span style="font-size: var(--text-2xl);">📄</span>
+                    <div>
+                        <p style="font-weight: 600;">PDF</p>
+                        <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Print-ready</p>
+                    </div>
+                </div>
+                <div class="export-option">
+                    <span style="font-size: var(--text-2xl);">🖼️</span>
+                    <div>
+                        <p style="font-weight: 600;">PNG/JPG</p>
+                        <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Social media</p>
+                    </div>
+                </div>
+                <div class="export-option">
+                    <span style="font-size: var(--text-2xl);">🔗</span>
+                    <div>
+                        <p style="font-weight: 600;">Web Link</p>
+                        <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Live updates</p>
+                    </div>
+                </div>
+                <div class="export-option">
+                    <span style="font-size: var(--text-2xl);">📧</span>
+                    <div>
+                        <p style="font-weight: 600;">Email</p>
+                        <p style="font-size: var(--text-xs); color: var(--color-text-muted);">Direct send</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <h2 class="mb-12 text-center">Premium <span class="text-gradient">Features</span></h2>
+            
+            <div class="grid grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="feature-icon" style="margin: 0 auto var(--spacing-4);">⚡</div>
+                    <h3 class="mb-3">Real-Time Data</h3>
+                    <p style="color: var(--color-text-secondary);">
+                        Always up-to-date with live statistics pulled directly from all platforms
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="feature-icon" style="margin: 0 auto var(--spacing-4);">🎨</div>
+                    <h3 class="mb-3">Brand Customization</h3>
+                    <p style="color: var(--color-text-secondary);">
+                        Match your brand identity with custom colors, logos, and layouts
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="feature-icon" style="margin: 0 auto var(--spacing-4);">🤖</div>
+                    <h3 class="mb-3">AI-Generated Copy</h3>
+                    <p style="color: var(--color-text-secondary);">
+                        Professional bio and descriptions tailored to each campaign
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container text-center">
+            <div class="gradient-border" style="max-width: 800px; margin: 0 auto;">
+                <div style="padding: var(--spacing-12);">
+                    <h2 class="mb-4">Ready to <span class="text-gradient">Automate</span> Your Media Kits?</h2>
+                    <p class="mb-8" style="font-size: var(--text-xl);">
+                        Save hours of work and ensure consistency across all your talent presentations
+                    </p>
+                    <a href="proposal.html" class="btn btn-gradient">See Full Proposal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-bg-secondary); padding: var(--spacing-8) 0; border-top: 1px solid var(--color-bg-accent);">
+        <div class="container text-center">
+            <p style="color: var(--color-text-muted);">
+                © 2025 SocialCloud Management. Premium Demo.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function generateMediaKit() {
+            // Show progress bar
+            const preview = document.querySelector('.media-kit-preview');
+            const progressHTML = `
+                <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                            background: var(--color-bg-primary); padding: var(--spacing-8); 
+                            border-radius: var(--radius-xl); border: 1px solid var(--color-bg-accent);
+                            min-width: 400px; z-index: 1000;">
+                    <h3 class="mb-4">Generating Media Kit...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress"></div>
+                    </div>
+                    <p style="color: var(--color-text-muted); text-align: center;">Processing real-time data...</p>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', progressHTML);
+            
+            setTimeout(() => {
+                document.getElementById('progress').style.width = '100%';
+            }, 100);
+            
+            setTimeout(() => {
+                document.querySelector('[style*="position: fixed"]').remove();
+                alert('Media Kit Generated! Download will begin shortly...');
+            }, 2500);
+        }
+
+        // Template selection
+        document.querySelectorAll('.template-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
