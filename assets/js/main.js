@@ -98,7 +98,7 @@ function initializeHero() {
 
 // Render featured talents on homepage
 function renderFeaturedTalents() {
-  const talentGrid = document.getElementById('talent-showcase');
+  const talentGrid = document.getElementById('talent-grid');
   if (!talentGrid) return;
   
   // Get featured talents (first 3 from the official list)
