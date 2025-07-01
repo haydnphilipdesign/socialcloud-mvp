@@ -1978,92 +1978,154 @@ a:not(.btn):hover {
     justify-content: space-between;
 }
 
-/* Home page talent grid - 4+3 layout with flip cards */
+/* Home page talent grid - Premium layout */
 .talent-grid-home {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
 }
 
-/* Flip card styles */
+/* Premium talent card with hover overlay */
 .talent-grid-home .card {
-    perspective: 1000px;
+    position: relative;
     height: 400px;
     cursor: pointer;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
 }
 
-.flip-card-inner {
+.talent-card-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
 }
 
-.talent-grid-home .card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
+/* Image container with zoom effect */
+.talent-card-image {
+    position: relative;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: var(--radius-lg);
     overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.flip-card-back {
-    transform: rotateY(180deg);
-    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(26, 26, 26, 0.95) 100%);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--color-brand-accent);
-    padding: var(--spacing-6);
+.talent-grid-home .card:hover .talent-card-image {
+    transform: scale(1.05);
+}
+
+/* Premium overlay with glass morphism */
+.talent-card-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.85) 40%,
+        rgba(0, 0, 0, 0.4) 70%,
+        transparent 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: bottom 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: flex-end;
+    padding: var(--spacing-6);
 }
 
-.flip-card-back h3 {
+.talent-grid-home .card:hover .talent-card-overlay {
+    bottom: 0;
+}
+
+/* Premium content styling */
+.talent-overlay-content {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0.1s;
+}
+
+.talent-grid-home .card:hover .talent-overlay-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.talent-overlay-content h3 {
     font-size: var(--text-2xl);
-    margin-bottom: var(--spacing-4);
+    margin-bottom: var(--spacing-3);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    color: white;
+    font-weight: 300;
 }
 
-.flip-card-back .bio {
+.talent-overlay-content .bio {
     font-size: var(--text-sm);
     line-height: 1.6;
-    margin-bottom: var(--spacing-6);
-    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-5);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
 }
 
-.flip-card-back .metrics {
+/* Elegant metrics display */
+.talent-metrics {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-4);
-    width: 100%;
+    padding-top: var(--spacing-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.flip-card-back .metric {
-    text-align: center;
+.metric-item {
+    text-align: left;
 }
 
-.flip-card-back .metric-value {
-    font-size: var(--text-2xl);
-    font-weight: 700;
+.metric-value {
+    font-size: var(--text-xl);
+    font-weight: 300;
     color: var(--color-brand-primary);
     display: block;
+    margin-bottom: 2px;
 }
 
-.flip-card-back .metric-label {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
+.metric-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+}
+
+/* View Profile button */
+.talent-view-profile {
+    position: absolute;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    padding: var(--spacing-2) var(--spacing-4);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    color: white;
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+    text-decoration: none;
+}
+
+.talent-grid-home .card:hover .talent-view-profile {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.talent-view-profile:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Responsive adjustments for home talent grid */

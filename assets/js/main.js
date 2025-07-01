@@ -104,39 +104,45 @@ function createTalentCard(talent) {
         (prev.followers > current.followers) ? prev : current
     );
 
+    // Truncate bio for card display
+    const truncatedBio = talent.bio.length > 120 ? 
+        talent.bio.substring(0, 120) + '...' : 
+        talent.bio;
+
     card.innerHTML = `
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <div style="position: relative; overflow: hidden; border-radius: var(--radius-lg); height: 400px;">
-          ${createOptimizedImage(talent.image, `Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator`)}
-          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: var(--spacing-5); color: white; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end;">
-            <h3 style="margin: 0 0 var(--spacing-2) 0; font-size: var(--text-xl); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">${talent.name}</h3>
-            <p style="margin: 0; font-size: var(--text-sm); opacity: 0.9; line-height: 1.3; height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${talent.categories.join(' • ')}</p>
+    <div class="talent-card-wrapper">
+      <div class="talent-card-image">
+        ${createOptimizedImage(talent.image, `${talent.name} - ${talent.categories.join(', ')} creator`)}
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: var(--spacing-5); color: white; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end;">
+          <h3 style="margin: 0 0 var(--spacing-2) 0; font-size: var(--text-xl); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">${talent.name}</h3>
+          <p style="margin: 0; font-size: var(--text-sm); opacity: 0.9; line-height: 1.3; height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${talent.categories.join(' • ')}</p>
+        </div>
+      </div>
+      <div class="talent-card-overlay">
+        <div class="talent-overlay-content">
+          <h3>${talent.name}</h3>
+          <p class="bio">${truncatedBio}</p>
+          <div class="talent-metrics">
+            <div class="metric-item">
+              <span class="metric-value">${formatFollowers(talent.totalFollowers)}</span>
+              <span class="metric-label">Total Reach</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">${talent.avgEngagement}%</span>
+              <span class="metric-label">Avg Engagement</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">${talent.platforms.length}</span>
+              <span class="metric-label">Platforms</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">${primaryPlatform.platform}</span>
+              <span class="metric-label">Primary Channel</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="flip-card-back">
-        <h3>${talent.name}</h3>
-        <p class="bio">${talent.bio}</p>
-        <div class="metrics">
-          <div class="metric">
-            <span class="metric-value">${formatFollowers(talent.totalFollowers)}</span>
-            <span class="metric-label">Total Reach</span>
-          </div>
-          <div class="metric">
-            <span class="metric-value">${talent.avgEngagement}%</span>
-            <span class="metric-label">Engagement</span>
-          </div>
-          <div class="metric">
-            <span class="metric-value">${talent.platforms.length}</span>
-            <span class="metric-label">Platforms</span>
-          </div>
-          <div class="metric">
-            <span class="metric-value">${primaryPlatform.platform}</span>
-            <span class="metric-label">Primary</span>
-          </div>
-        </div>
-      </div>
+      <a href="talent-profile.html?id=${talent.slug}" class="talent-view-profile">View Profile</a>
     </div>
   `;
 
