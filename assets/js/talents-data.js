@@ -7,7 +7,7 @@ const officialTalents = [
     name: "SkeeterJean",
     slug: "skeeterjean",
     bio: "Lifestyle & Comedy Creator known for engaging content across multiple platforms.",
-    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/Headshot%20skeeter%20Jean.jpg",
+    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/Headshot%20skeeter%20Jean.jpg/:/cr=t:3.48%25,l:0%25,w:100%25,h:79.98%25/rs=w:365,h:365,cg:true",
     platforms: [
       { platform: "TikTok", followers: 1200000 },
       { platform: "Instagram", followers: 850000 },
@@ -23,7 +23,7 @@ const officialTalents = [
     name: "Omma",
     slug: "omma",
     bio: "Lifestyle & Gaming Creator with a strong community across multiple platforms.",
-    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/omma.jpg",
+    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/omma.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:365,h:365,cg:true",
     platforms: [
       { platform: "TikTok", followers: 1100000 },
       { platform: "Instagram", followers: 680000 },
@@ -39,7 +39,7 @@ const officialTalents = [
     name: "Packgod",
     slug: "packgod",
     bio: "Master of Discord roasting and rapid-fire comedy content. Known for legendary roast battles.",
-    image: "/assets/images/talents/packgod.webp",
+    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/packgod.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:365,h:365,cg:true",
     platforms: [
       { platform: "YouTube", followers: 3910000 },
       { platform: "TikTok", followers: 2500000 },
@@ -103,7 +103,7 @@ const officialTalents = [
     name: "Dankcube",
     slug: "dankcube",
     bio: "Lifestyle & Comedy Creator known for entertaining content and strong engagement.",
-    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/dankcube.jpg",
+    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/dankcube.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:365,h:365,cg:true",
     platforms: [
       { platform: "TikTok", followers: 890000 },
       { platform: "Instagram", followers: 560000 },
@@ -119,7 +119,7 @@ const officialTalents = [
     name: "liamfp",
     slug: "liamfp",
     bio: "Creative content creator with a focus on entertainment and lifestyle content.",
-    image: "/assets/images/talents/liamfp.webp",
+    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/laim%202.jpg/:/cr=t:25.32%25,l:0%25,w:67.57%25,h:50.68%25/rs=w:365,h:365,cg:true,m",
     platforms: [
       { platform: "YouTube", followers: 125000 },
       { platform: "TikTok", followers: 190000 },
