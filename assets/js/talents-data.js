@@ -7,7 +7,7 @@ const officialTalents = [
     name: "SkeeterJean",
     slug: "skeeterjean",
     bio: "Lifestyle & Comedy Creator known for engaging content across multiple platforms.",
-    image: "/assets/images/talents/skeeterjean.webp",
+    image: "/assets/images/talents/skeeterjean.jpg",
     platforms: [
       { platform: "TikTok", followers: 1200000 },
       { platform: "Instagram", followers: 850000 },
@@ -23,7 +23,7 @@ const officialTalents = [
     name: "Omma",
     slug: "omma",
     bio: "Lifestyle & Gaming Creator with a strong community across multiple platforms.",
-    image: "/assets/images/talents/omma.webp",
+    image: "/assets/images/talents/omma.jpg",
     platforms: [
       { platform: "TikTok", followers: 1100000 },
       { platform: "Instagram", followers: 680000 },
@@ -55,7 +55,7 @@ const officialTalents = [
     name: "ScamLikely",
     slug: "scamlikely",
     bio: "Innovative content creator with a unique brand and growing following.",
-    image: "/assets/images/talents/saltpapi.webp",
+    image: "/assets/images/talents/scamlikely.webp",
     platforms: [
       { platform: "TikTok", followers: 220000 },
       { platform: "YouTube", followers: 180000 },
@@ -71,7 +71,7 @@ const officialTalents = [
     name: "MisterStrang3",
     slug: "misterstrang3",
     bio: "Gaming and lifestyle content creator with a focus on community building.",
-    image: "/assets/images/talents/lexpain.webp",
+    image: "/assets/images/talents/misterstrang3.webp",
     platforms: [
       { platform: "YouTube", followers: 95000 },
       { platform: "Twitch", followers: 45000 },
@@ -87,7 +87,7 @@ const officialTalents = [
     name: "Farzy",
     slug: "farzy",
     bio: "Entertainment content creator known for engaging personality and creative content.",
-    image: "/assets/images/talents/manlikeisaac.webp",
+    image: "/assets/images/talents/farzy.webp",
     platforms: [
       { platform: "TikTok", followers: 340000 },
       { platform: "Instagram", followers: 120000 },
@@ -103,7 +103,7 @@ const officialTalents = [
     name: "Dankcube",
     slug: "dankcube",
     bio: "Lifestyle & Comedy Creator known for entertaining content and strong engagement.",
-    image: "/assets/images/talents/dankcube.webp",
+    image: "/assets/images/talents/dankcube.jpg",
     platforms: [
       { platform: "TikTok", followers: 890000 },
       { platform: "Instagram", followers: 560000 },
@@ -135,7 +135,7 @@ const officialTalents = [
     name: "deji",
     slug: "deji",
     bio: "Multi-platform entertainment powerhouse and professional boxer.",
-    image: "/assets/images/talents/miniminter.webp",
+    image: "/assets/images/talents/deji.webp",
     platforms: [
       { platform: "YouTube", followers: 10600000 },
       { platform: "Instagram", followers: 4200000 },
@@ -151,7 +151,7 @@ const officialTalents = [
     name: "Jonathan Wright",
     slug: "jonathan-wright",
     bio: "Professional content creator and digital strategist.",
-    image: "/assets/images/talents/liljr.webp",
+    image: "/assets/images/talents/jonathan-wright.webp",
     platforms: [
       { platform: "YouTube", followers: 200000 },
       { platform: "LinkedIn", followers: 45000 },

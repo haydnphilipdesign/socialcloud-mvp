@@ -124,17 +124,21 @@ function createTalentCard(talent) {
   };
   
   card.innerHTML = `
-    <img src="${talent.image}" alt="Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);">
-    <h3 class="mb-2">${talent.name}</h3>
-    <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">${talent.bio}</p>
-    <div class="flex gap-2 mb-4" style="flex-wrap: wrap;">
-      ${talent.categories.map(cat => `<span style="background: var(--color-bg-accent); padding: var(--spacing-1) var(--spacing-2); border-radius: var(--radius-full); font-size: var(--text-xs);">${cat}</span>`).join('')}
+    <img src="${talent.image}" alt="Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg);">
+    <div class="card__body">
+      <h3 class="mb-2">${talent.name}</h3>
+      <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">${talent.bio}</p>
+      <div class="flex gap-2 mb-4" style="flex-wrap: wrap;">
+        ${talent.categories.map(cat => `<span style="background: var(--color-bg-accent); padding: var(--spacing-1) var(--spacing-2); border-radius: var(--radius-full); font-size: var(--text-xs);">${cat}</span>`).join('')}
+      </div>
+      <div class="flex justify-between items-center">
+        <span style="font-size: var(--text-sm); color: var(--color-text-muted);">${formatFollowers(talent.totalFollowers)} followers</span>
+        <span style="font-size: var(--text-sm); color: var(--color-brand-primary);">${talent.avgEngagement}% engagement</span>
+      </div>
     </div>
-    <div class="flex justify-between items-center mb-4">
-      <span style="font-size: var(--text-sm); color: var(--color-text-muted);">${formatFollowers(talent.totalFollowers)} followers</span>
-      <span style="font-size: var(--text-sm); color: var(--color-brand-primary);">${talent.avgEngagement}% engagement</span>
+    <div class="card__footer">
+      <a href="talent-profile.html?id=${talent.slug}" class="btn btn-secondary">View Profile</a>
     </div>
-    <a href="talent-profile.html?id=${talent.slug}" class="btn btn-secondary" style="width: 100%;">View Profile</a>
   `;
   
   return card;

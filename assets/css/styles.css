@@ -288,15 +288,40 @@ a:hover {
 .card {
   background: var(--color-bg-secondary);
   border-radius: var(--radius-xl);
-  padding: var(--spacing-8);
+  padding: 0;
   transition: all var(--transition-base);
   position: relative;
   overflow: hidden;
+  /* Card container flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 400px;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
+}
+
+/* Card content wrapper */
+.card__body {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+/* Card footer for button */
+.card__footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card__footer .btn {
+  width: 100%;
+  margin: 0;
 }
 
 .card-glow {
@@ -926,7 +951,29 @@ select.input-field {
   display: inline-block;
 }
 
+/* Header Navigation Alignment */
+header nav .flex {
+  display: flex;
+  align-items: center;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+}
+
 /* Navigation Link Styles */
+header nav ul li a,
+header .btn-gradient {
+  /* use identical padding */
+  padding: 0.75rem 1.25rem;
+  /* force a consistent line-height */
+  line-height: 1;
+  /* ensure they're flex items too */
+  display: inline-flex;
+  align-items: center;
+}
+
 .nav-link {
   color: var(--color-text-secondary);
   font-weight: 500;
