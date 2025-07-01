@@ -37,7 +37,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none; background: none; border: none; color: var(--color-text-primary); font-size: 1.5rem; cursor: pointer;" aria-label="Toggle mobile menu">
-                    ☰
+                    <span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>
                 </button>
             </div>
 
@@ -57,9 +57,9 @@
     <!-- Contact Hero -->
     <section class="section" style="padding-top: 120px; min-height: 50vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--color-bg-primary) 0%, #1a1a2e 100%);">
         <div class="container text-center">
-            <h1 class="text-6xl font-bold mb-6 gradient-text">Get in Touch</h1>
+            <h1 class="text-6xl font-bold mb-6 gradient-text" style="text-transform: uppercase; letter-spacing: -0.02em;">CONTACT US</h1>
             <p class="text-xl mb-8" style="color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">
-                Ready to elevate your digital presence? Let's discuss how SocialCloud can help you achieve your goals.
+                Strategic consultation for premium brand partnerships and elite creator representation.
             </p>
         </div>
     </section>
@@ -70,7 +70,7 @@
             <div class="grid grid-cols-2 gap-12" style="max-width: 1000px; margin: 0 auto;">
                 <!-- Contact Form -->
                 <div>
-                    <h2 class="text-3xl font-bold mb-6">Send us a message</h2>
+                    <h2 class="text-3xl font-bold mb-6">STRATEGIC INQUIRY</h2>
                     <form class="space-y-6" onsubmit="handleContactSubmit(event)">
                         <div>
                             <label for="name" class="block mb-2" style="color: var(--color-text-secondary);">Your Name</label>
@@ -98,13 +98,13 @@
                             <label for="message" class="block mb-2" style="color: var(--color-text-secondary);">Message</label>
                             <textarea id="message" name="message" rows="5" required class="input-field" placeholder="Tell us about your project..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-gradient" style="width: 100%;">Send Message</button>
+                        <button type="submit" class="btn btn-gradient" style="width: 100%;">Submit Inquiry</button>
                     </form>
                 </div>
 
                 <!-- Contact Info -->
                 <div>
-                    <h2 class="text-3xl font-bold mb-6">Let's connect</h2>
+                    <h2 class="text-3xl font-bold mb-6">CONNECT WITH US</h2>
                     <div class="space-y-8">
                         <div class="card" style="padding: var(--spacing-6);">
                             <h3 class="text-xl font-semibold mb-2">Email Us</h3>
@@ -217,10 +217,10 @@
 
             if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
                 mobileMenu.style.display = 'block';
-                menuBtn.textContent = '✕';
+                menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative; transform: rotate(45deg);"></span>';
             } else {
                 mobileMenu.style.display = 'none';
-                menuBtn.textContent = '☰';
+                menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
             }
         }
 
@@ -233,7 +233,7 @@
                     const mobileMenu = document.getElementById('mobile-menu');
                     const menuBtn = document.querySelector('.mobile-menu-btn');
                     mobileMenu.style.display = 'none';
-                    menuBtn.textContent = '☰';
+                    menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
                 });
             });
         });

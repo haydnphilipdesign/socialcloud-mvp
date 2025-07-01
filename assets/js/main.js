@@ -55,70 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Initialize hero section with animated particles
+// Initialize hero section - removed particles for professional clean look
 function initializeHero() {
-    const canvas = document.getElementById('particles-canvas');
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-
-    // Set canvas size
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Particle class
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 1;
-            this.speedX = Math.random() * 0.5 - 0.25;
-            this.speedY = Math.random() * 0.5 - 0.25;
-            this.opacity = Math.random() * 0.5 + 0.2;
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            if (this.x > canvas.width) this.x = 0;
-            if (this.x < 0) this.x = canvas.width;
-            if (this.y > canvas.height) this.y = 0;
-            if (this.y < 0) this.y = canvas.height;
-        }
-
-        draw() {
-            ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    // Create particles
-    for (let i = 0; i < 100; i++) {
-        particles.push(new Particle());
-    }
-
-    // Animation loop
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
+    // Clean, professional hero without distracting animations
+    console.log('Hero section initialized with professional clean design');
 }
 
 // Render featured talents on homepage
@@ -155,27 +95,19 @@ function createTalentCard(talent) {
       <picture>
         <source srcset="${webpSrc}" type="image/webp">
         <img src="${imageSrc}" alt="${altText}" loading="lazy"
-             style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg);"
+             style="width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius-lg);"
              onerror="this.src='/assets/images/talents/placeholder-default.svg'; this.onerror=null;">
       </picture>
     `;
     };
 
     card.innerHTML = `
-    ${createOptimizedImage(talent.image, `Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator`)}
-    <div class="card__body">
-      <h3 class="mb-2">${talent.name}</h3>
-      <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">${talent.bio}</p>
-      <div class="flex gap-2 mb-4" style="flex-wrap: wrap;">
-        ${talent.categories.map(cat => `<span style="background: var(--color-bg-accent); padding: var(--spacing-1) var(--spacing-2); border-radius: var(--radius-full); font-size: var(--text-xs);">${cat}</span>`).join('')}
+    <div style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
+      ${createOptimizedImage(talent.image, `Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator`)}
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: var(--spacing-4); color: white;">
+        <h3 style="margin: 0; font-size: var(--text-xl); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">${talent.name}</h3>
+        <p style="margin: var(--spacing-1) 0 0 0; font-size: var(--text-sm); opacity: 0.9;">${talent.categories.join(' • ')}</p>
       </div>
-      <div class="flex justify-between items-center">
-        <span style="font-size: var(--text-sm); color: var(--color-text-muted);">${formatFollowers(talent.totalFollowers)} followers</span>
-        <span style="font-size: var(--text-sm); color: var(--color-brand-primary);">${talent.avgEngagement}% engagement</span>
-      </div>
-    </div>
-    <div class="card__footer">
-      <a href="talent-profile.html?id=${talent.slug}" class="btn btn-secondary">View Profile</a>
     </div>
   `;
 

@@ -1,6 +1,6 @@
 /* SocialCloud Management - Enhanced Dark Theme CSS */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Source+Sans+Pro:wght@300;400;500;600;700;900&display=swap');
 
 /* CSS Variables for Dark Theme */
 
@@ -13,15 +13,15 @@
     --color-text-primary: #ffffff;
     --color-text-secondary: #a3a3a3;
     --color-text-muted: #737373;
-    --color-brand-primary: #6366f1;
-    --color-brand-secondary: #8b5cf6;
-    --color-brand-accent: #06b6d4;
+    --color-brand-primary: #1e3a8a;
+    --color-brand-secondary: #1e40af;
+    --color-brand-accent: #d4af37;
     --color-success: #10b981;
     --color-warning: #f59e0b;
     --color-error: #ef4444;
     /* Typography */
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Source Sans Pro', system-ui, -apple-system, sans-serif;
     /* Font Sizes */
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
@@ -113,28 +113,35 @@ h6 {
 
 h1 {
     font-size: var(--text-5xl);
-    font-weight: 800;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
 }
 
 h2 {
     font-size: var(--text-4xl);
-    font-weight: 700;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
 }
 
 h3 {
     font-size: var(--text-3xl);
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 h4 {
     font-size: var(--text-2xl);
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
 p {
     font-size: var(--text-lg);
     line-height: 1.8;
     color: var(--color-text-secondary);
+    font-weight: 400;
 }
 
 
@@ -1032,36 +1039,7 @@ a:hover {
 }
 
 
-/* Particles Background */
-
-.particles-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-}
-
-#particles-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: var(--color-brand-primary);
-    opacity: 0.3;
-    border-radius: 50%;
-    animation: float 10s infinite;
-}
+/* Clean Background - Removed Particles for Professional Look */
 
 
 /* Gradient Border */
@@ -1412,4 +1390,67 @@ header .btn-gradient {
 
 .footer-link:hover {
     color: var(--color-text-primary);
+}
+
+/* Enhanced Professional Styling */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Responsiveness Improvements */
+@media (max-width: 768px) {
+    .grid-cols-3 {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-6);
+    }
+    
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-4);
+    }
+    
+    h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem) !important;
+        line-height: 1.1;
+    }
+    
+    h2 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+    
+    .talent-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-4);
+    }
+    
+    /* Mobile navigation improvements */
+    .mobile-menu-btn span {
+        width: 25px;
+        height: 3px;
+    }
+    
+    .mobile-menu-btn span::before,
+    .mobile-menu-btn span::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 3px;
+        background: currentColor;
+        left: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-btn span::before {
+        top: -8px;
+    }
+    
+    .mobile-menu-btn span::after {
+        bottom: -8px;
+    }
 }
