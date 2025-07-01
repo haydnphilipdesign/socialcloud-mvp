@@ -168,3 +168,8 @@ const officialTalents = [
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = officialTalents;
 }
+
+// Make available globally for browser use
+if (typeof window !== 'undefined') {
+  window.officialTalents = officialTalents;
+}
