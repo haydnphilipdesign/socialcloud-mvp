@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talent Roster | SocialCloud Management</title>
+    <meta name="description" content="Browse our complete roster of content creators and influencers across gaming, lifestyle, and entertainment.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/socialcloud-logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Additional styles for filters */
+        .filter-section {
+            background: var(--color-bg-secondary);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-6);
+            margin-bottom: var(--spacing-8);
+        }
+        
+        .filter-group {
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            margin-bottom: var(--spacing-2);
+            cursor: pointer;
+        }
+        
+        .filter-checkbox input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .range-slider {
+            width: 100%;
+            height: 6px;
+            background: var(--color-bg-accent);
+            border-radius: var(--radius-full);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--color-brand-primary);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .search-bar {
+            position: relative;
+            margin-bottom: var(--spacing-8);
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: var(--spacing-4) var(--spacing-12);
+            background: var(--color-bg-secondary);
+            border: 2px solid var(--color-bg-accent);
+            border-radius: var(--radius-full);
+            color: var(--color-text-primary);
+            font-size: var(--text-lg);
+            transition: all var(--transition-base);
+        }
+        
+        .search-bar input:focus {
+            border-color: var(--color-brand-primary);
+            background: var(--color-bg-primary);
+        }
+        
+        .search-bar .search-icon {
+            position: absolute;
+            left: var(--spacing-4);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: var(--text-xl);
+        }
+        
+        .talent-count {
+            text-align: center;
+            margin-bottom: var(--spacing-4);
+            color: var(--color-text-secondary);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: var(--spacing-20) 0;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="glass-effect" style="position: fixed; width: 100%; top: 0; z-index: var(--z-sticky); transition: all var(--transition-base);">
+        <nav class="container" style="padding: var(--spacing-4) var(--spacing-6);">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="flex items-center gap-4" style="text-decoration: none;">
+                        <img src="/socialcloud-logo.png" alt="SocialCloud Management" style="height: 40px; width: auto;">
+                        <span class="text-gradient" style="font-weight: 700; font-size: var(--text-xl);">SocialCloud</span>
+                    </a>
+                </div>
+                <ul class="flex gap-8" style="list-style: none;">
+                    <li><a href="index.html" style="color: var(--color-text-secondary); font-weight: 500;">Home</a></li>
+                    <li><a href="talents.html" style="color: var(--color-text-primary); font-weight: 500;">Talent</a></li>
+                    <li><a href="index.html#services" style="color: var(--color-text-secondary); font-weight: 500;">Services</a></li>
+                    <li><a href="index.html#about" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
+                    <li><a href="index.html#contact" class="btn btn-gradient" style="padding: var(--spacing-2) var(--spacing-5);">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="section" style="margin-top: 80px; padding-top: var(--spacing-12); padding-bottom: var(--spacing-8); background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);">
+        <div class="container text-center">
+            <h1 class="mb-4">Our <span class="text-gradient">Talent Roster</span></h1>
+            <p style="font-size: var(--text-xl); max-width: 600px; margin: 0 auto;">
+                Discover exceptional creators who are shaping the future of digital content
+            </p>
+        </div>
+    </section>
+
+    <!-- Search and Filters Section -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="talent-search" placeholder="Search by name or category..." onkeyup="searchTalents()">
+            </div>
+            
+            <div class="grid" style="grid-template-columns: 300px 1fr; gap: var(--spacing-8);">
+                <!-- Filters Sidebar -->
+                <aside class="filter-section">
+                    <h3 class="mb-6">Filters</h3>
+                    
+                    <!-- Platform Filter -->
+                    <div class="filter-group">
+                        <h4 class="mb-4">Platform</h4>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="YouTube" onchange="applyFilters()">
+                            <span>YouTube</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="TikTok" onchange="applyFilters()">
+                            <span>TikTok</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Instagram" onchange="applyFilters()">
+                            <span>Instagram</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Twitch" onchange="applyFilters()">
+                            <span>Twitch</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <h4 class="mb-4">Category</h4>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Gaming" onchange="applyFilters()">
+                            <span>Gaming</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Entertainment" onchange="applyFilters()">
+                            <span>Entertainment</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Lifestyle" onchange="applyFilters()">
+                            <span>Lifestyle</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Comedy" onchange="applyFilters()">
+                            <span>Comedy</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Sports" onchange="applyFilters()">
+                            <span>Sports</span>
+                        </label>
+                        <label class="filter-checkbox">
+                            <input type="checkbox" value="Tech" onchange="applyFilters()">
+                            <span>Tech</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Follower Range Filter -->
+                    <div class="filter-group">
+                        <h4 class="mb-4">Follower Range</h4>
+                        <div class="mb-4">
+                            <label style="display: block; margin-bottom: var(--spacing-2);">Minimum Followers</label>
+                            <input type="range" class="range-slider" id="follower-range" min="0" max="20000000" step="100000" value="0" onchange="applyFilters()">
+                            <div class="flex justify-between" style="font-size: var(--text-sm); color: var(--color-text-muted);">
+                                <span>0</span>
+                                <span id="follower-value">All</span>
+                                <span>20M+</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Clear Filters -->
+                    <button class="btn btn-secondary" style="width: 100%;" onclick="clearFilters()">Clear All Filters</button>
+                </aside>
+                
+                <!-- Talent Grid -->
+                <main>
+                    <div class="talent-count" id="talent-count">
+                        Showing all talents
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-6" id="talents-grid">
+                        <!-- Talent cards will be dynamically inserted here -->
+                    </div>
+                    
+                    <div class="no-results" id="no-results" style="display: none;">
+                        <h3 class="mb-4">No talents found</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Roster CTA Section -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <div class="gradient-border" style="max-width: 800px; margin: 0 auto;">
+                <div style="padding: var(--spacing-12); text-align: center;">
+                    <h2 class="mb-4">Are You a <span class="text-gradient">Content Creator?</span></h2>
+                    <p class="mb-8" style="font-size: var(--text-xl);">
+                        Join our exclusive roster and take your career to the next level
+                    </p>
+                    <div class="grid grid-cols-3 gap-8 mb-8" style="max-width: 600px; margin: 0 auto;">
+                        <div>
+                            <h3 class="text-gradient mb-2">Expert Management</h3>
+                            <p style="font-size: var(--text-sm);">Professional guidance and support</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gradient mb-2">Brand Partnerships</h3>
+                            <p style="font-size: var(--text-sm);">Access to premium campaigns</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gradient mb-2">Career Growth</h3>
+                            <p style="font-size: var(--text-sm);">Strategic development planning</p>
+                        </div>
+                    </div>
+                    <a href="index.html#contact" class="btn btn-gradient" style="font-size: var(--text-lg); padding: var(--spacing-4) var(--spacing-8);">
+                        Apply to Join
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-bg-secondary); padding: var(--spacing-12) 0; border-top: 1px solid var(--color-bg-accent);">
+        <div class="container">
+            <div class="text-center">
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
+                    © 2024 SocialCloud Management. All rights reserved. | 
+                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a> | 
+                    <a href="#" style="color: var(--color-text-muted);">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/talents-roster.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talent Profile | SocialCloud Management</title>
+    <meta name="description" content="View talent profile, stats, and collaboration opportunities.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/socialcloud-logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="glass-effect" style="position: fixed; width: 100%; top: 0; z-index: var(--z-sticky); transition: all var(--transition-base);">
+        <nav class="container" style="padding: var(--spacing-4) var(--spacing-6);">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="flex items-center gap-4" style="text-decoration: none;">
+                        <img src="/socialcloud-logo.png" alt="SocialCloud Management" style="height: 40px; width: auto;">
+                        <span class="text-gradient" style="font-weight: 700; font-size: var(--text-xl);">SocialCloud</span>
+                    </a>
+                </div>
+                <ul class="flex gap-8" style="list-style: none;">
+                    <li><a href="index.html" style="color: var(--color-text-secondary); font-weight: 500;">Home</a></li>
+                    <li><a href="talents.html" style="color: var(--color-text-primary); font-weight: 500;">Talent</a></li>
+                    <li><a href="index.html#services" style="color: var(--color-text-secondary); font-weight: 500;">Services</a></li>
+                    <li><a href="index.html#about" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
+                    <li><a href="index.html#contact" class="btn btn-gradient" style="padding: var(--spacing-2) var(--spacing-5);">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section style="position: relative; height: 60vh; overflow: hidden; margin-top: 80px;">
+        <div id="hero-banner" style="position: absolute; inset: 0; background: linear-gradient(135deg, var(--color-bg-primary), var(--color-bg-secondary));">
+            <!-- Dynamic background image will be set via JS -->
+        </div>
+        <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, var(--color-bg-primary) 100%);"></div>
+    </section>
+
+    <!-- Profile Section -->
+    <section style="margin-top: -150px; position: relative; z-index: 1;">
+        <div class="container">
+            <div class="glass-effect" style="border-radius: var(--radius-2xl); padding: var(--spacing-8); max-width: 1000px; margin: 0 auto;">
+                <div class="grid grid-cols-2 gap-8" style="align-items: center;">
+                    <!-- Left Column - Profile Info -->
+                    <div>
+                        <div class="flex items-center gap-6 mb-6">
+                            <img id="talent-avatar" src="" alt="" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--color-brand-primary); object-fit: cover;">
+                            <div>
+                                <h1 id="talent-name" class="mb-2" style="font-size: var(--text-4xl);"></h1>
+                                <div id="talent-categories" class="flex gap-2"></div>
+                            </div>
+                        </div>
+                        
+                        <p id="talent-bio" class="mb-6" style="font-size: var(--text-lg); line-height: 1.8;"></p>
+                        
+                        <div class="mb-6">
+                            <h3 class="mb-4">Platform Presence</h3>
+                            <div id="platform-list" class="flex flex-col gap-3"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column - Stats -->
+                    <div>
+                        <div class="gradient-border mb-6">
+                            <div style="padding: var(--spacing-6); text-align: center;">
+                                <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--spacing-2);">Total Reach</p>
+                                <h2 id="total-followers" class="text-gradient" style="font-size: var(--text-5xl); margin-bottom: var(--spacing-4);"></h2>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <p style="font-size: var(--text-2xl); font-weight: 700;" id="engagement-rate"></p>
+                                        <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Avg. Engagement</p>
+                                    </div>
+                                    <div>
+                                        <p style="font-size: var(--text-2xl); font-weight: 700;" id="campaigns-count"></p>
+                                        <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Campaigns</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card glass-effect mb-6">
+                            <h3 class="mb-4">Key Achievements</h3>
+                            <ul id="achievements-list" style="list-style: none;"></ul>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <button class="btn btn-gradient" style="flex: 1;" onclick="showContactForm()">
+                                Partner with <span id="talent-name-cta"></span>
+                            </button>
+                            <button class="btn btn-secondary" onclick="downloadMediaKit()">
+                                <span style="margin-right: var(--spacing-2);">📄</span> Media Kit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Gallery Section -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-8">
+                <h2 class="mb-4">Recent <span class="text-gradient">Content & Campaigns</span></h2>
+                <p>Discover the creative work and brand collaborations</p>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="flex justify-center gap-4 mb-8">
+                <button class="btn btn-secondary" onclick="filterContent('all')">All Content</button>
+                <button class="btn btn-secondary" onclick="filterContent('branded')">Brand Collaborations</button>
+                <button class="btn btn-secondary" onclick="filterContent('organic')">Organic Content</button>
+            </div>
+            
+            <!-- Content Grid -->
+            <div class="grid grid-cols-3 gap-6" id="content-gallery">
+                <!-- Placeholder content tiles -->
+                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                    <p style="color: var(--color-text-muted);">Content coming soon</p>
+                </div>
+                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                    <p style="color: var(--color-text-muted);">Content coming soon</p>
+                </div>
+                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                    <p style="color: var(--color-text-muted);">Content coming soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Talents Section -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <div class="text-center mb-8">
+                <h2 class="mb-4">Discover More <span class="text-gradient">Talents</span></h2>
+                <p>Explore other creators in similar categories</p>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6" id="related-talents">
+                <!-- Related talents will be inserted via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-bg-secondary); padding: var(--spacing-12) 0; border-top: 1px solid var(--color-bg-accent);">
+        <div class="container">
+            <div class="text-center">
+                <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
+                    © 2024 SocialCloud Management. All rights reserved. | 
+                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a> | 
+                    <a href="#" style="color: var(--color-text-muted);">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal (hidden by default) -->
+    <div id="contact-modal" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); z-index: var(--z-modal); align-items: center; justify-content: center;">
+        <div class="glass-effect" style="max-width: 500px; width: 90%; padding: var(--spacing-8); border-radius: var(--radius-xl); position: relative;">
+            <button onclick="closeContactForm()" style="position: absolute; top: var(--spacing-4); right: var(--spacing-4); background: none; border: none; color: var(--color-text-secondary); font-size: var(--text-2xl); cursor: pointer;">×</button>
+            <h3 class="mb-6">Partner with <span id="modal-talent-name"></span></h3>
+            <form>
+                <div class="mb-4">
+                    <label style="display: block; margin-bottom: var(--spacing-2); font-weight: 500;">Your Name</label>
+                    <input type="text" required style="width: 100%; padding: var(--spacing-3) var(--spacing-4); background: var(--color-bg-primary); border: 1px solid var(--color-bg-accent); border-radius: var(--radius-md); color: var(--color-text-primary);">
+                </div>
+                <div class="mb-4">
+                    <label style="display: block; margin-bottom: var(--spacing-2); font-weight: 500;">Company</label>
+                    <input type="text" style="width: 100%; padding: var(--spacing-3) var(--spacing-4); background: var(--color-bg-primary); border: 1px solid var(--color-bg-accent); border-radius: var(--radius-md); color: var(--color-text-primary);">
+                </div>
+                <div class="mb-4">
+                    <label style="display: block; margin-bottom: var(--spacing-2); font-weight: 500;">Email</label>
+                    <input type="email" required style="width: 100%; padding: var(--spacing-3) var(--spacing-4); background: var(--color-bg-primary); border: 1px solid var(--color-bg-accent); border-radius: var(--radius-md); color: var(--color-text-primary);">
+                </div>
+                <div class="mb-6">
+                    <label style="display: block; margin-bottom: var(--spacing-2); font-weight: 500;">Message</label>
+                    <textarea rows="4" required style="width: 100%; padding: var(--spacing-3) var(--spacing-4); background: var(--color-bg-primary); border: 1px solid var(--color-bg-accent); border-radius: var(--radius-md); color: var(--color-text-primary); resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-gradient" style="width: 100%;">Send Partnership Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/talent-profile.js"></script>
+</body>
+</html>
