@@ -31,19 +31,38 @@ function loadTalentsData(callback) {
     };
 }
 
-// Get banner image for talent
+// Get banner image for talent - using category-appropriate imagery
 function getBannerImage(slug) {
     const banners = {
-        "packgod": "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=1600&h=600&fit=crop&auto=format&q=80",
-        "skeeterjean": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&h=600&fit=crop&auto=format&q=80",
-        "omma": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1600&h=600&fit=crop&auto=format&q=80",
-        "scamlikely": "https://images.unsplash.com/photo-1561489413-985b06da5bee?w=1600&h=600&fit=crop&auto=format&q=80",
-        "misterstrang3": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1600&h=600&fit=crop&auto=format&q=80",
-        "farzy": "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=1600&h=600&fit=crop&auto=format&q=80",
-        "dankcube": "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1600&h=600&fit=crop&auto=format&q=80",
-        "liamfp": "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=1600&h=600&fit=crop&auto=format&q=80",
-        "deji": "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=1600&h=600&fit=crop&auto=format&q=80",
-        "jonathan-wright": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=1600&h=600&fit=crop&auto=format&q=80"
+        // Packgod - Comedy/Gaming/Roasting theme
+        "packgod": "https://images.unsplash.com/photo-1626544827763-d516dce335e2?w=1600&h=600&fit=crop&auto=format&q=80", // Podcast/streaming setup
+        
+        // SkeeterJean - Lifestyle & Comedy
+        "skeeterjean": "https://images.unsplash.com/photo-1532635241-17e820acc59f?w=1600&h=600&fit=crop&auto=format&q=80", // Urban lifestyle/comedy venue
+        
+        // Omma - Lifestyle & Gaming
+        "omma": "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=1600&h=600&fit=crop&auto=format&q=80", // Gaming setup with lifestyle elements
+        
+        // ScamLikely - Entertainment & Comedy
+        "scamlikely": "https://images.unsplash.com/photo-1586899028174-e7098604235b?w=1600&h=600&fit=crop&auto=format&q=80", // Neon comedy/entertainment theme
+        
+        // MisterStrang3 - Gaming & Lifestyle
+        "misterstrang3": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1600&h=600&fit=crop&auto=format&q=80", // Premium gaming setup
+        
+        // Farzy - Entertainment & Lifestyle
+        "farzy": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1600&h=600&fit=crop&auto=format&q=80", // Concert/entertainment venue
+        
+        // Dankcube - Lifestyle & Comedy
+        "dankcube": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&h=600&fit=crop&auto=format&q=80", // Festival/party atmosphere
+        
+        // liamfp - Entertainment & Lifestyle
+        "liamfp": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1600&h=600&fit=crop&auto=format&q=80", // Live performance/entertainment
+        
+        // Deji - Gaming, Sports & Entertainment (Boxing)
+        "deji": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1600&h=600&fit=crop&auto=format&q=80", // Boxing ring/sports arena
+        
+        // Jonathan Wright - Tech & Education
+        "jonathan-wright": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&h=600&fit=crop&auto=format&q=80" // Tech/digital education theme
     };
 
     return banners[slug] || "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=1600&h=600&fit=crop&auto=format&q=80";
@@ -110,9 +129,64 @@ function loadTalentProfile(talent) {
     // Update page title
     document.title = `${talent.name} | SocialCloud Management`;
 
-    // Hero banner
+    // Hero banner with premium dark boutique styling
     const heroBanner = document.getElementById('hero-banner');
-    heroBanner.style.background = `url('${talent.bannerImage}') center/cover`;
+    if (heroBanner) {
+        // Clear existing content
+        heroBanner.innerHTML = '';
+        
+        // Create layered background for depth
+        heroBanner.style.cssText = `
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        `;
+        
+        // Background image layer
+        const bgLayer = document.createElement('div');
+        bgLayer.style.cssText = `
+            position: absolute;
+            inset: 0;
+            background-image: url('${talent.bannerImage}');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) contrast(1.2) saturate(0.8);
+            transform: scale(1.1);
+        `;
+        
+        // Gradient overlay for premium feel
+        const gradientLayer = document.createElement('div');
+        gradientLayer.style.cssText = `
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,0.3) 0%,
+                rgba(0,0,0,0.5) 50%,
+                rgba(26,26,26,0.9) 100%
+            );
+        `;
+        
+        // Subtle pattern overlay
+        const patternLayer = document.createElement('div');
+        patternLayer.style.cssText = `
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(99, 102, 241, 0.03) 100px,
+                    rgba(99, 102, 241, 0.03) 200px
+                );
+            mix-blend-mode: overlay;
+        `;
+        
+        heroBanner.appendChild(bgLayer);
+        heroBanner.appendChild(gradientLayer);
+        heroBanner.appendChild(patternLayer);
+    }
 
     // Profile info
     const avatarImg = document.getElementById('talent-avatar');
