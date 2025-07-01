@@ -2113,17 +2113,19 @@ a:not(.btn):hover {
 .metric-value {
     font-size: var(--text-xl);
     font-weight: 300;
-    color: var(--color-brand-primary);
+    color: #ffffff;
     display: block;
     margin-bottom: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .metric-label {
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* View Profile button */
@@ -2193,4 +2195,35 @@ a:not(.btn):hover {
         max-width: 100%;
         height: 360px;
     }
+}
+
+/* Talent Profile Page - Enhanced text visibility */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Stats and metrics on profile pages */
+.glass-effect h3,
+.glass-effect .text-4xl,
+.glass-effect .gradient-text {
+    color: var(--color-brand-primary) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.glass-effect p,
+.glass-effect span {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Platform cards */
+.glass-effect .flex.items-center p:first-child {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+/* Follower counts and stats */
+.glass-effect .text-right p:first-child {
+    color: var(--color-brand-primary) !important;
+    font-weight: 700;
 }
