@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SocialCloud Management | Elevating Brands and Empowering Talents</title>
     <meta name="description" content="Premier talent management and influencer marketing agency. Connect with top creators across gaming, lifestyle, and entertainment.">
     <meta name="keywords" content="influencer marketing, talent management, social media management, content creators">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="SocialCloud Management | Elevating Brands and Empowering Talents">
     <meta property="og:description" content="We foster meaningful, boundary-free partnerships between brands and creators. 18M+ combined reach, 50+ successful campaigns.">
     <meta property="og:image" content="/socialcloud-logo.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://talent.multimedium.dev">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/socialcloud-logo.png">
-    
+
+    <!-- Performance optimizations -->
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="preload" href="assets/js/main.js" as="script">
+    <link rel="preload" href="assets/js/talents-data.js" as="script">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
     <!-- Header Navigation -->
     <header class="glass-effect" style="position: fixed; width: 100%; top: 0; z-index: var(--z-sticky); transition: all var(--transition-base);">
@@ -28,12 +38,30 @@
                 <a href="#home" class="flex items-center">
                     <img src="/socialcloud-logo.png" alt="SocialCloud Management - Elevating Brands and Empowering Talents" style="height: 40px; width: auto;">
                 </a>
-                <ul class="flex gap-8" style="list-style: none;">
+
+                <!-- Desktop Navigation -->
+                <ul class="desktop-nav flex gap-8" style="list-style: none;">
                     <li><a href="#home" class="nav-link active" style="color: var(--color-text-primary); font-weight: 500;">Home</a></li>
                     <li><a href="#talent" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Talents</a></li>
                     <li><a href="#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Services</a></li>
                     <li><a href="about.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
                     <li><a href="contact.html" class="btn btn-gradient" style="padding: var(--spacing-2) var(--spacing-5);">Contact Us</a></li>
+                </ul>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none; background: none; border: none; color: var(--color-text-primary); font-size: 1.5rem; cursor: pointer;" aria-label="Toggle mobile menu">
+                    ☰
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu" style="display: none;">
+                <ul style="list-style: none; padding: var(--spacing-4) 0; border-top: 1px solid var(--color-bg-accent); margin-top: var(--spacing-4);">
+                    <li style="margin-bottom: var(--spacing-3);"><a href="#home" class="nav-link" style="color: var(--color-text-primary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Home</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="#talent" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Talents</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Services</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="about.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">About</a></li>
+                    <li><a href="contact.html" class="btn btn-gradient" style="padding: var(--spacing-3) var(--spacing-6); display: block; text-align: center;">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
@@ -42,8 +70,10 @@
     <!-- Hero Section -->
     <section id="home" class="section" style="min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; margin-top: -80px; padding-top: 80px;">
         <!-- Animated Particles Background -->
-        <div class="particles-bg" id="particles-container"></div>
-        
+        <div class="particles-bg" id="particles-container">
+            <canvas id="particles-canvas"></canvas>
+        </div>
+
         <div class="container" style="z-index: 1; position: relative;">
             <div class="text-center animate-fadeIn">
                 <h1 class="mb-6" style="font-size: clamp(3rem, 8vw, 5rem); hyphens: none; word-break: keep-all;">
@@ -68,7 +98,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Gradient overlay at bottom -->
         <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to bottom, transparent, var(--color-bg-primary)); pointer-events: none;"></div>
     </section>
@@ -82,12 +112,12 @@
                     Discover our roster of exceptional creators who are shaping the future of digital content
                 </p>
             </div>
-            
+
             <!-- Talent Grid -->
             <div class="talent-grid gap-6" id="talent-grid">
                 <!-- Talent cards will be dynamically inserted here -->
             </div>
-            
+
             <div class="text-center mt-8">
                 <a href="talents.html" class="btn btn-gradient">View All Talents</a>
             </div>
@@ -103,20 +133,20 @@
                     We believe in building relationships that drive real results
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-3 gap-8">
                 <div class="card glass-effect text-center">
                     <div class="mb-4" style="font-size: 3rem;">📊</div>
                     <h3 class="mb-4">Understanding Your Market</h3>
                     <p>Deep analysis of your target audience and market trends to create campaigns that resonate</p>
                 </div>
-                
+
                 <div class="card glass-effect text-center">
                     <div class="mb-4" style="font-size: 3rem;">🎯</div>
                     <h3 class="mb-4">Strategic Planning</h3>
                     <p>Customized strategies that align with your brand goals and maximize ROI</p>
                 </div>
-                
+
                 <div class="card glass-effect text-center">
                     <div class="mb-4" style="font-size: 3rem;">🚀</div>
                     <h3 class="mb-4">Meaningful Results</h3>
@@ -135,26 +165,26 @@
                     Full-service talent management and marketing solutions
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-4 gap-6">
                 <div class="card card-glow">
                     <div class="mb-4" style="font-size: 2rem;">👥</div>
                     <h4 class="mb-2">Influencer Marketing</h4>
                     <p style="font-size: var(--text-base);">Strategic partnerships between creators and brands</p>
                 </div>
-                
+
                 <div class="card card-glow">
                     <div class="mb-4" style="font-size: 2rem;">⭐</div>
                     <h4 class="mb-2">Talent Management</h4>
                     <p style="font-size: var(--text-base);">Full-service representation and career development</p>
                 </div>
-                
+
                 <div class="card card-glow">
                     <div class="mb-4" style="font-size: 2rem;">📈</div>
                     <h4 class="mb-2">Social Media Strategy</h4>
                     <p style="font-size: var(--text-base);">Data-driven content and growth strategies</p>
                 </div>
-                
+
                 <div class="card card-glow">
                     <div class="mb-4" style="font-size: 2rem;">🎯</div>
                     <h4 class="mb-2">Profile Optimization</h4>
@@ -262,8 +292,8 @@
             </div>
             <div style="border-top: 1px solid var(--color-bg-accent); padding-top: var(--spacing-8); text-align: center;">
                 <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
-                    © 2025 SocialCloud Management. All rights reserved. | 
-                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a> | 
+                    © 2025 SocialCloud Management. All rights reserved. |
+                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a> |
                     <a href="#" style="color: var(--color-text-muted);">Terms of Service</a>
                 </p>
                 <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--spacing-2);">
@@ -277,4 +307,5 @@
     <script src="assets/js/talents-data.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

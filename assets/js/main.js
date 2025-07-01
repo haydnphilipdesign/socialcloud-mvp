@@ -5,126 +5,164 @@ let talents = [];
 
 // Load talents data
 function loadTalentsData(callback) {
-  // Create script element to load talents data
-  const script = document.createElement('script');
-  script.src = '/assets/js/talents-data.js';
-  document.head.appendChild(script);
-  
-  script.onload = function() {
-    // Use official talents
-    talents = window.officialTalents || [];
-    if (callback) callback();
-  };
+    // Create script element to load talents data
+    const script = document.createElement('script');
+    script.src = '/assets/js/talents-data.js';
+    document.head.appendChild(script);
+
+    script.onload = function() {
+        // Use official talents
+        talents = window.officialTalents || [];
+        if (callback) callback();
+    };
+}
+
+// Performance monitoring
+function trackPerformance() {
+    if ('performance' in window) {
+        window.addEventListener('load', () => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
+            const domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
+
+            console.log(`Page Load Time: ${loadTime}ms`);
+            console.log(`DOM Content Loaded: ${domContentLoaded}ms`);
+
+            // Track largest contentful paint
+            if ('PerformanceObserver' in window) {
+                const observer = new PerformanceObserver((list) => {
+                    const entries = list.getEntries();
+                    const lastEntry = entries[entries.length - 1];
+                    console.log(`Largest Contentful Paint: ${lastEntry.startTime}ms`);
+                });
+                observer.observe({ entryTypes: ['largest-contentful-paint'] });
+            }
+        });
+    }
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-  loadTalentsData(function() {
-    // Initialize all components after talents data is loaded
-    initializeHero();
-    renderFeaturedTalents();
-    renderStatistics();
-    initAnimations();
-    initHeaderScroll();
-    initSmoothScroll();
-  });
+    trackPerformance();
+    loadTalentsData(function() {
+        // Initialize all components after talents data is loaded
+        initializeHero();
+        renderFeaturedTalents();
+        renderStatistics();
+        initAnimations();
+        initHeaderScroll();
+        initSmoothScroll();
+    });
 });
 
 // Initialize hero section with animated particles
 function initializeHero() {
-  const canvas = document.getElementById('particles-canvas');
-  if (!canvas) return;
-  
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  
-  // Set canvas size
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-  
-  // Particle class
-  class Particle {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2 + 1;
-      this.speedX = Math.random() * 0.5 - 0.25;
-      this.speedY = Math.random() * 0.5 - 0.25;
-      this.opacity = Math.random() * 0.5 + 0.2;
+    const canvas = document.getElementById('particles-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    // Set canvas size
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }
-    
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      
-      if (this.x > canvas.width) this.x = 0;
-      if (this.x < 0) this.x = canvas.width;
-      if (this.y > canvas.height) this.y = 0;
-      if (this.y < 0) this.y = canvas.height;
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Particle class
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * 0.5 - 0.25;
+            this.opacity = Math.random() * 0.5 + 0.2;
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if (this.x > canvas.width) this.x = 0;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.y > canvas.height) this.y = 0;
+            if (this.y < 0) this.y = canvas.height;
+        }
+
+        draw() {
+            ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
     }
-    
-    draw() {
-      ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
+
+    // Create particles
+    for (let i = 0; i < 100; i++) {
+        particles.push(new Particle());
     }
-  }
-  
-  // Create particles
-  for (let i = 0; i < 100; i++) {
-    particles.push(new Particle());
-  }
-  
-  // Animation loop
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    particles.forEach(particle => {
-      particle.update();
-      particle.draw();
-    });
-    
-    requestAnimationFrame(animate);
-  }
-  
-  animate();
+
+    // Animation loop
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 }
 
 // Render featured talents on homepage
 function renderFeaturedTalents() {
-  const talentGrid = document.getElementById('talent-grid');
-  if (!talentGrid) return;
-  
-  // Show all 10 talents from the official list
-  const featuredTalents = talents.slice(0, 10);
-  
-  talentGrid.innerHTML = '';
-  
-  featuredTalents.forEach(talent => {
-    const card = createTalentCard(talent);
-    talentGrid.appendChild(card);
-  });
+    const talentGrid = document.getElementById('talent-grid');
+    if (!talentGrid) return;
+
+    // Show all 10 talents from the official list
+    const featuredTalents = talents.slice(0, 10);
+
+    talentGrid.innerHTML = '';
+
+    featuredTalents.forEach(talent => {
+        const card = createTalentCard(talent);
+        talentGrid.appendChild(card);
+    });
 }
 
 // Create talent card
 function createTalentCard(talent) {
-  const card = document.createElement('div');
-  card.className = 'card card-glow';
-  
-  const formatFollowers = (num) => {
-    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-    if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
-    return num.toString();
-  };
-  
-  card.innerHTML = `
-    <img src="${talent.image}" alt="Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg);" onerror="this.src='/assets/images/talents/placeholder.svg'; this.onerror=null;">
+    const card = document.createElement('div');
+    card.className = 'card card-glow';
+
+    const formatFollowers = (num) => {
+        if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
+        return num.toString();
+    };
+
+    // Create optimized image with WebP support
+    const createOptimizedImage = (imageSrc, altText) => {
+        const webpSrc = imageSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+        return `
+      <picture>
+        <source srcset="${webpSrc}" type="image/webp">
+        <img src="${imageSrc}" alt="${altText}" loading="lazy"
+             style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg);"
+             onerror="this.src='/assets/images/talents/placeholder.svg'; this.onerror=null;">
+      </picture>
+    `;
+    };
+
+    card.innerHTML = `
+    ${createOptimizedImage(talent.image, `Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator`)}
     <div class="card__body">
       <h3 class="mb-2">${talent.name}</h3>
       <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">${talent.bio}</p>
@@ -140,7 +178,7 @@ function createTalentCard(talent) {
       <a href="talent-profile.html?id=${talent.slug}" class="btn btn-secondary">View Profile</a>
     </div>
   `;
-  
+
   return card;
 }
 
@@ -148,20 +186,20 @@ function createTalentCard(talent) {
 function renderStatistics() {
   const statsGrid = document.getElementById('stats-grid');
   if (!statsGrid) return;
-  
+
   // Calculate total stats from official talents
   const totalFollowers = talents.reduce((sum, talent) => sum + talent.totalFollowers, 0);
   const avgEngagement = (talents.reduce((sum, talent) => sum + talent.avgEngagement, 0) / talents.length).toFixed(1);
-  
+
   const stats = [
     { value: `${(totalFollowers / 1000000).toFixed(1)}M+`, label: 'Total Reach' },
     { value: talents.length, label: 'Managed Talents' },
     { value: `${avgEngagement}%`, label: 'Avg. Engagement' },
     { value: '95%', label: 'Client Satisfaction' }
   ];
-  
+
   statsGrid.innerHTML = '';
-  
+
   stats.forEach(stat => {
     const statCard = document.createElement('div');
     statCard.className = 'text-center';
@@ -195,10 +233,10 @@ function initHeaderScroll() {
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
   let lastScroll = 0;
-  
+
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     // Header background effect
     if (currentScroll > 50) {
       header.style.background = 'rgba(10, 10, 10, 0.95)';
@@ -209,13 +247,13 @@ function initHeaderScroll() {
       header.style.backdropFilter = 'blur(10px)';
       header.style.boxShadow = 'none';
     }
-    
+
     // Active section highlighting
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 100;
       const sectionHeight = section.offsetHeight;
       const sectionId = section.getAttribute('id');
-      
+
       if (currentScroll >= sectionTop && currentScroll < sectionTop + sectionHeight) {
         navLinks.forEach(link => {
           link.classList.remove('active');
@@ -225,7 +263,7 @@ function initHeaderScroll() {
         });
       }
     });
-    
+
     lastScroll = currentScroll;
   });
 }
@@ -236,7 +274,7 @@ function initAnimations() {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
   };
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -245,7 +283,7 @@ function initAnimations() {
       }
     });
   }, observerOptions);
-  
+
   // Observe all cards and sections
   document.querySelectorAll('.card, .section > .container > *').forEach(el => {
     el.style.opacity = '0';
@@ -258,10 +296,37 @@ function formatNumber(num) {
   return new Intl.NumberFormat().format(num);
 }
 
-// Mobile menu toggle (for future implementation)
+// Mobile menu toggle
 function toggleMobileMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+
   if (mobileMenu) {
     mobileMenu.classList.toggle('active');
+
+    // Update button icon
+    if (mobileMenu.classList.contains('active')) {
+      menuBtn.innerHTML = '✕';
+    } else {
+      menuBtn.innerHTML = '☰';
+    }
   }
 }
+
+// Close mobile menu when clicking nav links
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileNavLinks = document.querySelectorAll('.mobile-menu .nav-link');
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      if (mobileMenu && mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        menuBtn.innerHTML = '☰';
+      }
+    });
+  });
+});
+
+// Make toggleMobileMenu globally available
+window.toggleMobileMenu = toggleMobileMenu;

@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talent Roster | SocialCloud Management</title>
+    <title>Our Talents | SocialCloud Management</title>
     <meta name="description" content="Browse our complete roster of content creators and influencers across gaming, lifestyle, and entertainment.">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/socialcloud-logo.png">
-    
+
+    <!-- Performance optimizations -->
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="preload" href="assets/js/talents-roster.js" as="script">
+    <link rel="preload" href="assets/js/talents-data.js" as="script">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
         /* Additional styles for filters */
+
         .filter-section {
             background: var(--color-bg-secondary);
             border-radius: var(--radius-xl);
             padding: var(--spacing-6);
             margin-bottom: var(--spacing-8);
         }
-        
+
         .filter-group {
             margin-bottom: var(--spacing-6);
         }
-        
+
         .filter-group:last-child {
             margin-bottom: 0;
         }
-        
+
         .filter-checkbox {
             display: flex;
             align-items: center;
@@ -35,13 +45,13 @@
             margin-bottom: var(--spacing-2);
             cursor: pointer;
         }
-        
+
         .filter-checkbox input {
             width: 20px;
             height: 20px;
             cursor: pointer;
         }
-        
+
         .range-slider {
             width: 100%;
             height: 6px;
@@ -50,7 +60,7 @@
             outline: none;
             -webkit-appearance: none;
         }
-        
+
         .range-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             width: 20px;
@@ -59,12 +69,12 @@
             border-radius: 50%;
             cursor: pointer;
         }
-        
+
         .search-bar {
             position: relative;
             margin-bottom: var(--spacing-8);
         }
-        
+
         .search-bar input {
             width: 100%;
             padding: var(--spacing-4) var(--spacing-12);
@@ -75,12 +85,12 @@
             font-size: var(--text-lg);
             transition: all var(--transition-base);
         }
-        
+
         .search-bar input:focus {
             border-color: var(--color-brand-primary);
             background: var(--color-bg-primary);
         }
-        
+
         .search-bar .search-icon {
             position: absolute;
             left: var(--spacing-4);
@@ -88,20 +98,50 @@
             transform: translateY(-50%);
             font-size: var(--text-xl);
         }
-        
+
         .talent-count {
             text-align: center;
             margin-bottom: var(--spacing-4);
             color: var(--color-text-secondary);
         }
-        
+
         .no-results {
             text-align: center;
             padding: var(--spacing-20) 0;
+        }
+        /* Responsive filter layout */
+
+        .filters-layout {
+            grid-template-columns: 300px 1fr;
+            gap: var(--spacing-8);
+        }
+
+        @media (max-width: 768px) {
+            .filters-layout {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-4);
+            }
+            .filter-section {
+                order: 2;
+                margin-bottom: var(--spacing-4);
+            }
+            .talents-main {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .filter-section {
+                padding: var(--spacing-4);
+            }
+            .search-bar {
+                margin-bottom: var(--spacing-4);
+            }
             color: var(--color-text-muted);
         }
     </style>
 </head>
+
 <body>
     <!-- Header Navigation -->
     <header class="glass-effect" style="position: fixed; width: 100%; top: 0; z-index: var(--z-sticky); transition: all var(--transition-base);">
@@ -119,8 +159,20 @@
                     <li><a href="about.html" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
                     <li><a href="index.html#contact" class="btn btn-gradient" style="padding: var(--spacing-2) var(--spacing-5);">Contact Us</a></li>
                 </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none; background: none; border: none; color: var(--color-text-primary); font-size: 1.5rem; cursor: pointer;" aria-label="Toggle mobile menu">
+                    ☰
+                </button>
             </div>
         </nav>
+        <div id="mobile-menu" class="mobile-menu" style="display: none;">
+            <ul style="list-style: none; padding: var(--spacing-4); margin: 0;">
+                <li style="margin-bottom: var(--spacing-3);"><a href="index.html" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">Home</a></li>
+                <li style="margin-bottom: var(--spacing-3);"><a href="talents.html" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">Talent</a></li>
+                <li style="margin-bottom: var(--spacing-3);"><a href="index.html#services" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">Services</a></li>
+                <li style="margin-bottom: var(--spacing-3);"><a href="about.html" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">About</a></li>
+                <li><a href="contact.html" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">Contact</a></li>
+            </ul>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -141,12 +193,12 @@
                 <span class="search-icon">🔍</span>
                 <input type="text" id="talent-search" placeholder="Search by name or category..." onkeyup="searchTalents()">
             </div>
-            
-            <div class="grid" style="grid-template-columns: 300px 1fr; gap: var(--spacing-8);">
+
+            <div class="grid filters-layout">
                 <!-- Filters Sidebar -->
                 <aside class="filter-section">
                     <h3 class="mb-6">Filters</h3>
-                    
+
                     <!-- Platform Filter -->
                     <div class="filter-group">
                         <h4 class="mb-4">Platform</h4>
@@ -167,7 +219,7 @@
                             <span>Twitch</span>
                         </label>
                     </div>
-                    
+
                     <!-- Category Filter -->
                     <div class="filter-group">
                         <h4 class="mb-4">Category</h4>
@@ -196,7 +248,7 @@
                             <span>Tech</span>
                         </label>
                     </div>
-                    
+
                     <!-- Follower Range Filter -->
                     <div class="filter-group">
                         <h4 class="mb-4">Follower Range</h4>
@@ -210,21 +262,21 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Clear Filters -->
                     <button class="btn btn-secondary" style="width: 100%;" onclick="clearFilters()">Clear All Filters</button>
                 </aside>
-                
+
                 <!-- Talent Grid -->
-                <main>
+                <main class="talents-main">
                     <div class="talent-count" id="talent-count">
                         Showing all talents
                     </div>
-                    
+
                     <div class="grid grid-cols-3 gap-6" id="talents-grid">
                         <!-- Talent cards will be dynamically inserted here -->
                     </div>
-                    
+
                     <div class="no-results" id="no-results" style="display: none;">
                         <h3 class="mb-4">No talents found</h3>
                         <p>Try adjusting your filters or search terms</p>
@@ -270,8 +322,8 @@
         <div class="container">
             <div class="text-center">
                 <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
-                    © 2025 SocialCloud Management. All rights reserved. | 
-                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a> | 
+                    © 2025 SocialCloud Management. All rights reserved. |
+                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a> |
                     <a href="#" style="color: var(--color-text-muted);">Terms of Service</a>
                 </p>
                 <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--spacing-2);">
@@ -284,5 +336,35 @@
     <!-- JavaScript -->
     <script src="assets/js/talents-data.js"></script>
     <script src="assets/js/talents-roster.js"></script>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                menuBtn.textContent = '☰';
+            } else {
+                mobileMenu.classList.add('active');
+                menuBtn.textContent = '✕';
+            }
+        }
+
+        // Close mobile menu when clicking on a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const menuBtn = document.querySelector('.mobile-menu-btn');
+                    mobileMenu.classList.remove('active');
+                    menuBtn.textContent = '☰';
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>

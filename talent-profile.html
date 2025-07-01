@@ -1,17 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talent Profile | SocialCloud Management</title>
+    <title id="page-title">Talent Profile | SocialCloud Management</title>
     <meta name="description" content="View talent profile, stats, and collaboration opportunities.">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/socialcloud-logo.png">
-    
+
+    <!-- Performance optimizations -->
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="preload" href="assets/js/talent-profile.js" as="script">
+    <link rel="preload" href="assets/js/talents-data.js" as="script">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Talent Profile Responsive Styles */
+
+        @media (max-width: 768px) {
+            .profile-layout {
+                grid-template-columns: 1fr !important;
+                gap: var(--spacing-6) !important;
+                text-align: center;
+            }
+            .profile-layout .flex.items-center {
+                flex-direction: column;
+                text-align: center;
+            }
+            #talent-avatar {
+                width: 100px !important;
+                height: 100px !important;
+            }
+            .gradient-border {
+                margin-bottom: var(--spacing-4) !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .glass-effect {
+                padding: var(--spacing-4) !important;
+            }
+            .profile-layout {
+                gap: var(--spacing-4) !important;
+            }
+            #talent-avatar {
+                width: 80px !important;
+                height: 80px !important;
+            }
+            .flex.gap-4 {
+                flex-direction: column;
+                gap: var(--spacing-3) !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <!-- Header Navigation -->
     <header class="glass-effect" style="position: fixed; width: 100%; top: 0; z-index: var(--z-sticky); transition: all var(--transition-base);">
@@ -29,8 +78,20 @@
                     <li><a href="about.html" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
                     <li><a href="index.html#contact" class="btn btn-gradient" style="padding: var(--spacing-2) var(--spacing-5);">Contact Us</a></li>
                 </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none; background: none; border: none; color: var(--color-text-primary); font-size: 1.5rem; cursor: pointer;" aria-label="Toggle mobile menu">
+                    ☰
+                </button>
             </div>
         </nav>
+        <div id="mobile-menu" class="mobile-menu" style="display: none;">
+            <ul style="list-style: none; padding: var(--spacing-4); margin: 0;">
+                <li style="margin-bottom: var(--spacing-3);"><a href="index.html" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">Home</a></li>
+                <li style="margin-bottom: var(--spacing-3);"><a href="talents.html" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">Talent</a></li>
+                <li style="margin-bottom: var(--spacing-3);"><a href="index.html#services" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">Services</a></li>
+                <li style="margin-bottom: var(--spacing-3);"><a href="about.html" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">About</a></li>
+                <li><a href="contact.html" style="color: var(--color-text-primary); font-weight: 500; text-decoration: none; display: block; padding: var(--spacing-2) 0;">Contact</a></li>
+            </ul>
+        </div>
     </header>
 
     <!-- Hero Banner Section -->
@@ -45,7 +106,7 @@
     <section style="margin-top: -150px; position: relative; z-index: 1;">
         <div class="container">
             <div class="glass-effect" style="border-radius: var(--radius-2xl); padding: var(--spacing-8); max-width: 1000px; margin: 0 auto;">
-                <div class="grid grid-cols-2 gap-8" style="align-items: center;">
+                <div class="grid grid-cols-2 gap-8 profile-layout" style="align-items: center;">
                     <!-- Left Column - Profile Info -->
                     <div>
                         <div class="flex items-center gap-6 mb-6">
@@ -55,15 +116,15 @@
                                 <div id="talent-categories" class="flex gap-2"></div>
                             </div>
                         </div>
-                        
+
                         <p id="talent-bio" class="mb-6" style="font-size: var(--text-lg); line-height: 1.8;"></p>
-                        
+
                         <div class="mb-6">
                             <h3 class="mb-4">Platform Presence</h3>
                             <div id="platform-list" class="flex flex-col gap-3"></div>
                         </div>
                     </div>
-                    
+
                     <!-- Right Column - Stats -->
                     <div>
                         <div class="gradient-border mb-6">
@@ -82,12 +143,12 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="card glass-effect mb-6">
                             <h3 class="mb-4">Key Achievements</h3>
                             <ul id="achievements-list" style="list-style: none;"></ul>
                         </div>
-                        
+
                         <div class="flex gap-4">
                             <button class="btn btn-gradient" style="flex: 1;" onclick="showContactForm()">
                                 Partner with <span id="talent-name-cta"></span>
@@ -109,14 +170,14 @@
                 <h2 class="mb-4">Recent <span class="text-gradient">Content & Campaigns</span></h2>
                 <p>Discover the creative work and brand collaborations</p>
             </div>
-            
+
             <!-- Filter Tabs -->
             <div class="flex justify-center gap-4 mb-8">
                 <button class="btn btn-secondary" onclick="filterContent('all')">All Content</button>
                 <button class="btn btn-secondary" onclick="filterContent('branded')">Brand Collaborations</button>
                 <button class="btn btn-secondary" onclick="filterContent('organic')">Organic Content</button>
             </div>
-            
+
             <!-- Content Grid -->
             <div class="grid grid-cols-3 gap-6" id="content-gallery">
                 <!-- Placeholder content tiles -->
@@ -140,7 +201,7 @@
                 <h2 class="mb-4">Discover More <span class="text-gradient">Talents</span></h2>
                 <p>Explore other creators in similar categories</p>
             </div>
-            
+
             <div class="grid grid-cols-3 gap-6" id="related-talents">
                 <!-- Related talents will be inserted via JS -->
             </div>
@@ -152,8 +213,8 @@
         <div class="container">
             <div class="text-center">
                 <p style="font-size: var(--text-sm); color: var(--color-text-muted);">
-                    © 2025 SocialCloud Management. All rights reserved. | 
-                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a> | 
+                    © 2025 SocialCloud Management. All rights reserved. |
+                    <a href="#" style="color: var(--color-text-muted);">Privacy Policy</a> |
                     <a href="#" style="color: var(--color-text-muted);">Terms of Service</a>
                 </p>
                 <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--spacing-2);">
@@ -193,5 +254,25 @@
     <!-- JavaScript -->
     <script src="assets/js/talents-data.js"></script>
     <script src="assets/js/talent-profile.js"></script>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
