@@ -2455,11 +2455,6 @@ a:not(.btn):hover {
     .talent-grid-home .card:nth-child(4) {
         margin-right: 0;
     }
-    
-    .talent-grid-home .card:nth-child(8) {
-        flex: 0 0 calc(50% - 1rem);
-        max-width: calc(50% - 1rem);
-    }
 }
 
 @media (max-width: 640px) {

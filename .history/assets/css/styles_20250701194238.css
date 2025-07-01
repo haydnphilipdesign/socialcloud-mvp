@@ -341,17 +341,22 @@ a:hover {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+
 /* SPECIFIC CARD TYPES WITH BETTER SPACING */
+
 .card.text-center {
     padding: var(--spacing-8);
 }
 
 .card.card-glow {
-    padding: 0; /* Reset for talent cards that use image overlays */
+    padding: 0;
+    /* Reset for talent cards that use image overlays */
 }
 
+
 /* FAQ CARDS - EXTRA BREATHING ROOM */
-.card h3 + p {
+
+.card h3+p {
     margin-top: var(--spacing-3);
     line-height: 1.6;
 }
@@ -905,7 +910,9 @@ a:hover {
     }
 }
 
+
 /* Landscape orientation fixes */
+
 @media (max-width: 768px) and (orientation: landscape) {
     #home {
         margin-top: -50px !important;
@@ -921,7 +928,9 @@ a:hover {
     }
 }
 
+
 /* Portrait orientation fixes */
+
 @media (max-width: 480px) and (orientation: portrait) {
     #home h1 {
         font-size: clamp(1.6rem, 5vw, 2.2rem) !important;
@@ -932,6 +941,7 @@ a:hover {
         widows: 2;
     }
 }
+
 
 /* Removed duplicate 480px breakpoint - consolidated into 479px breakpoint below */
 
@@ -1331,6 +1341,7 @@ header .btn-gradient {
     color: var(--color-text-primary);
 }
 
+
 /* LUXURY BOUTIQUE AESTHETIC - COMMANDING EXECUTIVE PRESENCE */
 
 .btn:hover {
@@ -1346,7 +1357,9 @@ header .btn-gradient {
     border-color: rgba(201, 169, 97, 0.3);
 }
 
+
 /* EXECUTIVE-LEVEL VISUAL HIERARCHY */
+
 .card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -1384,7 +1397,7 @@ header .btn-gradient {
     left: 50%;
     width: 0;
     height: 0;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
     transition: all 0.5s ease;
     transform: translate(-50%, -50%);
 }
@@ -1394,18 +1407,24 @@ header .btn-gradient {
     height: 300px;
 }
 
+
 /* PREMIUM SECTION SPACING */
+
 .section {
     padding: 8rem 0;
 }
 
+
 /* EXECUTIVE HERO SECTION */
+
 #home {
     background: radial-gradient(ellipse at center, rgba(26, 26, 26, 0.8) 0%, var(--color-bg-primary) 70%);
     position: relative;
 }
 
+
 /* ELEGANT SCROLL INDICATOR */
+
 .hero__scroll-indicator {
     position: absolute;
     bottom: 2rem;
@@ -1424,12 +1443,13 @@ header .btn-gradient {
 }
 
 @keyframes elegantBounce {
-    0%, 100% { 
-        transform: translate(-50%, 0); 
+    0%,
+    100% {
+        transform: translate(-50%, 0);
         opacity: 0.6;
     }
-    50% { 
-        transform: translate(-50%, 8px); 
+    50% {
+        transform: translate(-50%, 8px);
         opacity: 1;
     }
 }
@@ -1441,15 +1461,15 @@ header .btn-gradient {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        linear-gradient(45deg, transparent 49%, rgba(201, 169, 97, 0.03) 50%, transparent 51%),
-        linear-gradient(-45deg, transparent 49%, rgba(201, 169, 97, 0.03) 50%, transparent 51%);
+    background: linear-gradient(45deg, transparent 49%, rgba(201, 169, 97, 0.03) 50%, transparent 51%), linear-gradient(-45deg, transparent 49%, rgba(201, 169, 97, 0.03) 50%, transparent 51%);
     background-size: 60px 60px;
     pointer-events: none;
     opacity: 0.5;
 }
 
+
 /* STATS SECTION LUXURY STYLING */
+
 .stat-item {
     text-align: center;
     padding: 2rem;
@@ -1465,7 +1485,9 @@ header .btn-gradient {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
+
 /* SOPHISTICATED TALENT GRID */
+
 .talent-grid {
     gap: 2.5rem;
     margin: 4rem 0;
@@ -1474,7 +1496,9 @@ header .btn-gradient {
     align-items: stretch;
 }
 
+
 /* PREMIUM TALENT CARDS */
+
 .talent-grid .card {
     height: 400px;
     background: linear-gradient(145deg, var(--color-bg-secondary) 0%, rgba(26, 26, 26, 0.8) 100%);
@@ -1483,14 +1507,18 @@ header .btn-gradient {
     flex-direction: column;
 }
 
+
 /* ENSURE UNIFORM CARD CONTENT ALIGNMENT */
-.talent-grid .card > div {
+
+.talent-grid .card>div {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
+
 /* TALENT CARD TEXT OVERLAY CONSISTENCY */
+
 .talent-grid .card h3 {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem) !important;
     line-height: 1.2 !important;
@@ -1510,7 +1538,9 @@ header .btn-gradient {
     white-space: nowrap;
 }
 
+
 /* EXECUTIVE FOOTER STYLING */
+
 footer {
     border-top: 2px solid var(--color-brand-accent) !important;
     background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%) !important;
@@ -1528,30 +1558,43 @@ footer::before {
     opacity: 0.8;
 }
 
+
 /* LUXURY GLASS EFFECTS */
+
 .glass-effect {
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(201, 169, 97, 0.1);
 }
 
+
 /* PREMIUM HOVER STATES FOR ALL INTERACTIVE ELEMENTS */
+
 a:not(.btn):hover {
     color: var(--color-brand-accent);
     transition: color 0.3s ease;
 }
 
+
 /* EXECUTIVE LEVEL MICRO-ANIMATIONS */
+
 @keyframes luxuryPulse {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 1; }
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 .text-gradient {
     animation: luxuryPulse 3s ease-in-out infinite;
 }
 
+
 /* CONTACT PAGE INFO CARDS - NATURAL HEIGHT */
+
 .contact-info-card {
     display: flex;
     flex-direction: column;
@@ -1569,16 +1612,20 @@ a:not(.btn):hover {
     margin-top: var(--spacing-2);
 }
 
+
 /* FIX CONTACT GRID ALIGNMENT */
+
 .grid.grid-cols-2 {
     align-items: start;
 }
 
-.space-y-8 > * + * {
+.space-y-8>*+* {
     margin-top: 1.5rem !important;
 }
 
+
 /* FINAL POLISH - PREMIUM SELECTION STATES */
+
 ::selection {
     background: var(--color-brand-accent);
     color: var(--color-bg-primary);
@@ -1589,151 +1636,138 @@ a:not(.btn):hover {
     color: var(--color-bg-primary);
 }
 
+
 /* PERFECT RESPONSIVE DESIGN - FLAWLESS ALIGNMENT ACROSS ALL DEVICES */
 
+
 /* Large Screens (1400px+) - Maximum Executive Presence */
+
 @media (min-width: 1400px) {
     .container {
         max-width: 1320px;
         margin: 0 auto;
         padding: 0 2rem;
     }
-    
     .section {
         padding: 10rem 0;
     }
-    
     .talent-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: 3rem;
     }
-    
     h1 {
         font-size: 5rem !important;
         line-height: 0.85;
     }
-    
     h2 {
         font-size: 3.5rem !important;
     }
 }
 
+
 /* Desktop (1024px - 1399px) - Premium Layout */
+
 @media (min-width: 1024px) and (max-width: 1399px) {
     .container {
         max-width: 1140px;
         margin: 0 auto;
         padding: 0 1.5rem;
     }
-    
     .talent-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 2.5rem;
     }
-    
     .grid-cols-4 {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
 }
 
+
 /* Tablet (768px - 1023px) - Sophisticated Responsive */
+
 @media (min-width: 768px) and (max-width: 1023px) {
     .container {
         max-width: 960px;
         margin: 0 auto;
         padding: 0 1.5rem;
     }
-    
     .section {
         padding: 6rem 0;
     }
-    
     .talent-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
-    
     .talent-grid .card {
         height: 380px;
     }
-    
     .grid-cols-3,
     .grid-cols-4 {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
-    
     h1 {
         font-size: clamp(3rem, 6vw, 4rem) !important;
         line-height: 0.9;
     }
-    
     h2 {
         font-size: clamp(2.2rem, 5vw, 3rem) !important;
     }
-    
     .btn {
         padding: 1rem 2rem;
         font-size: 0.9rem;
     }
 }
 
+
 /* Mobile Large (480px - 767px) - Executive Mobile */
+
 @media (min-width: 480px) and (max-width: 767px) {
     .container {
         max-width: 100%;
         margin: 0 auto;
         padding: 0 1.5rem;
     }
-    
     .section {
         padding: 4rem 0;
     }
-    
     .talent-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
         margin: 3rem 0;
     }
-    
     .talent-grid .card {
         height: 360px;
         max-width: 400px;
         margin: 0 auto;
     }
-    
     /* Fix talent-grid-home tablet layout */
     .talent-grid-home {
         display: grid !important;
         grid-template-columns: 1fr !important;
         gap: 2rem !important;
     }
-    
     .talent-grid-home .card {
         flex: none !important;
         max-width: 400px !important;
         height: 360px !important;
         margin: 0 auto !important;
     }
-    
     .grid-cols-3,
     .grid-cols-4 {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
     h1 {
         font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
         line-height: 0.95;
         text-align: center;
     }
-    
     h2 {
         font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
         text-align: center;
     }
-    
     .btn {
         padding: 1rem 1.5rem;
         font-size: 0.85rem;
@@ -1741,7 +1775,6 @@ a:not(.btn):hover {
         max-width: 280px;
         margin: 0 auto;
     }
-    
     .flex {
         flex-direction: column;
         align-items: center;
@@ -1749,93 +1782,95 @@ a:not(.btn):hover {
     }
 }
 
+
 /* Mobile Small (320px - 479px) - Compact Excellence */
+
 @media (max-width: 479px) {
     /* Typography Scaling */
-    .text-6xl { font-size: 2.5rem !important; }
-    .text-5xl { font-size: 2rem !important; }
-    .text-4xl { font-size: 1.75rem !important; }
-    .text-3xl { font-size: 1.5rem !important; }
-    .text-2xl { font-size: 1.25rem !important; }
-    .text-xl { font-size: 1.125rem !important; }
-    
+    .text-6xl {
+        font-size: 2.5rem !important;
+    }
+    .text-5xl {
+        font-size: 2rem !important;
+    }
+    .text-4xl {
+        font-size: 1.75rem !important;
+    }
+    .text-3xl {
+        font-size: 1.5rem !important;
+    }
+    .text-2xl {
+        font-size: 1.25rem !important;
+    }
+    .text-xl {
+        font-size: 1.125rem !important;
+    }
     /* Container and Spacing */
     .container {
         max-width: 100%;
         margin: 0 auto;
         padding: 0 var(--spacing-4) !important;
     }
-    
     .section {
         padding: var(--spacing-8) 0 !important;
     }
-    
     /* Grid Layout Fixes - All grid columns stack on mobile */
-    .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
         grid-template-columns: 1fr !important;
         gap: var(--spacing-4) !important;
     }
-    
     .talent-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         margin: 2rem 0;
     }
-    
     .talent-grid .card {
         height: 340px;
         max-width: 100%;
         min-height: 350px;
     }
-    
     .talent-grid .card__body {
         padding: var(--spacing-3);
     }
-    
     .talent-grid .card__footer {
         padding: var(--spacing-3);
     }
-    
     /* Feature cards mobile adjustments */
     .card.glass-effect,
     .card.card-glow {
         min-height: 150px;
         padding: var(--spacing-4);
     }
-    
     /* Fix talent-grid-home mobile layout */
     .talent-grid-home {
         display: grid !important;
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
     }
-    
     .talent-grid-home .card {
         flex: none !important;
         max-width: 100% !important;
         height: 340px !important;
         margin: 0 !important;
     }
-    
     h1 {
         font-size: clamp(2rem, 10vw, 2.8rem) !important;
         line-height: 1;
         text-align: center;
         padding: 0 0.5rem;
     }
-    
     h2 {
         font-size: clamp(1.5rem, 8vw, 2rem) !important;
         text-align: center;
         padding: 0 0.5rem;
     }
-    
     /* Form and Input Improvements */
     .input-field {
         padding: var(--spacing-4) !important;
         font-size: 1rem !important;
     }
-    
     /* Button Touch Targets */
     .btn {
         padding: var(--spacing-4) var(--spacing-6) !important;
@@ -1845,25 +1880,21 @@ a:not(.btn):hover {
         max-width: 260px;
         margin: 0 auto;
     }
-    
     .flex {
         flex-direction: column;
         align-items: center;
         gap: 0.75rem;
     }
-    
     /* Navigation Improvements */
     .nav-link {
         padding: var(--spacing-3) 0 !important;
         font-size: 1.125rem !important;
     }
-    
     /* Mobile navigation improvements */
     .mobile-menu-btn span {
         width: 25px;
         height: 3px;
     }
-    
     .mobile-menu-btn span::before,
     .mobile-menu-btn span::after {
         content: '';
@@ -1874,21 +1905,17 @@ a:not(.btn):hover {
         left: 0;
         transition: all 0.3s ease;
     }
-    
     .mobile-menu-btn span::before {
         top: -8px;
     }
-    
     .mobile-menu-btn span::after {
         bottom: -8px;
     }
-    
     /* MOBILE MENU VERTICAL LAYOUT */
     .mobile-menu {
         display: none;
         flex-direction: column;
     }
-    
     .mobile-menu ul {
         display: flex;
         flex-direction: column;
@@ -1898,11 +1925,9 @@ a:not(.btn):hover {
         border-top: 1px solid var(--color-bg-accent);
         margin-top: var(--spacing-4);
     }
-    
     .mobile-menu li {
         margin-bottom: var(--spacing-3);
     }
-    
     .mobile-menu a {
         display: block;
         padding: var(--spacing-2) 0;
@@ -1911,110 +1936,92 @@ a:not(.btn):hover {
         text-decoration: none;
         transition: color 0.3s ease;
     }
-    
     .mobile-menu a:hover,
     .mobile-menu a.active {
         color: var(--color-brand-accent);
     }
-    
     /* Adjust padding for mobile header */
     header nav {
         padding: 1rem 1rem !important;
     }
-    
     /* Mobile stats layout */
     .stat-item {
         padding: 1.5rem 1rem;
         margin-bottom: 1rem;
     }
-    
     /* Card Spacing */
     .card {
         padding: var(--spacing-4) !important;
         margin-bottom: var(--spacing-4) !important;
     }
-    
     /* Footer Grid */
     footer .grid {
         grid-template-columns: 1fr !important;
         gap: var(--spacing-6) !important;
         text-align: center !important;
     }
-    
     /* Hero Section Adjustments */
     .hero {
         min-height: 60vh !important;
         padding-top: var(--spacing-12) !important;
     }
-    
     /* Additional Hero adjustments from consolidated 480px breakpoint */
     #home {
         min-height: 80vh;
         margin-top: -60px !important;
         padding-top: 100px !important;
     }
-    
     #home .container {
         padding: 0 var(--spacing-3);
     }
-    
     #home p {
         font-size: var(--text-base);
         padding: 0 var(--spacing-2);
     }
-    
     /* Stats section mobile */
     .text-5xl {
         font-size: var(--text-3xl) !important;
     }
-    
     /* Social Links */
     .social-link {
         padding: var(--spacing-3) !important;
         min-width: 48px !important;
         min-height: 48px !important;
     }
-    
     /* DASHBOARD AND MEDIA-KIT MOBILE FIXES */
     .dashboard-grid {
         grid-template-columns: 1fr !important;
         gap: var(--spacing-4) !important;
     }
-    
-    .metric-card, .template-card, .media-kit-preview {
+    .metric-card,
+    .template-card,
+    .media-kit-preview {
         padding: var(--spacing-4) !important;
     }
-    
     .chart-container {
         height: 200px !important;
     }
-    
     .chart-bar {
         width: 30px !important;
     }
-    
     .export-option {
         padding: var(--spacing-3) !important;
         gap: var(--spacing-2) !important;
     }
-    
     .feature-icon {
         width: 40px !important;
         height: 40px !important;
     }
-    
     /* Talent Card Mobile Fixes */
     .talent-card {
         height: auto !important;
         min-height: 300px !important;
     }
-    
     .talent-card-image {
         position: relative;
         overflow: hidden;
         border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
-    
     .talent-card-image img {
         width: 100% !important;
         height: 240px !important;
@@ -2023,75 +2030,75 @@ a:not(.btn):hover {
     }
 }
 
+
 /* Tablet Styles (480px - 767px) - Enhanced Tablet Experience */
+
 @media (min-width: 480px) and (max-width: 767px) {
     /* Typography Scaling for Tablets */
-    .text-6xl { font-size: 3rem !important; }
-    .text-5xl { font-size: 2.5rem !important; }
-    .text-4xl { font-size: 2rem !important; }
-    .text-3xl { font-size: 1.75rem !important; }
-    
+    .text-6xl {
+        font-size: 3rem !important;
+    }
+    .text-5xl {
+        font-size: 2.5rem !important;
+    }
+    .text-4xl {
+        font-size: 2rem !important;
+    }
+    .text-3xl {
+        font-size: 1.75rem !important;
+    }
     /* Container and Layout */
     .container {
         max-width: 100%;
         margin: 0 auto;
         padding: 0 var(--spacing-6) !important;
     }
-    
     .section {
         padding: var(--spacing-12) 0 !important;
     }
-    
     /* Grid Layout Improvements */
-    .grid-cols-3, .grid-cols-4 {
+    .grid-cols-3,
+    .grid-cols-4 {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: var(--spacing-6) !important;
     }
-    
     .grid-cols-2 {
         grid-template-columns: 1fr !important;
         gap: var(--spacing-6) !important;
     }
-    
     /* Talent Grid */
     .talent-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: var(--spacing-6) !important;
         margin: var(--spacing-8) 0;
     }
-    
     .talent-grid .card {
         height: auto;
         min-height: 360px;
         max-width: none;
     }
-    
     /* Fix talent-grid-home tablet layout */
     .talent-grid-home {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: var(--spacing-6) !important;
     }
-    
     .talent-grid-home .card {
         flex: none !important;
         max-width: none !important;
         height: 360px !important;
         margin: 0 !important;
     }
-    
     /* Typography */
     h1 {
         font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
         line-height: 0.95;
         text-align: center;
     }
-    
     h2 {
         font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
         text-align: center;
     }
-    
     /* Buttons and Forms */
     .btn {
         padding: var(--spacing-4) var(--spacing-6) !important;
@@ -2100,93 +2107,85 @@ a:not(.btn):hover {
         max-width: 280px;
         margin: 0 auto;
     }
-    
     .input-field {
         padding: var(--spacing-4) !important;
         font-size: 1rem !important;
     }
-    
     /* Dashboard and Media-kit Tablet Fixes */
     .dashboard-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
         gap: var(--spacing-5) !important;
     }
-    
     .chart-container {
         height: 240px !important;
     }
-    
-    .metric-card, .template-card, .media-kit-preview {
+    .metric-card,
+    .template-card,
+    .media-kit-preview {
         padding: var(--spacing-5) !important;
     }
-    
     /* Talent Card Tablet Fixes */
     .talent-card {
         height: auto !important;
         min-height: 340px !important;
     }
-    
     .talent-card-image {
         position: relative;
         overflow: hidden;
         border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
-    
     .talent-card-image img {
         width: 100% !important;
         height: 260px !important;
         object-fit: cover !important;
         object-position: center !important;
     }
-    
     /* Footer Grid for Tablets */
     footer .grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: var(--spacing-6) !important;
         text-align: left !important;
     }
-    
     /* Navigation Improvements */
     .nav-link {
         padding: var(--spacing-3) 0 !important;
         font-size: 1.125rem !important;
     }
- }
+}
+
 
 /* Orphaned styles removed - these were outside any media query and have been consolidated into appropriate breakpoints above */
 
+
 /* UNIVERSAL ALIGNMENT RULES - PERFECTION ACROSS ALL BREAKPOINTS */
+
 @media (max-width: 1023px) {
     .text-center {
         text-align: center !important;
     }
-    
     .flex.justify-center {
         justify-content: center !important;
     }
-    
     .flex.gap-4 {
         gap: 1rem !important;
     }
-    
     /* Ensure perfect button alignment */
     .flex.gap-4 .btn {
         flex: 1;
         max-width: 200px;
     }
-    
     /* Ensure all grid layouts stack properly on mobile/tablet */
-    .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
         gap: var(--spacing-6) !important;
     }
-    
     /* Touch-friendly navigation */
     .mobile-menu-btn {
         min-width: 48px !important;
         min-height: 48px !important;
         padding: var(--spacing-3) !important;
     }
-    
     /* Ensure proper text contrast */
     .gradient-text {
         background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-secondary) 100%) !important;
@@ -2194,36 +2193,40 @@ a:not(.btn):hover {
         -webkit-text-fill-color: transparent !important;
         background-clip: text !important;
     }
-    
     /* Ensure readable text on all backgrounds */
-    .card h3, .card h2, .card h1 {
+    .card h3,
+    .card h2,
+    .card h1 {
         color: var(--color-text-primary) !important;
     }
-    
     .card p {
         color: var(--color-text-secondary) !important;
     }
 }
 
+
 /* ENSURE PERFECT GRID ALIGNMENT */
+
 .grid {
     display: grid;
     align-items: stretch;
 }
 
-.grid > * {
+.grid>* {
     display: flex;
     flex-direction: column;
 }
 
+
 /* PERFECT CARD ALIGNMENT SYSTEM */
+
 .card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.card > * {
+.card>* {
     flex-shrink: 0;
 }
 
@@ -2234,7 +2237,9 @@ a:not(.btn):hover {
     justify-content: space-between;
 }
 
+
 /* Home page talent grid - Premium layout with centered rows */
+
 .talent-grid-home {
     display: flex;
     flex-wrap: wrap;
@@ -2242,21 +2247,27 @@ a:not(.btn):hover {
     justify-content: center;
 }
 
+
 /* Create two centered rows */
+
 .talent-grid-home::after {
     content: "";
     width: 100%;
     order: 4;
 }
 
+
 /* All cards have consistent width */
+
 .talent-grid-home .card {
     flex: 0 0 calc(25% - 1.5rem) !important;
     max-width: calc(25% - 1.5rem) !important;
     min-width: calc(25% - 1.5rem) !important;
 }
 
+
 /* Force break after 4th card and center the second row */
+
 .talent-grid-home .card:nth-child(4) {
     margin-right: auto;
 }
@@ -2280,7 +2291,9 @@ a:not(.btn):hover {
     min-width: calc(25% - 1.5rem) !important;
 }
 
+
 /* Premium talent card with hover overlay */
+
 .talent-grid-home .card {
     position: relative;
     height: 400px;
@@ -2297,7 +2310,9 @@ a:not(.btn):hover {
     border-radius: var(--radius-lg);
 }
 
+
 /* Image container with zoom effect */
+
 .talent-card-image {
     position: relative;
     width: 100%;
@@ -2310,18 +2325,16 @@ a:not(.btn):hover {
     transform: scale(1.05);
 }
 
+
 /* Premium overlay with glass morphism */
+
 .talent-card-overlay {
     position: absolute;
     bottom: -100%;
     left: 0;
     right: 0;
     height: 100%;
-    background: linear-gradient(to top,
-        rgba(0, 0, 0, 0.95) 0%,
-        rgba(0, 0, 0, 0.85) 40%,
-        rgba(0, 0, 0, 0.4) 70%,
-        transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: bottom 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -2335,7 +2348,9 @@ a:not(.btn):hover {
     bottom: 0;
 }
 
+
 /* Premium content styling */
+
 .talent-overlay-content {
     transform: translateY(20px);
     opacity: 0;
@@ -2364,7 +2379,9 @@ a:not(.btn):hover {
     font-weight: 300;
 }
 
+
 /* Elegant metrics display */
+
 .talent-metrics {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2395,7 +2412,9 @@ a:not(.btn):hover {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+
 /* View Profile button */
+
 .talent-view-profile {
     position: absolute;
     top: var(--spacing-4);
@@ -2425,24 +2444,19 @@ a:not(.btn):hover {
     border-color: rgba(255, 255, 255, 0.4);
 }
 
+
 /* Responsive adjustments for home talent grid */
+
 @media (max-width: 1200px) {
     .talent-grid-home .card {
         flex: 0 0 calc(33.333% - 1.5rem);
         max-width: calc(33.333% - 1.5rem);
     }
-    
     .talent-grid-home .card:nth-child(5) {
         margin-left: 0;
     }
-    
     .talent-grid-home .card:nth-child(7) {
         margin-right: 0;
-    }
-    
-    .talent-grid-home .card:nth-child(8) {
-        flex: 0 0 calc(33.333% - 1.5rem);
-        max-width: calc(33.333% - 1.5rem);
     }
 }
 
@@ -2451,14 +2465,8 @@ a:not(.btn):hover {
         flex: 0 0 calc(50% - 1rem);
         max-width: calc(50% - 1rem);
     }
-    
     .talent-grid-home .card:nth-child(4) {
         margin-right: 0;
-    }
-    
-    .talent-grid-home .card:nth-child(8) {
-        flex: 0 0 calc(50% - 1rem);
-        max-width: calc(50% - 1rem);
     }
 }
 
@@ -2466,7 +2474,6 @@ a:not(.btn):hover {
     .talent-grid-home {
         gap: 1.5rem;
     }
-    
     .talent-grid-home .card {
         flex: 0 0 100%;
         max-width: 100%;
@@ -2474,13 +2481,17 @@ a:not(.btn):hover {
     }
 }
 
+
 /* Talent Profile Page - Enhanced text visibility */
+
 .glass-effect {
     background: rgba(255, 255, 255, 0.03) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+
 /* Stats and metrics on profile pages */
+
 .glass-effect h3,
 .glass-effect .text-4xl,
 .glass-effect .gradient-text {
@@ -2493,13 +2504,17 @@ a:not(.btn):hover {
     color: rgba(255, 255, 255, 0.9) !important;
 }
 
+
 /* Platform cards */
+
 .glass-effect .flex.items-center p:first-child {
     color: #ffffff !important;
     font-weight: 600;
 }
 
+
 /* Follower counts and stats */
+
 .glass-effect .text-right p:first-child {
     color: var(--color-brand-primary) !important;
     font-weight: 700;
