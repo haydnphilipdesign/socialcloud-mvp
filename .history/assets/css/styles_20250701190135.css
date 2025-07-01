@@ -2121,9 +2121,10 @@ a:not(.btn):hover {
     
     .talent-card-image img {
         width: 100% !important;
-        height: 260px !important;
+        height: auto !important;
+        aspect-ratio: 3/4 !important;
         object-fit: cover !important;
-        object-position: center !important;
+        object-position: center top !important;
     }
     
     /* Footer Grid for Tablets */
@@ -2193,7 +2194,7 @@ a:not(.btn):hover {
      .talent-card-image img {
          width: 100% !important;
          height: auto !important;
-         height: 260px !important;
+         aspect-ratio: 3/4 !important;
          object-fit: cover !important;
          object-position: center top !important;
      }
