@@ -2402,8 +2402,37 @@ a:not(.btn):hover {
 }
 
 /* Responsive adjustments for home talent grid */
+@media (max-width: 1200px) {
+    .talent-grid-home .card {
+        flex: 0 0 calc(33.333% - 1.5rem);
+        max-width: calc(33.333% - 1.5rem);
+    }
+    
+    .talent-grid-home .card:nth-child(5) {
+        margin-left: 0;
+    }
+    
+    .talent-grid-home .card:nth-child(7) {
+        margin-right: 0;
+    }
+    
+    .talent-grid-home .card:nth-child(8) {
+        flex: 0 0 calc(33.333% - 1.5rem);
+        max-width: calc(33.333% - 1.5rem);
+    }
+}
+
 @media (max-width: 768px) {
     .talent-grid-home .card {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+    
+    .talent-grid-home .card:nth-child(4) {
+        margin-right: 0;
+    }
+    
+    .talent-grid-home .card:nth-child(8) {
         flex: 0 0 calc(50% - 1rem);
         max-width: calc(50% - 1rem);
     }

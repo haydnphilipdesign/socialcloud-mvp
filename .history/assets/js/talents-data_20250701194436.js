@@ -114,22 +114,6 @@ const officialTalents = [{
         featured: true
     },
     {
-        id: "8",
-        name: "liamfp",
-        slug: "liamfp",
-        bio: "Creative content creator with a focus on entertainment and lifestyle content.",
-        image: "/assets/images/talents/liamfp.jpeg",
-        platforms: [
-            { platform: "YouTube", followers: 125000 },
-            { platform: "TikTok", followers: 190000 },
-            { platform: "Instagram", followers: 85000 }
-        ],
-        categories: ["Entertainment", "Lifestyle"],
-        totalFollowers: 400000,
-        avgEngagement: 15.6,
-        featured: false
-    },
-    {
         id: "9",
         name: "Deji",
         slug: "deji",
