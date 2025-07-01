@@ -1,0 +1,8 @@
+# Keep proposals private
+*.pdf
+*.docx
+*.zip
+
+# But track HTML templates
+!*.html
+!*.css

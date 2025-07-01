@@ -1803,29 +1803,14 @@ a:not(.btn):hover {
 
 /* Mobile Small (320px - 479px) - Compact Excellence */
 @media (max-width: 479px) {
-    /* Typography Scaling */
-    .text-6xl { font-size: 2.5rem !important; }
-    .text-5xl { font-size: 2rem !important; }
-    .text-4xl { font-size: 1.75rem !important; }
-    .text-3xl { font-size: 1.5rem !important; }
-    .text-2xl { font-size: 1.25rem !important; }
-    .text-xl { font-size: 1.125rem !important; }
-    
-    /* Container and Spacing */
     .container {
         max-width: 100%;
         margin: 0 auto;
-        padding: 0 var(--spacing-4) !important;
+        padding: 0 1rem;
     }
     
     .section {
-        padding: var(--spacing-8) 0 !important;
-    }
-    
-    /* Grid Layout Fixes - All grid columns stack on mobile */
-    .grid-cols-2, .grid-cols-3, .grid-cols-4 {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-4) !important;
+        padding: 3rem 0;
     }
     
     .talent-grid {
@@ -1837,6 +1822,12 @@ a:not(.btn):hover {
     .talent-grid .card {
         height: 340px;
         max-width: 100%;
+    }
+    
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     h1 {
@@ -1852,17 +1843,9 @@ a:not(.btn):hover {
         padding: 0 0.5rem;
     }
     
-    /* Form and Input Improvements */
-    .input-field {
-        padding: var(--spacing-4) !important;
-        font-size: 1rem !important;
-    }
-    
-    /* Button Touch Targets */
     .btn {
-        padding: var(--spacing-4) var(--spacing-6) !important;
-        min-height: 48px !important;
-        font-size: 1rem !important;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.8rem;
         width: 100%;
         max-width: 260px;
         margin: 0 auto;
@@ -1872,12 +1855,6 @@ a:not(.btn):hover {
         flex-direction: column;
         align-items: center;
         gap: 0.75rem;
-    }
-    
-    /* Navigation Improvements */
-    .nav-link {
-        padding: var(--spacing-3) 0 !important;
-        font-size: 1.125rem !important;
     }
     
     /* Mobile navigation improvements */
@@ -1950,125 +1927,59 @@ a:not(.btn):hover {
         margin-bottom: 1rem;
     }
     
-    /* Card Spacing */
-    .card {
-        padding: var(--spacing-4) !important;
-        margin-bottom: var(--spacing-4) !important;
-    }
-    
-    /* Footer Grid */
-    footer .grid {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-6) !important;
-        text-align: center !important;
-    }
-    
-    /* Hero Section Adjustments */
-    .hero {
-        min-height: 60vh !important;
-        padding-top: var(--spacing-12) !important;
-    }
-    
-    /* Social Links */
-    .social-link {
-        padding: var(--spacing-3) !important;
-        min-width: 48px !important;
-        min-height: 48px !important;
-    }
-    
-    /* DASHBOARD AND MEDIA-KIT MOBILE FIXES */
+    /* DASHBOARD AND MEDIA-KIT TABLET FIXES */
     .dashboard-grid {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-4) !important;
-    }
-    
-    .metric-card, .template-card, .media-kit-preview {
-        padding: var(--spacing-4) !important;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+        gap: 1.5rem !important;
     }
     
     .chart-container {
-        height: 200px !important;
+        height: 250px !important;
     }
     
-    .chart-bar {
-        width: 30px !important;
+    .metric-card {
+        padding: var(--spacing-5) !important;
     }
     
-    .export-option {
-        padding: var(--spacing-3) !important;
-        gap: var(--spacing-2) !important;
+    .template-card {
+        padding: var(--spacing-5) !important;
     }
     
-    .feature-icon {
-        width: 40px !important;
-        height: 40px !important;
-    }
-    
-    /* Talent Card Mobile Fixes */
-    .talent-card {
-        height: auto !important;
-        min-height: 300px !important;
-    }
-    
-    .talent-card-image {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    }
-    
-    .talent-card-image img {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 3/4 !important;
-        object-fit: cover !important;
-        object-position: center top !important;
+    .media-kit-preview {
+        padding: var(--spacing-6) !important;
     }
 }
 
-/* Tablet Styles (480px - 767px) - Enhanced Tablet Experience */
+/* Mobile Large (480px - 767px) - Executive Mobile */
 @media (min-width: 480px) and (max-width: 767px) {
-    /* Typography Scaling for Tablets */
-    .text-6xl { font-size: 3rem !important; }
-    .text-5xl { font-size: 2.5rem !important; }
-    .text-4xl { font-size: 2rem !important; }
-    .text-3xl { font-size: 1.75rem !important; }
-    
-    /* Container and Layout */
     .container {
         max-width: 100%;
         margin: 0 auto;
-        padding: 0 var(--spacing-6) !important;
+        padding: 0 1.5rem;
     }
     
     .section {
-        padding: var(--spacing-12) 0 !important;
+        padding: 4rem 0;
     }
     
-    /* Grid Layout Improvements */
-    .grid-cols-3, .grid-cols-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: var(--spacing-6) !important;
-    }
-    
-    .grid-cols-2 {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-6) !important;
-    }
-    
-    /* Talent Grid */
     .talent-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: var(--spacing-6) !important;
-        margin: var(--spacing-8) 0;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 3rem 0;
     }
     
     .talent-grid .card {
-        height: auto;
-        min-height: 360px;
-        max-width: none;
+        height: 360px;
+        max-width: 400px;
+        margin: 0 auto;
     }
     
-    /* Typography */
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
     h1 {
         font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
         line-height: 0.95;
@@ -2080,69 +1991,21 @@ a:not(.btn):hover {
         text-align: center;
     }
     
-    /* Buttons and Forms */
     .btn {
-        padding: var(--spacing-4) var(--spacing-6) !important;
-        min-height: 48px !important;
-        font-size: 1rem !important;
+        padding: 1rem 1.5rem;
+        font-size: 0.85rem;
+        width: 100%;
         max-width: 280px;
         margin: 0 auto;
     }
     
-    .input-field {
-        padding: var(--spacing-4) !important;
-        font-size: 1rem !important;
+    .flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
     
-    /* Dashboard and Media-kit Tablet Fixes */
-    .dashboard-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-        gap: var(--spacing-5) !important;
-    }
-    
-    .chart-container {
-        height: 240px !important;
-    }
-    
-    .metric-card, .template-card, .media-kit-preview {
-        padding: var(--spacing-5) !important;
-    }
-    
-    /* Talent Card Tablet Fixes */
-    .talent-card {
-        height: auto !important;
-        min-height: 340px !important;
-    }
-    
-    .talent-card-image {
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    }
-    
-    .talent-card-image img {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 3/4 !important;
-        object-fit: cover !important;
-        object-position: center top !important;
-    }
-    
-    /* Footer Grid for Tablets */
-    footer .grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: var(--spacing-6) !important;
-        text-align: left !important;
-    }
-    
-    /* Navigation Improvements */
-    .nav-link {
-        padding: var(--spacing-3) 0 !important;
-        font-size: 1.125rem !important;
-    }
- }
- 
- /* DASHBOARD AND MEDIA-KIT MOBILE FIXES */
+    /* DASHBOARD AND MEDIA-KIT MOBILE FIXES */
      .dashboard-grid {
          grid-template-columns: 1fr !important;
          gap: 1rem !important;
@@ -2219,35 +2082,6 @@ a:not(.btn):hover {
     .flex.gap-4 .btn {
         flex: 1;
         max-width: 200px;
-    }
-    
-    /* Ensure all grid layouts stack properly on mobile/tablet */
-    .grid-cols-2, .grid-cols-3, .grid-cols-4 {
-        gap: var(--spacing-6) !important;
-    }
-    
-    /* Touch-friendly navigation */
-    .mobile-menu-btn {
-        min-width: 48px !important;
-        min-height: 48px !important;
-        padding: var(--spacing-3) !important;
-    }
-    
-    /* Ensure proper text contrast */
-    .gradient-text {
-        background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-secondary) 100%) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        background-clip: text !important;
-    }
-    
-    /* Ensure readable text on all backgrounds */
-    .card h3, .card h2, .card h1 {
-        color: var(--color-text-primary) !important;
-    }
-    
-    .card p {
-        color: var(--color-text-secondary) !important;
     }
 }
 
