@@ -258,6 +258,6 @@ function downloadMediaKit() {
 
 // Filter content (placeholder)
 function filterContent(type) {
-    console.log('Filtering content by:', type);
+    // Filter content implementation
     // In production, this would filter the content gallery
 }

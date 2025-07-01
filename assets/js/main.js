@@ -25,15 +25,14 @@ function trackPerformance() {
             const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
             const domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
 
-            console.log(`Page Load Time: ${loadTime}ms`);
-            console.log(`DOM Content Loaded: ${domContentLoaded}ms`);
+            // Performance metrics tracked for optimization
 
             // Track largest contentful paint
             if ('PerformanceObserver' in window) {
                 const observer = new PerformanceObserver((list) => {
                     const entries = list.getEntries();
                     const lastEntry = entries[entries.length - 1];
-                    console.log(`Largest Contentful Paint: ${lastEntry.startTime}ms`);
+                    // LCP tracking for performance optimization
                 });
                 observer.observe({ entryTypes: ['largest-contentful-paint'] });
             }
@@ -58,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize hero section - removed particles for professional clean look
 function initializeHero() {
     // Clean, professional hero without distracting animations
-    console.log('Hero section initialized with professional clean design');
+    // Hero section initialized with professional clean design
 }
 
 // Render featured talents on homepage
