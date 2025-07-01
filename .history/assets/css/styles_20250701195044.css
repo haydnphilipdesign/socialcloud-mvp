@@ -2380,9 +2380,8 @@ a:not(.btn):hover {
 /* Responsive adjustments for home talent grid */
 @media (max-width: 768px) {
     .talent-grid-home .card {
-        flex: 0 0 calc(50% - 1rem) !important;
-        max-width: calc(50% - 1rem) !important;
-        min-width: calc(50% - 1rem) !important;
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
     }
 }
 
