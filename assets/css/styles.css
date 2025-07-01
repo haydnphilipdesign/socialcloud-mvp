@@ -329,7 +329,7 @@ a:hover {
 .card {
     background: var(--color-bg-secondary);
     border-radius: var(--radius-xl);
-    padding: 0;
+    padding: var(--spacing-6);
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
@@ -339,6 +339,21 @@ a:hover {
     height: 100%;
     border: 1px solid rgba(201, 169, 97, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* SPECIFIC CARD TYPES WITH BETTER SPACING */
+.card.text-center {
+    padding: var(--spacing-8);
+}
+
+.card.card-glow {
+    padding: 0; /* Reset for talent cards that use image overlays */
+}
+
+/* FAQ CARDS - EXTRA BREATHING ROOM */
+.card h3 + p {
+    margin-top: var(--spacing-3);
+    line-height: 1.6;
 }
 
 
@@ -1456,6 +1471,35 @@ header .btn-gradient {
     position: relative;
 }
 
+/* ELEGANT SCROLL INDICATOR */
+.hero__scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.6;
+    color: var(--color-brand-accent);
+    animation: elegantBounce 2.5s ease-in-out infinite;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.hero__scroll-indicator:hover {
+    opacity: 1;
+}
+
+@keyframes elegantBounce {
+    0%, 100% { 
+        transform: translate(-50%, 0); 
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translate(-50%, 8px); 
+        opacity: 1;
+    }
+}
+
 #home::before {
     content: '';
     position: absolute;
@@ -1573,24 +1617,31 @@ a:not(.btn):hover {
     animation: luxuryPulse 3s ease-in-out infinite;
 }
 
-/* CONTACT PAGE INFO CARDS - UNIFORM HEIGHT */
+/* CONTACT PAGE INFO CARDS - NATURAL HEIGHT */
 .contact-info-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 160px;
-    padding: var(--spacing-4);
+    padding: var(--spacing-5);
+    height: fit-content;
 }
 
 .contact-info-card .card__body {
-    flex: 1;
     display: flex;
     flex-direction: column;
+    gap: var(--spacing-2);
 }
 
 .contact-info-card .card__footer {
-    margin-top: var(--spacing-3);
-    flex-shrink: 0;
+    margin-top: var(--spacing-2);
+}
+
+/* FIX CONTACT GRID ALIGNMENT */
+.grid.grid-cols-2 {
+    align-items: start;
+}
+
+.space-y-8 > * + * {
+    margin-top: 1.5rem !important;
 }
 
 /* FINAL POLISH - PREMIUM SELECTION STATES */

@@ -68,7 +68,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="section" style="min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; margin-top: -80px; padding-top: 80px;">
+    <section id="home" class="section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-top: -80px; padding-top: 80px; padding-bottom: 4rem;">
         <!-- Clean professional background -->
 
         <div class="container" style="z-index: 1; position: relative;">
@@ -98,10 +98,17 @@
 
         <!-- Gradient overlay at bottom -->
         <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to bottom, transparent, var(--color-bg-primary)); pointer-events: none;"></div>
+        
+        <!-- Scroll Indicator -->
+        <div class="hero__scroll-indicator" aria-hidden="true">
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 16l-6-6h12z" fill="currentColor"/>
+            </svg>
+        </div>
     </section>
 
     <!-- Talent Showcase Section -->
-    <section id="talent" class="section">
+    <section id="talent" class="section" style="padding-top: 4rem;">
         <div class="container">
             <div class="text-center mb-8">
                 <h2 class="mb-4">ELITE <span class="text-gradient">CREATOR PORTFOLIO</span></h2>
