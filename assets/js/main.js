@@ -124,7 +124,7 @@ function createTalentCard(talent) {
   };
   
   card.innerHTML = `
-    <img src="${talent.image}" alt="Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg);">
+    <img src="${talent.image}" alt="Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg);" onerror="this.src='/assets/images/talents/placeholder.svg'; this.onerror=null;">
     <div class="card__body">
       <h3 class="mb-2">${talent.name}</h3>
       <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">${talent.bio}</p>

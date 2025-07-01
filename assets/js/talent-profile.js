@@ -115,8 +115,13 @@ function loadTalentProfile(talent) {
   heroBanner.style.background = `url('${talent.bannerImage}') center/cover`;
   
   // Profile info
-  document.getElementById('talent-avatar').src = talent.image;
-  document.getElementById('talent-avatar').alt = talent.name;
+  const avatarImg = document.getElementById('talent-avatar');
+  avatarImg.src = talent.image;
+  avatarImg.alt = talent.name;
+  avatarImg.onerror = function() {
+    this.src = '/assets/images/talents/placeholder.svg';
+    this.onerror = null;
+  };
   document.getElementById('talent-name').textContent = talent.name;
   document.getElementById('talent-bio').textContent = talent.bio;
   
@@ -203,7 +208,7 @@ function createRelatedTalentCard(talent) {
   card.style.cursor = 'pointer';
   
   card.innerHTML = `
-    <img src="${talent.image}" alt="${talent.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);">
+    <img src="${talent.image}" alt="${talent.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);" onerror="this.src='/assets/images/talents/placeholder.svg'; this.onerror=null;">
     <h4 class="mb-2">${talent.name}</h4>
     <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-4); color: var(--color-text-secondary);">${formatFollowers(talent.stats.totalFollowers)} followers</p>
     <a href="talent-profile.html?id=${talent.slug}" class="btn btn-secondary" style="width: 100%;">View Profile</a>

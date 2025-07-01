@@ -71,7 +71,7 @@ function createTalentCard(talent) {
   
   card.innerHTML = `
     <div style="position: relative;">
-      <img src="${talent.image}" alt="${talent.name}" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);">
+      <img src="${talent.image}" alt="${talent.name}" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);" onerror="this.src='/assets/images/talents/placeholder.svg'; this.onerror=null;">
       ${talent.featured ? '<div style="position: absolute; top: var(--spacing-3); left: var(--spacing-3); background: var(--color-brand-primary); color: white; padding: var(--spacing-1) var(--spacing-3); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 600;">Featured</div>' : ''}
       <div style="position: absolute; top: var(--spacing-3); right: var(--spacing-3); background: var(--color-bg-primary); padding: var(--spacing-2) var(--spacing-3); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 600;">
         ${talent.avgEngagement}%
