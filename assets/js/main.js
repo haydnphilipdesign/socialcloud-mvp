@@ -7,7 +7,7 @@ const talents = [
     name: "Packgod",
     slug: "packgod",
     bio: "Master of Discord roasting and rapid-fire comedy content.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/packgod.webp",
     platforms: [
       { platform: "YouTube", followers: 3910000 },
       { platform: "TikTok", followers: 2500000 },
@@ -20,10 +20,10 @@ const talents = [
   },
   {
     id: "2",
-    name: "Deji",
-    slug: "deji",
+    name: "SaltPapi",
+    slug: "saltpapi",
     bio: "Multi-platform entertainment powerhouse and professional boxer.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/saltpapi.webp",
     platforms: [
       { platform: "YouTube", followers: 10600000 },
       { platform: "Instagram", followers: 4200000 },
@@ -39,7 +39,7 @@ const talents = [
     name: "SkeeterJean",
     slug: "skeeterjean",
     bio: "Rising gaming content creator specializing in competitive gaming.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/skeeterjean.webp",
     platforms: [
       { platform: "Twitch", followers: 285000 },
       { platform: "YouTube", followers: 420000 },

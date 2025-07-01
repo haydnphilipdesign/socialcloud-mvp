@@ -7,7 +7,7 @@ const talentsData = {
     name: "Packgod",
     slug: "packgod",
     bio: "Master of Discord roasting and rapid-fire comedy content. Known for legendary roast battles and viral TikTok moments that have captivated millions across platforms.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/packgod.webp",
     bannerImage: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=1600&h=600&fit=crop&auto=format&q=80",
     platforms: [
       { platform: "YouTube", handle: "@PACKGOD", followers: 3910000, verified: true, url: "https://youtube.com/@PACKGOD" },
@@ -57,7 +57,7 @@ const talentsData = {
     name: "SkeeterJean",
     slug: "skeeterjean",
     bio: "Rising gaming content creator specializing in competitive gaming and streaming. Building a dedicated community through consistent, high-quality content.",
-    image: "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/skeeterjean.webp",
     bannerImage: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&h=600&fit=crop&auto=format&q=80",
     platforms: [
       { platform: "Twitch", handle: "skeeterjean", followers: 285000, verified: false },

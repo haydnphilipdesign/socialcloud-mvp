@@ -7,7 +7,7 @@ const allTalents = [
     name: "Packgod",
     slug: "packgod",
     bio: "Master of Discord roasting and rapid-fire comedy content.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/packgod.webp",
     platforms: [
       { platform: "YouTube", followers: 3910000 },
       { platform: "TikTok", followers: 2500000 },
@@ -39,7 +39,7 @@ const allTalents = [
     name: "SkeeterJean",
     slug: "skeeterjean",
     bio: "Rising gaming content creator specializing in competitive gaming.",
-    image: "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/skeeterjean.webp",
     platforms: [
       { platform: "Twitch", followers: 285000 },
       { platform: "YouTube", followers: 420000 },
@@ -55,7 +55,7 @@ const allTalents = [
     name: "Omma",
     slug: "omma",
     bio: "Content creator known for Discord community engagement.",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/omma.webp",
     platforms: [
       { platform: "YouTube", followers: 150000 },
       { platform: "TikTok", followers: 95000 },
@@ -119,7 +119,7 @@ const allTalents = [
     name: "Dankcube",
     slug: "dankcube",
     bio: "Gaming content creator with expertise in streaming.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/dankcube.webp",
     platforms: [
       { platform: "Twitch", followers: 75000 },
       { platform: "YouTube", followers: 110000 },
@@ -135,7 +135,7 @@ const allTalents = [
     name: "liamfp",
     slug: "liamfp",
     bio: "Creative content creator focusing on entertainment.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/liamfp.webp",
     platforms: [
       { platform: "YouTube", followers: 125000 },
       { platform: "TikTok", followers: 190000 },
