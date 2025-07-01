@@ -6,7 +6,7 @@ const officialTalents = [{
         name: "SkeeterJean",
         slug: "skeeterjean",
         bio: "Lifestyle & Comedy Creator known for engaging content across multiple platforms.",
-        image: "/assets/images/talents/skeeterjean.jpg",
+        image: "/assets/images/talents/SkeeterJean2.webp",
         platforms: [
             { platform: "TikTok", followers: 1200000 },
             { platform: "Instagram", followers: 850000 },

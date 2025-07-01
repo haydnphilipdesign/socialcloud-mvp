@@ -156,7 +156,7 @@ function createTalentCard(talent) {
         <source srcset="${webpSrc}" type="image/webp">
         <img src="${imageSrc}" alt="${altText}" loading="lazy"
              style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg);"
-             onerror="this.src='/assets/images/talents/placeholder.svg'; this.onerror=null;">
+             onerror="this.src='/assets/images/talents/placeholder-default.svg'; this.onerror=null;">
       </picture>
     `;
     };
