@@ -90,16 +90,12 @@ function createTalentCard(talent) {
         (prev.followers > current.followers) ? prev : current
     );
 
-    // Create optimized image with WebP support
+    // Create optimized image without WebP conversion
     const createOptimizedImage = (imageSrc, altText) => {
-        const webpSrc = imageSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
         return `
-      <picture>
-        <source srcset="${webpSrc}" type="image/webp">
-        <img src="${imageSrc}" alt="${altText}" loading="lazy"
-             style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);"
-             onerror="this.src='/assets/images/talents/placeholder.svg'; this.onerror=null;">
-      </picture>
+      <img src="${imageSrc}" alt="${altText}" loading="lazy"
+           style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);"
+           onerror="this.src='/assets/images/talents/placeholder.svg'; this.onerror=null;">
     `;
     };
 
