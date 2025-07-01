@@ -95,18 +95,18 @@ function createTalentCard(talent) {
       <picture>
         <source srcset="${webpSrc}" type="image/webp">
         <img src="${imageSrc}" alt="${altText}" loading="lazy"
-             style="width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius-lg);"
+             style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-lg);"
              onerror="this.src='/assets/images/talents/placeholder-default.svg'; this.onerror=null;">
       </picture>
     `;
     };
 
     card.innerHTML = `
-    <div style="position: relative; overflow: hidden; border-radius: var(--radius-lg);">
+    <div style="position: relative; overflow: hidden; border-radius: var(--radius-lg); height: 400px;">
       ${createOptimizedImage(talent.image, `Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator`)}
-      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: var(--spacing-4); color: white;">
-        <h3 style="margin: 0; font-size: var(--text-xl); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">${talent.name}</h3>
-        <p style="margin: var(--spacing-1) 0 0 0; font-size: var(--text-sm); opacity: 0.9;">${talent.categories.join(' • ')}</p>
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: var(--spacing-5); color: white; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end;">
+        <h3 style="margin: 0 0 var(--spacing-2) 0; font-size: var(--text-xl); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">${talent.name}</h3>
+        <p style="margin: 0; font-size: var(--text-sm); opacity: 0.9; line-height: 1.3; height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${talent.categories.join(' • ')}</p>
       </div>
     </div>
   `;
