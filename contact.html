@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | SocialCloud Management</title>
+    <meta name="description" content="Get in touch with SocialCloud Management. Let's discuss how we can help grow your digital presence.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
+        <div class="container flex justify-between items-center" style="padding: var(--spacing-4) var(--spacing-6);">
+            <a href="index.html" class="text-2xl font-bold gradient-text">SocialCloud</a>
+            <nav class="flex gap-8">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="talents.html" class="nav-link">Talents</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="section" style="padding-top: 120px; min-height: 50vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--color-bg-primary) 0%, #1a1a2e 100%);">
+        <div class="container text-center">
+            <h1 class="text-6xl font-bold mb-6 gradient-text">Get in Touch</h1>
+            <p class="text-xl mb-8" style="color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">
+                Ready to elevate your digital presence? Let's discuss how SocialCloud can help you achieve your goals.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-cols-2 gap-12" style="max-width: 1000px; margin: 0 auto;">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Send us a message</h2>
+                    <form class="space-y-6" onsubmit="handleContactSubmit(event)">
+                        <div>
+                            <label for="name" class="block mb-2" style="color: var(--color-text-secondary);">Your Name</label>
+                            <input type="text" id="name" name="name" required class="input-field" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2" style="color: var(--color-text-secondary);">Email Address</label>
+                            <input type="email" id="email" name="email" required class="input-field" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label for="company" class="block mb-2" style="color: var(--color-text-secondary);">Company (Optional)</label>
+                            <input type="text" id="company" name="company" class="input-field" placeholder="Your Company">
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2" style="color: var(--color-text-secondary);">Subject</label>
+                            <select id="subject" name="subject" required class="input-field">
+                                <option value="">Select a topic</option>
+                                <option value="talent-inquiry">Talent Inquiry</option>
+                                <option value="brand-partnership">Brand Partnership</option>
+                                <option value="join-roster">Join Our Roster</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2" style="color: var(--color-text-secondary);">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="input-field" placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gradient" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Let's connect</h2>
+                    <div class="space-y-8">
+                        <div class="card" style="padding: var(--spacing-6);">
+                            <h3 class="text-xl font-semibold mb-2">Email Us</h3>
+                            <p style="color: var(--color-text-secondary);">For general inquiries and partnerships</p>
+                            <a href="mailto:contact@socialcloudmgmt.com" class="gradient-text" style="font-size: var(--text-lg);">contact@socialcloudmgmt.com</a>
+                        </div>
+                        
+                        <div class="card" style="padding: var(--spacing-6);">
+                            <h3 class="text-xl font-semibold mb-2">Office Hours</h3>
+                            <p style="color: var(--color-text-secondary);">Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                            <p style="color: var(--color-text-secondary);">Weekend: By appointment only</p>
+                        </div>
+
+                        <div class="card" style="padding: var(--spacing-6);">
+                            <h3 class="text-xl font-semibold mb-2">Response Time</h3>
+                            <p style="color: var(--color-text-secondary);">We typically respond within 24-48 hours</p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+                            <div class="flex gap-4">
+                                <a href="#" class="social-link">Twitter</a>
+                                <a href="#" class="social-link">Instagram</a>
+                                <a href="#" class="social-link">LinkedIn</a>
+                                <a href="#" class="social-link">YouTube</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <h2 class="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <div class="grid grid-cols-2 gap-8" style="max-width: 1000px; margin: 0 auto;">
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">How do I join SocialCloud's talent roster?</h3>
+                    <p style="color: var(--color-text-secondary);">Fill out our contact form with "Join Our Roster" as the subject. Include links to your social media profiles and a brief description of your content focus.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">What services does SocialCloud offer?</h3>
+                    <p style="color: var(--color-text-secondary);">We provide comprehensive talent management, brand partnerships, content strategy, and audience growth services for digital creators.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">How can brands partner with your talents?</h3>
+                    <p style="color: var(--color-text-secondary);">Brands can reach out through our contact form to discuss partnership opportunities. We'll match you with talents that align with your brand values and target audience.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-3">What makes SocialCloud different?</h3>
+                    <p style="color: var(--color-text-secondary);">Our relationship-first approach, data-driven strategies, and deep understanding of digital platforms set us apart in the talent management space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-bg-primary); padding: var(--spacing-8) 0; border-top: 1px solid var(--color-bg-accent);">
+        <div class="container">
+            <div class="grid grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">SocialCloud</h3>
+                    <p style="color: var(--color-text-secondary);">Elevating digital talent to new heights.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home</a></li>
+                        <li><a href="talents.html" class="footer-link">Our Talents</a></li>
+                        <li><a href="index.html#services" class="footer-link">Services</a></li>
+                        <li><a href="index.html#about" class="footer-link">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">Talent Management</a></li>
+                        <li><a href="#" class="footer-link">Brand Partnerships</a></li>
+                        <li><a href="#" class="footer-link">Content Strategy</a></li>
+                        <li><a href="#" class="footer-link">Growth Consulting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                        <li><a href="#" class="footer-link">Press</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-8" style="border-top: 1px solid var(--color-bg-accent);">
+                <p style="color: var(--color-text-muted);">&copy; 2024 SocialCloud Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Handle contact form submission
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // In production, this would send to a backend
+            console.log('Form submission:', data);
+            
+            // Show success message
+            alert('Thank you for your message! We\'ll get back to you within 24-48 hours.');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
