@@ -1977,3 +1977,108 @@ a:not(.btn):hover {
     flex-direction: column;
     justify-content: space-between;
 }
+
+/* Home page talent grid - 4+3 layout with flip cards */
+.talent-grid-home {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+/* Flip card styles */
+.talent-grid-home .card {
+    perspective: 1000px;
+    height: 400px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.talent-grid-home .card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(26, 26, 26, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-brand-accent);
+    padding: var(--spacing-6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.flip-card-back h3 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--spacing-4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.flip-card-back .bio {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-6);
+    color: var(--color-text-secondary);
+}
+
+.flip-card-back .metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-4);
+    width: 100%;
+}
+
+.flip-card-back .metric {
+    text-align: center;
+}
+
+.flip-card-back .metric-value {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-brand-primary);
+    display: block;
+}
+
+.flip-card-back .metric-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive adjustments for home talent grid */
+@media (max-width: 1024px) {
+    .talent-grid-home {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .talent-grid-home {
+        grid-template-columns: 1fr;
+    }
+    
+    .talent-grid-home .card {
+        height: 360px;
+    }
+}

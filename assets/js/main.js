@@ -65,8 +65,11 @@ function renderFeaturedTalents() {
     const talentGrid = document.getElementById('talent-grid');
     if (!talentGrid) return;
 
-    // Show all 10 talents from the official list
-    const featuredTalents = talents.slice(0, 10);
+    // Show only 7 talents, excluding Omma, Packgod, and Dankcube
+    const excludedNames = ['Omma', 'Packgod', 'Dankcube'];
+    const featuredTalents = talents
+        .filter(talent => !excludedNames.includes(talent.name))
+        .slice(0, 7);
 
     talentGrid.innerHTML = '';
 
@@ -87,25 +90,52 @@ function createTalentCard(talent) {
         return num.toString();
     };
 
-    // Create optimized image with WebP support
+    // Create optimized image without WebP conversion
     const createOptimizedImage = (imageSrc, altText) => {
-        const webpSrc = imageSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
         return `
-      <picture>
-        <source srcset="${webpSrc}" type="image/webp">
-        <img src="${imageSrc}" alt="${altText}" loading="lazy"
-             style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-lg);"
-             onerror="this.src='/assets/images/talents/placeholder-default.svg'; this.onerror=null;">
-      </picture>
+      <img src="${imageSrc}" alt="${altText}" loading="lazy"
+           style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-lg);"
+           onerror="this.src='/assets/images/talents/placeholder-default.svg'; this.onerror=null;">
     `;
     };
 
+    // Get primary platform for metrics
+    const primaryPlatform = talent.platforms.reduce((prev, current) => 
+        (prev.followers > current.followers) ? prev : current
+    );
+
     card.innerHTML = `
-    <div style="position: relative; overflow: hidden; border-radius: var(--radius-lg); height: 400px;">
-      ${createOptimizedImage(talent.image, `Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator`)}
-      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: var(--spacing-5); color: white; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end;">
-        <h3 style="margin: 0 0 var(--spacing-2) 0; font-size: var(--text-xl); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">${talent.name}</h3>
-        <p style="margin: 0; font-size: var(--text-sm); opacity: 0.9; line-height: 1.3; height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${talent.categories.join(' • ')}</p>
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div style="position: relative; overflow: hidden; border-radius: var(--radius-lg); height: 400px;">
+          ${createOptimizedImage(talent.image, `Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator`)}
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: var(--spacing-5); color: white; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end;">
+            <h3 style="margin: 0 0 var(--spacing-2) 0; font-size: var(--text-xl); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.2;">${talent.name}</h3>
+            <p style="margin: 0; font-size: var(--text-sm); opacity: 0.9; line-height: 1.3; height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${talent.categories.join(' • ')}</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card-back">
+        <h3>${talent.name}</h3>
+        <p class="bio">${talent.bio}</p>
+        <div class="metrics">
+          <div class="metric">
+            <span class="metric-value">${formatFollowers(talent.totalFollowers)}</span>
+            <span class="metric-label">Total Reach</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">${talent.avgEngagement}%</span>
+            <span class="metric-label">Engagement</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">${talent.platforms.length}</span>
+            <span class="metric-label">Platforms</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">${primaryPlatform.platform}</span>
+            <span class="metric-label">Primary</span>
+          </div>
+        </div>
       </div>
     </div>
   `;
