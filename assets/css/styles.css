@@ -1573,6 +1573,26 @@ a:not(.btn):hover {
     animation: luxuryPulse 3s ease-in-out infinite;
 }
 
+/* CONTACT PAGE INFO CARDS - UNIFORM HEIGHT */
+.contact-info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 160px;
+    padding: var(--spacing-4);
+}
+
+.contact-info-card .card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info-card .card__footer {
+    margin-top: var(--spacing-3);
+    flex-shrink: 0;
+}
+
 /* FINAL POLISH - PREMIUM SELECTION STATES */
 ::selection {
     background: var(--color-brand-accent);
