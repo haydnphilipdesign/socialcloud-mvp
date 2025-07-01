@@ -9,9 +9,10 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="SocialCloud Management | Elevating Brands and Empowering Talents">
-    <meta property="og:description" content="Premier talent management and influencer marketing agency.">
+    <meta property="og:description" content="We foster meaningful, boundary-free partnerships between brands and creators. 18M+ combined reach, 50+ successful campaigns.">
     <meta property="og:image" content="/socialcloud-logo.png">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://talent.multimedium.dev">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/socialcloud-logo.png">
@@ -25,13 +26,13 @@
         <nav class="container" style="padding: var(--spacing-4) var(--spacing-6);">
             <div class="flex justify-between items-center">
                 <a href="#home" class="flex items-center">
-                    <img src="/socialcloud-logo.png" alt="SocialCloud Management" style="height: 40px; width: auto;">
+                    <img src="/socialcloud-logo.png" alt="SocialCloud Management - Elevating Brands and Empowering Talents" style="height: 40px; width: auto;">
                 </a>
                 <ul class="flex gap-8" style="list-style: none;">
-                    <li><a href="#home" style="color: var(--color-text-primary); font-weight: 500;">Home</a></li>
-                    <li><a href="#talent" style="color: var(--color-text-secondary); font-weight: 500;">Talent</a></li>
-                    <li><a href="#services" style="color: var(--color-text-secondary); font-weight: 500;">Services</a></li>
-                    <li><a href="about.html" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
+                    <li><a href="#home" class="nav-link active" style="color: var(--color-text-primary); font-weight: 500;">Home</a></li>
+                    <li><a href="#talent" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Talents</a></li>
+                    <li><a href="#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Services</a></li>
+                    <li><a href="about.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
                     <li><a href="contact.html" class="btn btn-gradient" style="padding: var(--spacing-2) var(--spacing-5);">Contact Us</a></li>
                 </ul>
             </div>
@@ -45,19 +46,19 @@
         
         <div class="container" style="z-index: 1; position: relative;">
             <div class="text-center animate-fadeIn">
-                <h1 class="mb-6" style="font-size: clamp(3rem, 8vw, 5rem);">
-                    <span class="text-gradient">Elevating Brands</span><br>
-                    <span style="color: var(--color-text-primary);">and Empowering Talents</span>
+                <h1 class="mb-6" style="font-size: clamp(3rem, 8vw, 5rem); hyphens: none; word-break: keep-all;">
+                    <span class="text-gradient">Elevating&nbsp;Brands</span><br>
+                    <span style="color: var(--color-text-primary);">and&nbsp;Empowering&nbsp;Talents</span>
                 </h1>
                 <p class="mb-8" style="font-size: var(--text-xl); max-width: 800px; margin: 0 auto;">
-                    We foster meaningful partnerships between influencers and brands. No boundaries. No limits. Pure talent.
+                    We foster meaningful, boundary-free partnerships between brands and creators.
                 </p>
                 <div class="flex gap-4 justify-center">
                     <a href="#talent" class="btn btn-gradient" style="font-size: var(--text-lg); padding: var(--spacing-4) var(--spacing-8);">
                         For Brands
                     </a>
                     <a href="#contact" class="btn btn-secondary" style="font-size: var(--text-lg); padding: var(--spacing-4) var(--spacing-8);">
-                        For Talent
+                        For Talents
                     </a>
                 </div>
                 <div class="mt-8 text-center">
@@ -83,12 +84,12 @@
             </div>
             
             <!-- Talent Grid -->
-            <div class="grid grid-cols-3 gap-6" id="talent-grid">
+            <div class="talent-grid gap-6" id="talent-grid">
                 <!-- Talent cards will be dynamically inserted here -->
             </div>
             
             <div class="text-center mt-8">
-                <a href="talents.html" class="btn btn-gradient">View All Talent</a>
+                <a href="talents.html" class="btn btn-gradient">View All Talents</a>
             </div>
         </div>
     </section>
@@ -167,21 +168,25 @@
     <section class="section" style="background: var(--color-bg-secondary);">
         <div class="container">
             <div class="grid grid-cols-4 gap-8 text-center">
-                <div>
+                <div class="stat-item">
+                    <div class="stat-icon mb-2">📈</div>
                     <h3 class="text-gradient mb-2" style="font-size: var(--text-5xl);">18M+</h3>
-                    <p>Combined Reach</p>
+                    <p class="stat-label"><strong>Combined Reach</strong></p>
                 </div>
-                <div>
+                <div class="stat-item">
+                    <div class="stat-icon mb-2">🎯</div>
                     <h3 class="text-gradient mb-2" style="font-size: var(--text-5xl);">50+</h3>
-                    <p>Successful Campaigns</p>
+                    <p class="stat-label"><strong>Successful Campaigns</strong></p>
                 </div>
-                <div>
+                <div class="stat-item">
+                    <div class="stat-icon mb-2">💡</div>
                     <h3 class="text-gradient mb-2" style="font-size: var(--text-5xl);">12.5%</h3>
-                    <p>Average Engagement</p>
+                    <p class="stat-label"><strong>Average Engagement</strong></p>
                 </div>
-                <div>
+                <div class="stat-item">
+                    <div class="stat-icon mb-2">⭐</div>
                     <h3 class="text-gradient mb-2" style="font-size: var(--text-5xl);">95%</h3>
-                    <p>Client Satisfaction</p>
+                    <p class="stat-label"><strong>Client Satisfaction</strong></p>
                 </div>
             </div>
         </div>
@@ -214,36 +219,43 @@
         <div class="container">
             <div class="grid grid-cols-4 gap-8 mb-8">
                 <div>
-                    <img src="/socialcloud-logo.png" alt="SocialCloud" style="height: 40px; margin-bottom: var(--spacing-4);">
-                    <p style="font-size: var(--text-sm);">
-                        Elevating brands and empowering talents through meaningful partnerships.
-                    </p>
+                    <h4 class="mb-4">Company</h4>
+                    <ul style="list-style: none;">
+                        <li class="mb-2"><a href="about.html" class="footer-link">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Press Kit</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Privacy Policy</a></li>
+                    </ul>
                 </div>
                 <div>
-                    <h4 class="mb-4">Quick Links</h4>
+                    <h4 class="mb-4">Services</h4>
                     <ul style="list-style: none;">
-                        <li class="mb-2"><a href="#home" style="color: var(--color-text-secondary);">Home</a></li>
-                        <li class="mb-2"><a href="talents.html" style="color: var(--color-text-secondary);">Talent</a></li>
-                        <li class="mb-2"><a href="#services" style="color: var(--color-text-secondary);">Services</a></li>
-                        <li class="mb-2"><a href="about.html" style="color: var(--color-text-secondary);">About</a></li>
+                        <li class="mb-2"><a href="#services" class="footer-link">Influencer Marketing</a></li>
+                        <li class="mb-2"><a href="#services" class="footer-link">Talent Management</a></li>
+                        <li class="mb-2"><a href="#services" class="footer-link">Social Strategy</a></li>
+                        <li class="mb-2"><a href="#services" class="footer-link">Profile Optimization</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="mb-4">Connect</h4>
+                    <div class="flex gap-4 mb-4">
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+                        <a href="#" class="social-link" aria-label="TikTok">🎵</a>
+                    </div>
                     <ul style="list-style: none;">
-                        <li class="mb-2"><a href="#" style="color: var(--color-text-secondary);">Instagram</a></li>
-                        <li class="mb-2"><a href="#" style="color: var(--color-text-secondary);">Twitter</a></li>
-                        <li class="mb-2"><a href="#" style="color: var(--color-text-secondary);">LinkedIn</a></li>
-                        <li class="mb-2"><a href="#" style="color: var(--color-text-secondary);">TikTok</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link">Contact Us</a></li>
+                        <li class="mb-2"><a href="talents.html" class="footer-link">Our Talents</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="mb-4">Newsletter</h4>
-                    <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-4);">
-                        Get industry insights and updates
+                    <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-4); color: var(--color-text-secondary);">
+                        Get industry insights and talent updates
                     </p>
                     <form style="display: flex; gap: var(--spacing-2);">
-                        <input type="email" placeholder="Your email" style="flex: 1; padding: var(--spacing-2) var(--spacing-4); background: var(--color-bg-primary); border: 1px solid var(--color-bg-accent); border-radius: var(--radius-md); color: var(--color-text-primary);">
+                        <input type="email" placeholder="Enter your email" aria-label="Email address" class="input-field" style="flex: 1; padding: var(--spacing-2) var(--spacing-4); background: var(--color-bg-primary); border: 1px solid var(--color-bg-accent); border-radius: var(--radius-md); color: var(--color-text-primary);">
                         <button type="submit" class="btn btn-primary" style="padding: var(--spacing-2) var(--spacing-4);">Subscribe</button>
                     </form>
                 </div>

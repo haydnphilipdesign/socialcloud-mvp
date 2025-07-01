@@ -101,8 +101,8 @@ function renderFeaturedTalents() {
   const talentGrid = document.getElementById('talent-grid');
   if (!talentGrid) return;
   
-  // Get featured talents (first 3 from the official list)
-  const featuredTalents = talents.slice(0, 3);
+  // Show all 10 talents from the official list
+  const featuredTalents = talents.slice(0, 10);
   
   talentGrid.innerHTML = '';
   
@@ -124,7 +124,7 @@ function createTalentCard(talent) {
   };
   
   card.innerHTML = `
-    <img src="${talent.image}" alt="${talent.name}" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);">
+    <img src="${talent.image}" alt="Headshot of ${talent.name}, ${talent.categories.join(' and ')} creator" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);">
     <h3 class="mb-2">${talent.name}</h3>
     <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">${talent.bio}</p>
     <div class="flex gap-2 mb-4" style="flex-wrap: wrap;">
@@ -185,14 +185,17 @@ function initSmoothScroll() {
   });
 }
 
-// Header scroll effect
+// Header scroll effect and active section highlighting
 function initHeaderScroll() {
   const header = document.querySelector('header');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
   let lastScroll = 0;
   
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
+    // Header background effect
     if (currentScroll > 50) {
       header.style.background = 'rgba(10, 10, 10, 0.95)';
       header.style.backdropFilter = 'blur(20px)';
@@ -202,6 +205,22 @@ function initHeaderScroll() {
       header.style.backdropFilter = 'blur(10px)';
       header.style.boxShadow = 'none';
     }
+    
+    // Active section highlighting
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (currentScroll >= sectionTop && currentScroll < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
     
     lastScroll = currentScroll;
   });

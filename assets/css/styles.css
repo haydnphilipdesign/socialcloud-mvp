@@ -155,9 +155,40 @@ a:hover {
   padding: 0 var(--spacing-6);
 }
 
-/* Section Spacing */
+/* Section Spacing - Standardized to 2rem */
 .section {
-  padding: var(--spacing-20) 0;
+  padding: var(--spacing-8) 0;
+  margin: var(--spacing-8) 0;
+}
+
+/* Stats Section Styling */
+.stat-item {
+  transition: transform var(--transition-base);
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  font-size: var(--text-2xl);
+  opacity: 0.8;
+  transition: all var(--transition-base);
+}
+
+.stat-item:hover .stat-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.stat-label {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+}
+
+.stat-label strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
 }
 
 /* Gradient Text */
@@ -283,6 +314,11 @@ a:hover {
   opacity: 0;
   transition: opacity var(--transition-base);
   z-index: -1;
+}
+
+.card-glow:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
 }
 
 .card-glow:hover::before {
@@ -456,10 +492,21 @@ a:hover {
   margin-top: var(--spacing-8);
 }
 
+/* Talent Grid Responsive Layout */
+.talent-grid {
+  display: grid;
+  gap: var(--spacing-6);
+  grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .grid-cols-4 {
     grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .talent-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
   }
   
   h1 {
@@ -468,6 +515,12 @@ a:hover {
   
   h2 {
     font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .talent-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile */
   }
 }
 
@@ -873,15 +926,29 @@ select.input-field {
   display: inline-block;
 }
 
+/* Navigation Link Styles */
 .nav-link {
   color: var(--color-text-secondary);
   font-weight: 500;
-  transition: color var(--transition-base);
+  transition: all var(--transition-base);
+  position: relative;
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--color-text-primary);
+}
+
+/* Active section indicator */
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary));
+  border-radius: var(--radius-full);
 }
 
 .footer-link {
