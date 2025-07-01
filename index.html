@@ -31,6 +31,21 @@
 </head>
 
 <body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" style="
+        position: absolute;
+        left: -9999px;
+        top: 20px;
+        background: var(--color-brand-accent);
+        color: white;
+        padding: var(--spacing-3) var(--spacing-6);
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        z-index: 9999;
+    " onfocus="this.style.left='20px'" onblur="this.style.left='-9999px'">
+        Skip to main content
+    </a>
+
     <!-- Header Navigation -->
     <header style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
         <nav class="container" style="padding: var(--spacing-5) var(--spacing-6);">
