@@ -129,34 +129,64 @@ function applyFilters() {
     .filter(cb => ['Gaming', 'Entertainment', 'Lifestyle', 'Comedy', 'Sports', 'Tech', 'Education', 'Streaming'].includes(cb.value))
     .map(cb => cb.value);
   
-  const minFollowers = parseInt(document.getElementById('follower-range').value);
+  // Get follower range from radio buttons
+  const followerRange = document.querySelector('input[name="followers"]:checked')?.value || 'all';
   
-  filteredTalents = allTalents.filter(talent => {
-    // Platform filter
-    if (selectedPlatforms.length > 0) {
-      const hasPlatform = talent.platforms.some(p => selectedPlatforms.includes(p.platform));
-      if (!hasPlatform) return false;
-    }
-    
-    // Category filter
-    if (selectedCategories.length > 0) {
-      const hasCategory = talent.categories.some(c => selectedCategories.includes(c));
-      if (!hasCategory) return false;
-    }
-    
-    // Follower range filter
-    if (talent.totalFollowers < minFollowers) return false;
-    
-    return true;
-  });
-  
-  // Apply search if there's a search term
-  const searchTerm = document.getElementById('talent-search').value;
-  if (searchTerm) {
-    searchTalents();
-  } else {
-    renderTalents(filteredTalents);
+  // Add loading state
+  const grid = document.querySelector('#talents-grid');
+  if (grid) {
+    grid.classList.add('loading');
   }
+  
+  setTimeout(() => {
+    filteredTalents = allTalents.filter(talent => {
+      // Platform filter - if no platforms selected, show all
+      if (selectedPlatforms.length > 0) {
+        const hasPlatform = talent.platforms.some(p => selectedPlatforms.includes(p.platform));
+        if (!hasPlatform) return false;
+      }
+      
+      // Category filter - if no categories selected, show all
+      if (selectedCategories.length > 0) {
+        const hasCategory = talent.categories.some(c => selectedCategories.includes(c));
+        if (!hasCategory) return false;
+      }
+      
+      // Follower range filter
+      if (followerRange !== 'all') {
+        const followers = talent.totalFollowers;
+        switch(followerRange) {
+          case '100k':
+            if (followers < 100000 || followers >= 500000) return false;
+            break;
+          case '500k':
+            if (followers < 500000 || followers >= 1000000) return false;
+            break;
+          case '1m':
+            if (followers < 1000000 || followers >= 5000000) return false;
+            break;
+          case '5m':
+            if (followers < 5000000) return false;
+            break;
+        }
+      }
+      
+      return true;
+    });
+    
+    // Apply search if there's a search term
+    const searchTerm = document.getElementById('talent-search')?.value;
+    if (searchTerm) {
+      searchTalents();
+    } else {
+      renderTalents(filteredTalents);
+    }
+    
+    // Remove loading state
+    if (grid) {
+      grid.classList.remove('loading');
+    }
+  }, 300);
 }
 
 // Clear all filters
@@ -166,12 +196,17 @@ function clearFilters() {
     cb.checked = false;
   });
   
-  // Reset follower range
-  document.getElementById('follower-range').value = 0;
-  document.getElementById('follower-value').textContent = 'All';
+  // Reset follower range radio to "all"
+  const allRadio = document.querySelector('input[name="followers"][value="all"]');
+  if (allRadio) {
+    allRadio.checked = true;
+  }
   
   // Clear search
-  document.getElementById('talent-search').value = '';
+  const searchInput = document.getElementById('talent-search');
+  if (searchInput) {
+    searchInput.value = '';
+  }
   
   // Reset filtered talents and render
   filteredTalents = [...allTalents];
@@ -196,3 +231,26 @@ function setupFollowerRangeSlider() {
     }
   });
 }
+
+// Add mouse tracking to talent cards
+function setupCardMouseTracking() {
+  document.addEventListener('mousemove', (e) => {
+    const cards = document.querySelectorAll('.card-glow');
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Only update if mouse is over the card
+      if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }
+    });
+  });
+}
+
+// Initialize mouse tracking when DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+  setupCardMouseTracking();
+});

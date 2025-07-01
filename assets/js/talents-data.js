@@ -6,32 +6,32 @@ const officialTalents = [
     id: "1",
     name: "SkeeterJean",
     slug: "skeeterjean",
-    bio: "Rising gaming content creator specializing in competitive gaming and streaming.",
-    image: "/assets/images/talents/skeeterjean.webp",
+    bio: "Lifestyle & Comedy Creator known for engaging content across multiple platforms.",
+    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/Headshot%20skeeter%20Jean.jpg",
     platforms: [
-      { platform: "Twitch", followers: 285000 },
-      { platform: "YouTube", followers: 420000 },
-      { platform: "TikTok", followers: 180000 }
+      { platform: "TikTok", followers: 1200000 },
+      { platform: "Instagram", followers: 850000 },
+      { platform: "YouTube", followers: 650000 }
     ],
-    categories: ["Gaming", "Streaming"],
-    totalFollowers: 885000,
-    avgEngagement: 15.3,
+    categories: ["Lifestyle", "Comedy"],
+    totalFollowers: 2700000,
+    avgEngagement: 12.5,
     featured: true
   },
   {
     id: "2",
     name: "Omma",
     slug: "omma",
-    bio: "Content creator known for Discord community engagement and collaborative content.",
-    image: "/assets/images/talents/omma.webp",
+    bio: "Lifestyle & Gaming Creator with a strong community across multiple platforms.",
+    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/omma.jpg",
     platforms: [
-      { platform: "YouTube", followers: 150000 },
-      { platform: "TikTok", followers: 95000 },
-      { platform: "Discord", followers: 50000 }
+      { platform: "TikTok", followers: 1100000 },
+      { platform: "Instagram", followers: 680000 },
+      { platform: "YouTube", followers: 420000 }
     ],
-    categories: ["Entertainment", "Gaming"],
-    totalFollowers: 295000,
-    avgEngagement: 18.7,
+    categories: ["Lifestyle", "Gaming"],
+    totalFollowers: 2200000,
+    avgEngagement: 15.3,
     featured: true
   },
   {
@@ -102,15 +102,15 @@ const officialTalents = [
     id: "7",
     name: "Dankcube",
     slug: "dankcube",
-    bio: "Gaming content creator with expertise in streaming and community engagement.",
-    image: "/assets/images/talents/dankcube.webp",
+    bio: "Lifestyle & Comedy Creator known for entertaining content and strong engagement.",
+    image: "https://img1.wsimg.com/isteam/ip/15fa1c9d-ee6a-458c-afce-1e634ea90e27/dankcube.jpg",
     platforms: [
-      { platform: "Twitch", followers: 75000 },
-      { platform: "YouTube", followers: 110000 },
-      { platform: "TikTok", followers: 55000 }
+      { platform: "TikTok", followers: 890000 },
+      { platform: "Instagram", followers: 560000 },
+      { platform: "YouTube", followers: 310000 }
     ],
-    categories: ["Gaming", "Streaming"],
-    totalFollowers: 240000,
+    categories: ["Lifestyle", "Comedy"],
+    totalFollowers: 1800000,
     avgEngagement: 17.2,
     featured: true
   },
