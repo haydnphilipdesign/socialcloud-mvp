@@ -1703,7 +1703,19 @@ a:not(.btn):hover {
         margin: 0 auto;
     }
     
-    /* Remove conflicting talent-grid-home tablet layout - handled by main responsive styles */
+    /* Fix talent-grid-home tablet layout */
+    .talent-grid-home {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .talent-grid-home .card {
+        flex: none !important;
+        max-width: 400px !important;
+        height: 360px !important;
+        margin: 0 auto !important;
+    }
     
     .grid-cols-3,
     .grid-cols-4 {
