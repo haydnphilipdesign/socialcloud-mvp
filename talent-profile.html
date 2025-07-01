@@ -86,7 +86,7 @@
         <div id="mobile-menu" class="mobile-menu" style="display: none;">
             <ul style="list-style: none; padding: var(--spacing-4) 0; border-top: 1px solid var(--color-bg-accent); margin-top: var(--spacing-4); display: flex; flex-direction: column;">
                 <li style="margin-bottom: var(--spacing-3);"><a href="index.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Home</a></li>
-                <li style="margin-bottom: var(--spacing-3);"><a href="talents.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Talents</a></li>
+                <li style="margin-bottom: var(--spacing-3);"><a href="talents.html" class="nav-link active" style="color: var(--color-text-primary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Talents</a></li>
                 <li style="margin-bottom: var(--spacing-3);"><a href="index.html#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Services</a></li>
                 <li style="margin-bottom: var(--spacing-3);"><a href="about.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">About</a></li>
                 <li><a href="contact.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Contact</a></li>
@@ -110,7 +110,7 @@
                     <!-- Left Column - Profile Info -->
                     <div>
                         <div class="flex items-center gap-6 mb-6">
-                            <img id="talent-avatar" src="" alt="" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--color-brand-primary); object-fit: cover;">
+                            <img id="talent-avatar" src="https://via.placeholder.com/120x120/6366f1/ffffff?text=Profile" alt="Talent Profile" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--color-brand-primary); object-fit: cover;">
                             <div>
                                 <h1 id="talent-name" class="mb-2" style="font-size: var(--text-4xl);"></h1>
                                 <div id="talent-categories" class="flex gap-2"></div>
@@ -180,15 +180,24 @@
 
             <!-- Content Grid -->
             <div class="grid grid-cols-3 gap-6" id="content-gallery">
-                <!-- Placeholder content tiles -->
-                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center;">
-                    <p style="color: var(--color-text-muted);">Content coming soon</p>
+                <!-- Content tiles will be populated by JavaScript -->
+                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-accent));">
+                    <p style="color: var(--color-text-muted); text-align: center;">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 0.5rem;">📸</span>
+                        Content Gallery Loading...
+                    </p>
                 </div>
-                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center;">
-                    <p style="color: var(--color-text-muted);">Content coming soon</p>
+                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-bg-accent), var(--color-bg-secondary));">
+                    <p style="color: var(--color-text-muted); text-align: center;">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 0.5rem;">🎬</span>
+                        Featured Content
+                    </p>
                 </div>
-                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center;">
-                    <p style="color: var(--color-text-muted);">Content coming soon</p>
+                <div class="card" style="height: 300px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-accent));">
+                    <p style="color: var(--color-text-muted); text-align: center;">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 0.5rem;">⚡</span>
+                        Recent Campaigns
+                    </p>
                 </div>
             </div>
         </div>
@@ -259,7 +268,15 @@
     <script>
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('active');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+
+            if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+                mobileMenu.style.display = 'block';
+                menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative; transform: rotate(45deg);"></span>';
+            } else {
+                mobileMenu.style.display = 'none';
+                menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
+            }
         }
 
         // Close mobile menu when clicking on a link
@@ -268,7 +285,9 @@
             mobileMenuLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     const mobileMenu = document.getElementById('mobile-menu');
-                    mobileMenu.classList.remove('active');
+                    const menuBtn = document.querySelector('.mobile-menu-btn');
+                    mobileMenu.style.display = 'none';
+                    menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
                 });
             });
         });
