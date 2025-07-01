@@ -179,8 +179,8 @@ function loadTalentProfile(talent) {
     });
 
     // CTA buttons
-    document.getElementById('talent-name-cta').textContent = talent.name;
-    document.getElementById('modal-talent-name').textContent = talent.name;
+    document.getElementById('talent-name-cta').textContent = ` ${talent.name}`;
+        document.getElementById('modal-talent-name').textContent = ` ${talent.name}`;
 }
 
 // Load related talents
