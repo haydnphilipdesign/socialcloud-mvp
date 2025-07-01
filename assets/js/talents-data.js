@@ -55,7 +55,7 @@ const officialTalents = [
     name: "ScamLikely",
     slug: "scamlikely",
     bio: "Innovative content creator with a unique brand and growing following.",
-    image: "/assets/images/talents/scamlikely.webp",
+    image: "/assets/images/talents/placeholder-default.svg",
     platforms: [
       { platform: "TikTok", followers: 220000 },
       { platform: "YouTube", followers: 180000 },
@@ -71,7 +71,7 @@ const officialTalents = [
     name: "MisterStrang3",
     slug: "misterstrang3",
     bio: "Gaming and lifestyle content creator with a focus on community building.",
-    image: "/assets/images/talents/misterstrang3.webp",
+    image: "/assets/images/talents/placeholder-default.svg",
     platforms: [
       { platform: "YouTube", followers: 95000 },
       { platform: "Twitch", followers: 45000 },
@@ -87,7 +87,7 @@ const officialTalents = [
     name: "Farzy",
     slug: "farzy",
     bio: "Entertainment content creator known for engaging personality and creative content.",
-    image: "/assets/images/talents/farzy.webp",
+    image: "/assets/images/talents/placeholder-default.svg",
     platforms: [
       { platform: "TikTok", followers: 340000 },
       { platform: "Instagram", followers: 120000 },
@@ -119,7 +119,7 @@ const officialTalents = [
     name: "liamfp",
     slug: "liamfp",
     bio: "Creative content creator with a focus on entertainment and lifestyle content.",
-    image: "/assets/images/talents/liamfp.webp",
+    image: "/assets/images/talents/placeholder-default.svg",
     platforms: [
       { platform: "YouTube", followers: 125000 },
       { platform: "TikTok", followers: 190000 },
@@ -135,7 +135,7 @@ const officialTalents = [
     name: "deji",
     slug: "deji",
     bio: "Multi-platform entertainment powerhouse and professional boxer.",
-    image: "/assets/images/talents/deji.webp",
+    image: "/assets/images/talents/placeholder-default.svg",
     platforms: [
       { platform: "YouTube", followers: 10600000 },
       { platform: "Instagram", followers: 4200000 },
@@ -151,7 +151,7 @@ const officialTalents = [
     name: "Jonathan Wright",
     slug: "jonathan-wright",
     bio: "Professional content creator and digital strategist.",
-    image: "/assets/images/talents/jonathan-wright.webp",
+    image: "/assets/images/talents/placeholder-default.svg",
     platforms: [
       { platform: "YouTube", followers: 200000 },
       { platform: "LinkedIn", followers: 45000 },
