@@ -27,12 +27,12 @@ const talentsData = {
       campaignsCompleted: 15
     }
   },
-  "deji": {
+  "saltpapi": {
     id: "2",
-    name: "Deji",
-    slug: "deji",
-    bio: "Multi-platform entertainment powerhouse and professional boxer. KSI's brother with a massive following across YouTube, known for gaming content and boxing matches.",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    name: "SaltPapi",
+    slug: "saltpapi",
+    bio: "Multi-platform entertainment powerhouse and professional boxer. Known for his unique style combining boxing skills with social media entertainment.",
+    image: "/assets/images/talents/saltpapi.webp",
     bannerImage: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=1600&h=600&fit=crop&auto=format&q=80",
     platforms: [
       { platform: "YouTube", handle: "@Deji", followers: 10600000, verified: true, url: "https://youtube.com/@Deji" },

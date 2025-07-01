@@ -20,10 +20,10 @@ const allTalents = [
   },
   {
     id: "2",
-    name: "Deji",
-    slug: "deji",
+    name: "SaltPapi",
+    slug: "saltpapi",
     bio: "Multi-platform entertainment powerhouse and professional boxer.",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/saltpapi.webp",
     platforms: [
       { platform: "YouTube", followers: 10600000 },
       { platform: "Instagram", followers: 4200000 },
@@ -68,10 +68,10 @@ const allTalents = [
   },
   {
     id: "5",
-    name: "ScamLikely",
-    slug: "scamlikely",
+    name: "ManLikeIsaac",
+    slug: "manlikeisaac",
     bio: "Innovative content creator with a unique brand.",
-    image: "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/manlikeisaac.webp",
     platforms: [
       { platform: "TikTok", followers: 220000 },
       { platform: "YouTube", followers: 180000 },
@@ -84,10 +84,10 @@ const allTalents = [
   },
   {
     id: "6",
-    name: "MisterStrang3",
-    slug: "misterstrang3",
-    bio: "Gaming and lifestyle content creator with community focus.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    name: "Miniminter",
+    slug: "miniminter",
+    bio: "Member of the Sidemen, gaming and entertainment content creator.",
+    image: "/assets/images/talents/miniminter.webp",
     platforms: [
       { platform: "YouTube", followers: 95000 },
       { platform: "Twitch", followers: 45000 },
@@ -100,10 +100,10 @@ const allTalents = [
   },
   {
     id: "7",
-    name: "Farzy",
-    slug: "farzy",
+    name: "Lex Pain",
+    slug: "lexpain",
     bio: "Entertainment content creator with engaging personality.",
-    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/lexpain.webp",
     platforms: [
       { platform: "TikTok", followers: 340000 },
       { platform: "Instagram", followers: 120000 },
@@ -148,10 +148,10 @@ const allTalents = [
   },
   {
     id: "10",
-    name: "Jonathan Wright",
-    slug: "jonathan-wright",
+    name: "LilJr",
+    slug: "liljr",
     bio: "Professional content creator and digital strategist.",
-    image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=400&fit=crop&crop=face&auto=format&q=80",
+    image: "/assets/images/talents/liljr.webp",
     platforms: [
       { platform: "YouTube", followers: 200000 },
       { platform: "LinkedIn", followers: 45000 },
