@@ -1,97 +1,108 @@
 // Talent Profile Page JavaScript
 
-// Extended talent data
-const talentsData = {
-  "packgod": {
-    id: "1",
-    name: "Packgod",
-    slug: "packgod",
-    bio: "Master of Discord roasting and rapid-fire comedy content. Known for legendary roast battles and viral TikTok moments that have captivated millions across platforms.",
-    image: "/assets/images/talents/packgod.webp",
-    bannerImage: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=1600&h=600&fit=crop&auto=format&q=80",
-    platforms: [
-      { platform: "YouTube", handle: "@PACKGOD", followers: 3910000, verified: true, url: "https://youtube.com/@PACKGOD" },
-      { platform: "TikTok", handle: "@packgod", followers: 2500000, verified: true },
-      { platform: "Instagram", handle: "@packgod", followers: 890000, verified: false }
-    ],
-    categories: ["Comedy", "Gaming", "Entertainment"],
-    achievements: [
-      "3.9M+ YouTube subscribers",
-      "Viral roast compilations with 10M+ views",
-      "Featured in major Discord communities",
-      "Collaborated with top gaming creators"
-    ],
-    stats: {
-      totalFollowers: 7300000,
-      avgEngagement: 12.5,
-      campaignsCompleted: 15
+// State variable for talents data
+let talentsData = {};
+
+// Load talents data
+function loadTalentsData(callback) {
+  // Create script element to load talents data
+  const script = document.createElement('script');
+  script.src = '/assets/js/talents-data.js';
+  document.head.appendChild(script);
+  
+  script.onload = function() {
+    // Convert array to object keyed by slug
+    if (window.officialTalents) {
+      window.officialTalents.forEach(talent => {
+        talentsData[talent.slug] = {
+          ...talent,
+          bannerImage: getBannerImage(talent.slug),
+          achievements: getAchievements(talent),
+          stats: {
+            totalFollowers: talent.totalFollowers,
+            avgEngagement: talent.avgEngagement,
+            campaignsCompleted: Math.floor(Math.random() * 20) + 5 // Placeholder
+          }
+        };
+      });
     }
-  },
-  "saltpapi": {
-    id: "2",
-    name: "SaltPapi",
-    slug: "saltpapi",
-    bio: "Multi-platform entertainment powerhouse and professional boxer. Known for his unique style combining boxing skills with social media entertainment.",
-    image: "/assets/images/talents/saltpapi.webp",
-    bannerImage: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=1600&h=600&fit=crop&auto=format&q=80",
-    platforms: [
-      { platform: "YouTube", handle: "@Deji", followers: 10600000, verified: true, url: "https://youtube.com/@Deji" },
-      { platform: "Instagram", handle: "@dej", followers: 4200000, verified: true },
-      { platform: "Twitter", handle: "@Deji", followers: 3800000, verified: true }
-    ],
-    categories: ["Gaming", "Sports", "Entertainment"],
-    achievements: [
-      "10.6M+ YouTube subscribers",
-      "Professional boxing career",
-      "Multiple viral gaming videos",
-      "Collaborations with major YouTubers"
-    ],
-    stats: {
-      totalFollowers: 18600000,
-      avgEngagement: 8.2,
-      campaignsCompleted: 28
-    }
-  },
-  "skeeterjean": {
-    id: "3",
-    name: "SkeeterJean",
-    slug: "skeeterjean",
-    bio: "Rising gaming content creator specializing in competitive gaming and streaming. Building a dedicated community through consistent, high-quality content.",
-    image: "/assets/images/talents/skeeterjean.webp",
-    bannerImage: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&h=600&fit=crop&auto=format&q=80",
-    platforms: [
-      { platform: "Twitch", handle: "skeeterjean", followers: 285000, verified: false },
-      { platform: "YouTube", handle: "@SkeeterJean", followers: 420000, verified: false },
-      { platform: "TikTok", handle: "@skeeterjean", followers: 180000, verified: false }
-    ],
-    categories: ["Gaming", "Streaming"],
-    achievements: [
-      "Consistent top-tier gameplay content",
-      "Growing streaming community",
-      "Gaming tournament appearances",
-      "Brand collaboration experience"
-    ],
-    stats: {
-      totalFollowers: 885000,
-      avgEngagement: 15.3,
-      campaignsCompleted: 8
-    }
+    
+    if (callback) callback();
+  };
+}
+
+// Get banner image for talent
+function getBannerImage(slug) {
+  const banners = {
+    "packgod": "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=1600&h=600&fit=crop&auto=format&q=80",
+    "skeeterjean": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&h=600&fit=crop&auto=format&q=80",
+    "omma": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1600&h=600&fit=crop&auto=format&q=80",
+    "scamlikely": "https://images.unsplash.com/photo-1561489413-985b06da5bee?w=1600&h=600&fit=crop&auto=format&q=80",
+    "misterstrang3": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1600&h=600&fit=crop&auto=format&q=80",
+    "farzy": "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=1600&h=600&fit=crop&auto=format&q=80",
+    "dankcube": "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=1600&h=600&fit=crop&auto=format&q=80",
+    "liamfp": "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb?w=1600&h=600&fit=crop&auto=format&q=80",
+    "deji": "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=1600&h=600&fit=crop&auto=format&q=80",
+    "jonathan-wright": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=1600&h=600&fit=crop&auto=format&q=80"
+  };
+  
+  return banners[slug] || "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=1600&h=600&fit=crop&auto=format&q=80";
+}
+
+// Generate achievements based on talent data
+function getAchievements(talent) {
+  const achievements = [];
+  
+  // Add follower milestone
+  if (talent.totalFollowers >= 10000000) {
+    achievements.push(`${(talent.totalFollowers / 1000000).toFixed(1)}M+ total followers across platforms`);
+  } else if (talent.totalFollowers >= 1000000) {
+    achievements.push(`${(talent.totalFollowers / 1000000).toFixed(1)}M+ total followers across platforms`);
+  } else {
+    achievements.push(`${(talent.totalFollowers / 1000).toFixed(0)}K+ total followers across platforms`);
   }
-};
+  
+  // Add platform-specific achievements
+  talent.platforms.forEach(platform => {
+    if (platform.followers >= 1000000) {
+      achievements.push(`${(platform.followers / 1000000).toFixed(1)}M+ ${platform.platform} followers`);
+    }
+  });
+  
+  // Add engagement achievement
+  if (talent.avgEngagement >= 15) {
+    achievements.push(`${talent.avgEngagement}% average engagement rate`);
+  }
+  
+  // Add category achievements
+  if (talent.categories.includes("Gaming")) {
+    achievements.push("Leading gaming content creator");
+  }
+  if (talent.categories.includes("Comedy")) {
+    achievements.push("Viral comedy content specialist");
+  }
+  if (talent.featured) {
+    achievements.push("Featured SocialCloud talent");
+  }
+  
+  return achievements.slice(0, 4); // Return top 4 achievements
+}
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const talentId = urlParams.get('id') || 'skeeterjean';
-  
-  const talent = talentsData[talentId];
-  if (talent) {
-    loadTalentProfile(talent);
-    loadRelatedTalents(talent);
-  } else {
-    // Redirect to talents page if talent not found
-    window.location.href = 'talents.html';
-  }
+  loadTalentsData(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const talentId = urlParams.get('id') || 'skeeterjean';
+    
+    const talent = talentsData[talentId];
+    if (talent) {
+      loadTalentProfile(talent);
+      loadRelatedTalents(talent);
+    } else {
+      // Redirect to talents page if talent not found
+      window.location.href = 'talents.html';
+    }
+  });
 });
 
 // Load talent profile data
@@ -111,6 +122,7 @@ function loadTalentProfile(talent) {
   
   // Categories
   const categoriesContainer = document.getElementById('talent-categories');
+  categoriesContainer.innerHTML = '';
   talent.categories.forEach(cat => {
     const tag = document.createElement('span');
     tag.style.cssText = 'background: var(--color-bg-accent); padding: var(--spacing-1) var(--spacing-3); border-radius: var(--radius-full); font-size: var(--text-sm);';
@@ -120,18 +132,21 @@ function loadTalentProfile(talent) {
   
   // Platforms
   const platformList = document.getElementById('platform-list');
+  platformList.innerHTML = '';
   talent.platforms.forEach(platform => {
     const platformItem = document.createElement('div');
     platformItem.className = 'flex justify-between items-center glass-effect';
     platformItem.style.cssText = 'padding: var(--spacing-3); border-radius: var(--radius-md);';
     
     const platformIcon = getPlatformIcon(platform.platform);
+    const handle = platform.handle || `@${talent.slug}`;
+    
     platformItem.innerHTML = `
       <div class="flex items-center gap-3">
         <span style="font-size: var(--text-xl);">${platformIcon}</span>
         <div>
           <p style="font-weight: 600;">${platform.platform}</p>
-          <p style="font-size: var(--text-sm); color: var(--color-text-muted);">${platform.handle}</p>
+          <p style="font-size: var(--text-sm); color: var(--color-text-muted);">${handle}</p>
         </div>
       </div>
       <div style="text-align: right;">
@@ -150,6 +165,7 @@ function loadTalentProfile(talent) {
   
   // Achievements
   const achievementsList = document.getElementById('achievements-list');
+  achievementsList.innerHTML = '';
   talent.achievements.forEach(achievement => {
     const li = document.createElement('li');
     li.style.cssText = 'margin-bottom: var(--spacing-3); padding-left: var(--spacing-6); position: relative;';
@@ -165,6 +181,7 @@ function loadTalentProfile(talent) {
 // Load related talents
 function loadRelatedTalents(currentTalent) {
   const relatedContainer = document.getElementById('related-talents');
+  relatedContainer.innerHTML = '';
   const allTalents = Object.values(talentsData);
   
   // Filter out current talent and get similar ones

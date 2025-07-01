@@ -1,176 +1,30 @@
 // Talents Roster Page JavaScript
 
-// Complete talent data
-const allTalents = [
-  {
-    id: "1",
-    name: "Packgod",
-    slug: "packgod",
-    bio: "Master of Discord roasting and rapid-fire comedy content.",
-    image: "/assets/images/talents/packgod.webp",
-    platforms: [
-      { platform: "YouTube", followers: 3910000 },
-      { platform: "TikTok", followers: 2500000 },
-      { platform: "Instagram", followers: 890000 }
-    ],
-    categories: ["Comedy", "Gaming", "Entertainment"],
-    totalFollowers: 7300000,
-    avgEngagement: 12.5,
-    featured: true
-  },
-  {
-    id: "2",
-    name: "SaltPapi",
-    slug: "saltpapi",
-    bio: "Multi-platform entertainment powerhouse and professional boxer.",
-    image: "/assets/images/talents/saltpapi.webp",
-    platforms: [
-      { platform: "YouTube", followers: 10600000 },
-      { platform: "Instagram", followers: 4200000 },
-      { platform: "Twitter", followers: 3800000 }
-    ],
-    categories: ["Gaming", "Sports", "Entertainment"],
-    totalFollowers: 18600000,
-    avgEngagement: 8.2,
-    featured: true
-  },
-  {
-    id: "3",
-    name: "SkeeterJean",
-    slug: "skeeterjean",
-    bio: "Rising gaming content creator specializing in competitive gaming.",
-    image: "/assets/images/talents/skeeterjean.webp",
-    platforms: [
-      { platform: "Twitch", followers: 285000 },
-      { platform: "YouTube", followers: 420000 },
-      { platform: "TikTok", followers: 180000 }
-    ],
-    categories: ["Gaming", "Streaming"],
-    totalFollowers: 885000,
-    avgEngagement: 15.3,
-    featured: false
-  },
-  {
-    id: "4",
-    name: "Omma",
-    slug: "omma",
-    bio: "Content creator known for Discord community engagement.",
-    image: "/assets/images/talents/omma.webp",
-    platforms: [
-      { platform: "YouTube", followers: 150000 },
-      { platform: "TikTok", followers: 95000 },
-      { platform: "Discord", followers: 50000 }
-    ],
-    categories: ["Entertainment", "Gaming"],
-    totalFollowers: 295000,
-    avgEngagement: 18.7,
-    featured: false
-  },
-  {
-    id: "5",
-    name: "ManLikeIsaac",
-    slug: "manlikeisaac",
-    bio: "Innovative content creator with a unique brand.",
-    image: "/assets/images/talents/manlikeisaac.webp",
-    platforms: [
-      { platform: "TikTok", followers: 220000 },
-      { platform: "YouTube", followers: 180000 },
-      { platform: "Instagram", followers: 75000 }
-    ],
-    categories: ["Entertainment", "Comedy"],
-    totalFollowers: 475000,
-    avgEngagement: 14.2,
-    featured: false
-  },
-  {
-    id: "6",
-    name: "Miniminter",
-    slug: "miniminter",
-    bio: "Member of the Sidemen, gaming and entertainment content creator.",
-    image: "/assets/images/talents/miniminter.webp",
-    platforms: [
-      { platform: "YouTube", followers: 95000 },
-      { platform: "Twitch", followers: 45000 },
-      { platform: "TikTok", followers: 60000 }
-    ],
-    categories: ["Gaming", "Lifestyle"],
-    totalFollowers: 200000,
-    avgEngagement: 16.8,
-    featured: false
-  },
-  {
-    id: "7",
-    name: "Lex Pain",
-    slug: "lexpain",
-    bio: "Entertainment content creator with engaging personality.",
-    image: "/assets/images/talents/lexpain.webp",
-    platforms: [
-      { platform: "TikTok", followers: 340000 },
-      { platform: "Instagram", followers: 120000 },
-      { platform: "YouTube", followers: 85000 }
-    ],
-    categories: ["Entertainment", "Lifestyle"],
-    totalFollowers: 545000,
-    avgEngagement: 13.9,
-    featured: false
-  },
-  {
-    id: "8",
-    name: "Dankcube",
-    slug: "dankcube",
-    bio: "Gaming content creator with expertise in streaming.",
-    image: "/assets/images/talents/dankcube.webp",
-    platforms: [
-      { platform: "Twitch", followers: 75000 },
-      { platform: "YouTube", followers: 110000 },
-      { platform: "TikTok", followers: 55000 }
-    ],
-    categories: ["Gaming", "Streaming"],
-    totalFollowers: 240000,
-    avgEngagement: 17.2,
-    featured: false
-  },
-  {
-    id: "9",
-    name: "liamfp",
-    slug: "liamfp",
-    bio: "Creative content creator focusing on entertainment.",
-    image: "/assets/images/talents/liamfp.webp",
-    platforms: [
-      { platform: "YouTube", followers: 125000 },
-      { platform: "TikTok", followers: 190000 },
-      { platform: "Instagram", followers: 85000 }
-    ],
-    categories: ["Entertainment", "Lifestyle"],
-    totalFollowers: 400000,
-    avgEngagement: 15.6,
-    featured: false
-  },
-  {
-    id: "10",
-    name: "LilJr",
-    slug: "liljr",
-    bio: "Professional content creator and digital strategist.",
-    image: "/assets/images/talents/liljr.webp",
-    platforms: [
-      { platform: "YouTube", followers: 200000 },
-      { platform: "LinkedIn", followers: 45000 },
-      { platform: "Instagram", followers: 95000 }
-    ],
-    categories: ["Tech", "Education", "Lifestyle"],
-    totalFollowers: 340000,
-    avgEngagement: 11.4,
-    featured: true
-  }
-];
+// State variables
+let allTalents = [];
+let filteredTalents = [];
 
-// State
-let filteredTalents = [...allTalents];
+// Load talents data
+function loadTalentsData() {
+  // Create script element to load talents data
+  const script = document.createElement('script');
+  script.src = '/assets/js/talents-data.js';
+  document.head.appendChild(script);
+  
+  script.onload = function() {
+    // Use official talents from talents-data.js
+    allTalents = window.officialTalents || [];
+    filteredTalents = [...allTalents];
+    
+    // Render initial view
+    renderTalents(allTalents);
+    setupFollowerRangeSlider();
+  };
+}
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-  renderTalents(allTalents);
-  setupFollowerRangeSlider();
+  loadTalentsData();
 });
 
 // Render talents grid

@@ -1,88 +1,110 @@
 // SocialCloud Management - Main JavaScript
 
-// Talent data (from the existing project)
-const talents = [
-  {
-    id: "1",
-    name: "Packgod",
-    slug: "packgod",
-    bio: "Master of Discord roasting and rapid-fire comedy content.",
-    image: "/assets/images/talents/packgod.webp",
-    platforms: [
-      { platform: "YouTube", followers: 3910000 },
-      { platform: "TikTok", followers: 2500000 },
-      { platform: "Instagram", followers: 890000 }
-    ],
-    categories: ["Comedy", "Gaming", "Entertainment"],
-    totalFollowers: 7300000,
-    avgEngagement: 12.5,
-    featured: true
-  },
-  {
-    id: "2",
-    name: "SaltPapi",
-    slug: "saltpapi",
-    bio: "Multi-platform entertainment powerhouse and professional boxer.",
-    image: "/assets/images/talents/saltpapi.webp",
-    platforms: [
-      { platform: "YouTube", followers: 10600000 },
-      { platform: "Instagram", followers: 4200000 },
-      { platform: "Twitter", followers: 3800000 }
-    ],
-    categories: ["Gaming", "Sports", "Entertainment"],
-    totalFollowers: 18600000,
-    avgEngagement: 8.2,
-    featured: true
-  },
-  {
-    id: "3",
-    name: "SkeeterJean",
-    slug: "skeeterjean",
-    bio: "Rising gaming content creator specializing in competitive gaming.",
-    image: "/assets/images/talents/skeeterjean.webp",
-    platforms: [
-      { platform: "Twitch", followers: 285000 },
-      { platform: "YouTube", followers: 420000 },
-      { platform: "TikTok", followers: 180000 }
-    ],
-    categories: ["Gaming", "Streaming"],
-    totalFollowers: 885000,
-    avgEngagement: 15.3,
-    featured: true
-  }
-];
+// State variable for talents
+let talents = [];
 
-// DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
-  initParticles();
-  renderTalentGrid();
-  initSmoothScroll();
-  initHeaderScroll();
-  initAnimations();
-});
-
-// Initialize particle background
-function initParticles() {
-  const particlesContainer = document.getElementById('particles-container');
-  if (!particlesContainer) return;
+// Load talents data
+function loadTalentsData(callback) {
+  // Create script element to load talents data
+  const script = document.createElement('script');
+  script.src = '/assets/js/talents-data.js';
+  document.head.appendChild(script);
   
-  for (let i = 0; i < 50; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.animationDelay = Math.random() * 10 + 's';
-    particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
-    particlesContainer.appendChild(particle);
-  }
+  script.onload = function() {
+    // Use official talents
+    talents = window.officialTalents || [];
+    if (callback) callback();
+  };
 }
 
-// Render talent grid
-function renderTalentGrid() {
-  const talentGrid = document.getElementById('talent-grid');
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  loadTalentsData(function() {
+    // Initialize all components after talents data is loaded
+    initializeHero();
+    renderFeaturedTalents();
+    renderStatistics();
+    initAnimations();
+    initHeaderScroll();
+    initSmoothScroll();
+  });
+});
+
+// Initialize hero section with animated particles
+function initializeHero() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  
+  // Set canvas size
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  
+  // Particle class
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 1;
+      this.speedX = Math.random() * 0.5 - 0.25;
+      this.speedY = Math.random() * 0.5 - 0.25;
+      this.opacity = Math.random() * 0.5 + 0.2;
+    }
+    
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      
+      if (this.x > canvas.width) this.x = 0;
+      if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      if (this.y < 0) this.y = canvas.height;
+    }
+    
+    draw() {
+      ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  
+  // Create particles
+  for (let i = 0; i < 100; i++) {
+    particles.push(new Particle());
+  }
+  
+  // Animation loop
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+    
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+}
+
+// Render featured talents on homepage
+function renderFeaturedTalents() {
+  const talentGrid = document.getElementById('talent-showcase');
   if (!talentGrid) return;
   
-  const featuredTalents = talents.filter(t => t.featured).slice(0, 3);
+  // Get featured talents (first 3 from the official list)
+  const featuredTalents = talents.slice(0, 3);
+  
+  talentGrid.innerHTML = '';
   
   featuredTalents.forEach(talent => {
     const card = createTalentCard(talent);
@@ -94,11 +116,7 @@ function renderTalentGrid() {
 function createTalentCard(talent) {
   const card = document.createElement('div');
   card.className = 'card card-glow';
-  card.style.cursor = 'pointer';
-  card.style.position = 'relative';
-  card.style.overflow = 'hidden';
   
-  // Format followers count
   const formatFollowers = (num) => {
     if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
     if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
@@ -106,43 +124,55 @@ function createTalentCard(talent) {
   };
   
   card.innerHTML = `
-    <div style="position: relative;">
-      <img src="${talent.image}" alt="${talent.name}" style="width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);">
-      <div style="position: absolute; top: var(--spacing-4); right: var(--spacing-4); background: var(--color-bg-primary); padding: var(--spacing-2) var(--spacing-3); border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 600;">
-        ${talent.avgEngagement}% Engagement
-      </div>
-    </div>
+    <img src="${talent.image}" alt="${talent.name}" style="width: 100%; height: 250px; object-fit: cover; border-radius: var(--radius-lg); margin-bottom: var(--spacing-4);">
     <h3 class="mb-2">${talent.name}</h3>
-    <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-4);">${talent.bio}</p>
-    <div class="flex gap-2 mb-4">
-      ${talent.categories.map(cat => `<span style="background: var(--color-bg-accent); padding: var(--spacing-1) var(--spacing-3); border-radius: var(--radius-full); font-size: var(--text-xs);">${cat}</span>`).join('')}
+    <p style="font-size: var(--text-sm); margin-bottom: var(--spacing-3); color: var(--color-text-secondary);">${talent.bio}</p>
+    <div class="flex gap-2 mb-4" style="flex-wrap: wrap;">
+      ${talent.categories.map(cat => `<span style="background: var(--color-bg-accent); padding: var(--spacing-1) var(--spacing-2); border-radius: var(--radius-full); font-size: var(--text-xs);">${cat}</span>`).join('')}
     </div>
-    <div style="border-top: 1px solid var(--color-bg-accent); padding-top: var(--spacing-4);">
-      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--spacing-2);">Total Reach</p>
-      <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-primary);">${formatFollowers(talent.totalFollowers)}</p>
+    <div class="flex justify-between items-center mb-4">
+      <span style="font-size: var(--text-sm); color: var(--color-text-muted);">${formatFollowers(talent.totalFollowers)} followers</span>
+      <span style="font-size: var(--text-sm); color: var(--color-brand-primary);">${talent.avgEngagement}% engagement</span>
     </div>
-    <a href="talent-profile.html?id=${talent.slug}" class="btn btn-gradient" style="width: 100%; margin-top: var(--spacing-4);">View Profile</a>
+    <a href="talent-profile.html?id=${talent.slug}" class="btn btn-secondary" style="width: 100%;">View Profile</a>
   `;
-  
-  // Add hover effect
-  card.addEventListener('mouseenter', function() {
-    const img = card.querySelector('img');
-    img.style.transform = 'scale(1.05)';
-    img.style.transition = 'transform 0.3s ease';
-  });
-  
-  card.addEventListener('mouseleave', function() {
-    const img = card.querySelector('img');
-    img.style.transform = 'scale(1)';
-  });
   
   return card;
 }
 
-// Smooth scroll
+// Render platform statistics
+function renderStatistics() {
+  const statsGrid = document.getElementById('stats-grid');
+  if (!statsGrid) return;
+  
+  // Calculate total stats from official talents
+  const totalFollowers = talents.reduce((sum, talent) => sum + talent.totalFollowers, 0);
+  const avgEngagement = (talents.reduce((sum, talent) => sum + talent.avgEngagement, 0) / talents.length).toFixed(1);
+  
+  const stats = [
+    { value: `${(totalFollowers / 1000000).toFixed(1)}M+`, label: 'Total Reach' },
+    { value: talents.length, label: 'Managed Talents' },
+    { value: `${avgEngagement}%`, label: 'Avg. Engagement' },
+    { value: '95%', label: 'Client Satisfaction' }
+  ];
+  
+  statsGrid.innerHTML = '';
+  
+  stats.forEach(stat => {
+    const statCard = document.createElement('div');
+    statCard.className = 'text-center';
+    statCard.innerHTML = `
+      <h3 class="gradient-text mb-2" style="font-size: var(--text-4xl);">${stat.value}</h3>
+      <p style="color: var(--color-text-secondary);">${stat.label}</p>
+    `;
+    statsGrid.appendChild(statCard);
+  });
+}
+
+// Smooth scroll for navigation links
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
