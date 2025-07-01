@@ -5,11 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics Dashboard | SocialCloud Pro</title>
-    <meta name="description" content="Real-time analytics and performance insights for talent management.">
+    <title>Analytics Dashboard | SocialCloud Management - Premium Features</title>
+    <meta name="description" content="Advanced real-time analytics, AI-powered insights, and performance tracking for strategic talent management. Unlock data-driven creator partnerships.">
+    <meta name="keywords" content="analytics dashboard, talent analytics, creator insights, performance tracking, influencer metrics">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Analytics Dashboard | SocialCloud Management">
+    <meta property="og:description" content="Advanced analytics and AI-powered insights for talent management. Real-time performance tracking and predictive analytics.">
+    <meta property="og:image" content="/socialcloud-logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://talent.multimedium.dev/analytics-dashboard.html">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/socialcloud-logo.png">
+
+    <!-- Performance optimizations -->
+    <link rel="preload" href="assets/css/styles.css" as="style">
+    <link rel="preload" href="assets/js/main.js" as="script">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -23,13 +37,21 @@
         }
 
         .metric-card {
-            background: linear-gradient(135deg, var(--color-bg-secondary) 0%, rgba(26, 26, 26, 0.8) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
             border-radius: var(--radius-xl);
             padding: var(--spacing-6);
             position: relative;
             overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-brand-accent-alpha);
+            box-shadow: var(--shadow-2xl);
         }
 
         .metric-card::before {
@@ -39,32 +61,95 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--color-brand-accent);
-            opacity: 0.5;
+            background: linear-gradient(90deg, var(--color-brand-accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .metric-card:hover::before {
+            opacity: 1;
+        }
+
+        .metric-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.05) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .metric-card:hover::after {
+            opacity: 1;
         }
 
         .chart-container {
-            background: rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: var(--radius-lg);
-            padding: var(--spacing-4);
+            padding: var(--spacing-6);
             height: 300px;
             display: flex;
             align-items: flex-end;
             justify-content: space-around;
-            gap: var(--spacing-2);
+            gap: var(--spacing-3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .chart-bar {
-            width: 40px;
-            background: linear-gradient(to top, var(--color-brand-accent), var(--color-brand-primary));
+            width: 50px;
+            background: linear-gradient(to top, 
+                rgba(201, 169, 97, 0.9), 
+                rgba(201, 169, 97, 0.4));
             border-radius: var(--radius-sm) var(--radius-sm) 0 0;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+
+        .chart-bar::after {
+            content: attr(data-value);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: var(--color-brand-accent);
+            padding: var(--spacing-1) var(--spacing-2);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-xs);
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
         }
 
         .chart-bar:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            background: linear-gradient(to top, 
+                var(--color-brand-accent), 
+                rgba(201, 169, 97, 0.6));
             filter: brightness(1.2);
+        }
+
+        .chart-bar:hover::after {
+            opacity: 1;
         }
 
         .metric-trend {
@@ -74,14 +159,14 @@
             padding: var(--spacing-1) var(--spacing-2);
             background: rgba(16, 185, 129, 0.1);
             border-radius: var(--radius-full);
-            color: #10b981;
+            color: var(--color-success);
             font-size: var(--text-sm);
             font-weight: 600;
         }
 
         .metric-trend.down {
             background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
+            color: var(--color-error);
         }
 
         .live-indicator {
@@ -93,14 +178,14 @@
             border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: var(--radius-full);
             font-size: var(--text-sm);
-            color: #10b981;
+            color: var(--color-success);
         }
 
         .live-indicator::before {
             content: '';
             width: 8px;
             height: 8px;
-            background: #10b981;
+            background: var(--color-success);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -114,31 +199,81 @@
 </head>
 
 <body>
+    <!-- Skip Navigation -->
+    <a href="#main-content" style="
+        position: absolute;
+        left: -9999px;
+        top: 20px;
+        background: var(--color-brand-accent);
+        color: white;
+        padding: var(--spacing-3) var(--spacing-6);
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        z-index: 9999;
+    " onfocus="this.style.left='20px'" onblur="this.style.left='-9999px'">
+        Skip to main content
+    </a>
+
     <!-- Header Navigation -->
     <header style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
-        <div class="container" style="padding: var(--spacing-4) var(--spacing-6);">
+        <nav class="container" style="padding: var(--spacing-5) var(--spacing-6);">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="flex items-center">
-                    <img src="/socialcloud-logo.png" alt="SocialCloud Management" style="height: 40px; width: auto;">
+                    <img src="/socialcloud-logo.png" alt="SocialCloud Management - Elevating Brands and Empowering Talents" style="height: 40px; width: auto;">
                 </a>
-                <nav class="desktop-nav flex gap-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="analytics-dashboard.html" class="nav-link active">Analytics</a>
-                    <a href="media-kit.html" class="nav-link">Media Kit</a>
-                    <a href="proposal.html" class="nav-link">Proposal</a>
-                </nav>
+
+                <!-- Desktop Navigation -->
+                <ul class="desktop-nav flex gap-8" style="list-style: none;">
+                    <li><a href="index.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Home</a></li>
+                    <li><a href="index.html#talent" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Talents</a></li>
+                    <li><a href="index.html#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Services</a></li>
+                    <li><a href="about.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
+                    <li><a href="contact.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Contact</a></li>
+                    <li><a href="analytics-dashboard.html" class="nav-link active" style="color: var(--color-brand-accent); font-weight: 600;">Analytics Dashboard</a></li>
+                    <li><a href="media-kit.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500;">Media Kit</a></li>
+                </ul>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none; background: none; border: none; color: var(--color-text-primary); font-size: 1.5rem; cursor: pointer;" aria-label="Toggle mobile menu">
+                    <span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>
+                </button>
             </div>
-        </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu" style="display: none;">
+                <ul style="list-style: none; padding: var(--spacing-4) 0; border-top: 1px solid var(--color-bg-accent); margin-top: var(--spacing-4); display: flex; flex-direction: column;">
+                    <li style="margin-bottom: var(--spacing-3);"><a href="index.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Home</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="talents.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Talents</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="index.html#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Services</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="about.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">About</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="contact.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Contact</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="analytics-dashboard.html" class="nav-link active" style="color: var(--color-brand-accent); font-weight: 600; display: block; padding: var(--spacing-2) 0;">Analytics Dashboard</a></li>
+                    <li><a href="media-kit.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Media Kit</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <!-- Dashboard Hero -->
-    <section class="section" style="margin-top: 80px; padding-top: var(--spacing-12); background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);">
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Dashboard Hero with Lost Revenue Alert -->
+        <section class="section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-top: -80px; padding-top: 80px; padding-bottom: 4rem; background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);">
+        <div style="position: absolute; top: 20px; right: 20px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-lg); padding: var(--spacing-4); max-width: 300px;">
+            <div class="flex items-center gap-3">
+                <span style="font-size: var(--text-2xl);">⚠️</span>
+                <div>
+                    <p style="font-weight: 700; color: var(--color-error);">$47,000/month</p>
+                    <p style="font-size: var(--text-sm); color: rgba(255, 255, 255, 0.8);">Lost revenue from missed opportunities</p>
+                </div>
+            </div>
+        </div>
+        
         <div class="container">
             <div class="flex justify-between items-center mb-8">
                 <div>
-                    <h1 class="mb-4">Analytics <span class="text-gradient">Dashboard</span></h1>
-                    <p style="font-size: var(--text-xl); color: var(--color-text-secondary);">
-                        Real-time performance insights across all platforms
+                    <h1 class="mb-4">Without <span class="text-gradient">Analytics</span>, You're Flying Blind</h1>
+                    <p style="font-size: var(--text-xl); color: var(--color-text-secondary); max-width: 600px;">
+                        Your competitors use real-time data to win campaigns. Here's what you're missing:
                     </p>
                 </div>
                 <div class="live-indicator">
@@ -146,30 +281,34 @@
                 </div>
             </div>
 
-            <!-- Key Metrics Grid -->
+            <!-- Key Metrics Grid - What They're Missing -->
             <div class="dashboard-grid">
                 <div class="metric-card">
-                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-2);">Total Reach</p>
-                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">47.3M</h2>
-                    <span class="metric-trend">↑ 12.5%</span>
+                    <p style="color: var(--color-error); font-size: var(--text-sm); margin-bottom: var(--spacing-2); font-weight: 600;">❌ INVISIBLE METRIC</p>
+                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">???</h2>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Talent reach growth</p>
+                    <p style="font-size: var(--text-xs); color: var(--color-error); margin-top: var(--spacing-2);">Missing ~15% monthly growth</p>
                 </div>
 
                 <div class="metric-card">
-                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-2);">Engagement Rate</p>
-                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">8.7%</h2>
-                    <span class="metric-trend">↑ 2.1%</span>
+                    <p style="color: var(--color-error); font-size: var(--text-sm); margin-bottom: var(--spacing-2); font-weight: 600;">❌ UNKNOWN DATA</p>
+                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">?.?%</h2>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-secondary);">True engagement rate</p>
+                    <p style="font-size: var(--text-xs); color: var(--color-error); margin-top: var(--spacing-2);">Could be losing 40% efficiency</p>
                 </div>
 
                 <div class="metric-card">
-                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-2);">Active Campaigns</p>
-                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">24</h2>
-                    <span class="metric-trend">↑ 6</span>
+                    <p style="color: var(--color-error); font-size: var(--text-sm); margin-bottom: var(--spacing-2); font-weight: 600;">❌ LOST CAMPAIGNS</p>
+                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">0</h2>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Optimized campaigns</p>
+                    <p style="font-size: var(--text-xs); color: var(--color-error); margin-top: var(--spacing-2);">~$125K lost per quarter</p>
                 </div>
 
                 <div class="metric-card">
-                    <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-bottom: var(--spacing-2);">Revenue Generated</p>
-                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2);">$2.4M</h2>
-                    <span class="metric-trend">↑ 18.3%</span>
+                    <p style="color: var(--color-success); font-size: var(--text-sm); margin-bottom: var(--spacing-2); font-weight: 600;">✓ WITH ANALYTICS</p>
+                    <h2 style="font-size: var(--text-4xl); margin-bottom: var(--spacing-2); color: var(--color-success);">+$2.4M</h2>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-secondary);">Additional revenue/year</p>
+                    <p style="font-size: var(--text-xs); color: var(--color-success); margin-top: var(--spacing-2);">From data-driven decisions</p>
                 </div>
             </div>
         </div>
@@ -185,12 +324,12 @@
                 <div class="glass-effect" style="padding: var(--spacing-6); border-radius: var(--radius-xl);">
                     <h3 class="mb-6">Monthly Growth Trend</h3>
                     <div class="chart-container">
-                        <div class="chart-bar" style="height: 60%;"></div>
-                        <div class="chart-bar" style="height: 75%;"></div>
-                        <div class="chart-bar" style="height: 70%;"></div>
-                        <div class="chart-bar" style="height: 85%;"></div>
-                        <div class="chart-bar" style="height: 90%;"></div>
-                        <div class="chart-bar" style="height: 95%;"></div>
+                        <div class="chart-bar" style="height: 60%;" data-value="2.1M views"></div>
+                        <div class="chart-bar" style="height: 75%;" data-value="2.6M views"></div>
+                        <div class="chart-bar" style="height: 70%;" data-value="2.4M views"></div>
+                        <div class="chart-bar" style="height: 85%;" data-value="2.9M views"></div>
+                        <div class="chart-bar" style="height: 90%;" data-value="3.1M views"></div>
+                        <div class="chart-bar" style="height: 95%;" data-value="3.3M views"></div>
                     </div>
                 </div>
 
@@ -297,29 +436,239 @@
         </div>
     </section>
 
-    <!-- Premium Features CTA -->
-    <section class="section">
-        <div class="container text-center">
-            <div class="gradient-border" style="max-width: 800px; margin: 0 auto;">
-                <div style="padding: var(--spacing-12);">
-                    <h2 class="mb-4">Unlock <span class="text-gradient">Advanced Analytics</span></h2>
-                    <p class="mb-8" style="font-size: var(--text-xl);">
-                        Get deeper insights with AI-powered predictions, sentiment analysis, and custom reporting
-                    </p>
-                    <a href="proposal.html" class="btn btn-gradient">View Full Proposal</a>
+    <!-- AI-Powered Predictive Analytics -->
+    <section class="section" style="background: var(--color-bg-secondary); position: relative; overflow: hidden;">
+        <div class="container">
+            <div class="text-center mb-12">
+                <h2 class="mb-4">AI-Powered <span class="text-gradient">Predictive Analytics</span></h2>
+                <p style="font-size: var(--text-xl); max-width: 600px; margin: 0 auto;">
+                    Forecast campaign performance with 94% accuracy using machine learning
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6 mb-12">
+                <div class="card glass-effect" style="text-align: center; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: linear-gradient(135deg, var(--color-brand-accent), transparent); border-radius: 50%; opacity: 0.1;"></div>
+                    <span style="font-size: var(--text-4xl); margin-bottom: var(--spacing-4); display: block;">🎯</span>
+                    <h3 class="mb-4">Trend Prediction</h3>
+                    <p style="color: var(--color-text-secondary);">Identify viral content opportunities 72 hours before peak</p>
+                    <div style="margin-top: var(--spacing-6); padding: var(--spacing-4); background: var(--glass-bg); border-radius: var(--radius-md);">
+                        <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-brand-accent);">+340%</p>
+                        <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Engagement boost</p>
+                    </div>
+                </div>
+                
+                <div class="card glass-effect" style="text-align: center; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: linear-gradient(135deg, var(--color-success), transparent); border-radius: 50%; opacity: 0.1;"></div>
+                    <span style="font-size: var(--text-4xl); margin-bottom: var(--spacing-4); display: block;">🔮</span>
+                    <h3 class="mb-4">Audience Sentiment</h3>
+                    <p style="color: var(--color-text-secondary);">Real-time emotional analysis across all platforms</p>
+                    <div style="margin-top: var(--spacing-6); padding: var(--spacing-4); background: var(--glass-bg); border-radius: var(--radius-md);">
+                        <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-success);">94%</p>
+                        <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Accuracy rate</p>
+                    </div>
+                </div>
+                
+                <div class="card glass-effect" style="text-align: center; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: linear-gradient(135deg, var(--color-info), transparent); border-radius: 50%; opacity: 0.1;"></div>
+                    <span style="font-size: var(--text-4xl); margin-bottom: var(--spacing-4); display: block;">📊</span>
+                    <h3 class="mb-4">ROI Forecasting</h3>
+                    <p style="color: var(--color-text-secondary);">Predict campaign returns before launch</p>
+                    <div style="margin-top: var(--spacing-6); padding: var(--spacing-4); background: var(--glass-bg); border-radius: var(--radius-md);">
+                        <p style="font-size: var(--text-2xl); font-weight: 700; color: var(--color-info);">2.8x</p>
+                        <p style="font-size: var(--text-sm); color: var(--color-text-muted);">Average ROI</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Real-Time Campaign Command Center -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-12">
+                <h2 class="mb-4">Campaign <span class="text-gradient">Command Center</span></h2>
+                <p style="font-size: var(--text-xl); max-width: 600px; margin: 0 auto;">
+                    Monitor and optimize all campaigns from a unified dashboard
+                </p>
+            </div>
+            
+            <div class="gradient-border" style="margin-bottom: var(--spacing-8);">
+                <div style="padding: var(--spacing-8); background: var(--color-bg-primary); border-radius: var(--radius-xl);">
+                    <div class="grid grid-cols-4 gap-4 mb-8">
+                        <div class="metric-card" style="text-align: center;">
+                            <span class="live-indicator"></span>
+                            <h4 style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--spacing-2);">LIVE CAMPAIGNS</h4>
+                            <p style="font-size: var(--text-3xl); font-weight: 700; color: var(--color-brand-accent);">12</p>
+                        </div>
+                        <div class="metric-card" style="text-align: center;">
+                            <h4 style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--spacing-2);">TOTAL REACH</h4>
+                            <p style="font-size: var(--text-3xl); font-weight: 700;">8.4M</p>
+                        </div>
+                        <div class="metric-card" style="text-align: center;">
+                            <h4 style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--spacing-2);">AVG. ENGAGEMENT</h4>
+                            <p style="font-size: var(--text-3xl); font-weight: 700; color: var(--color-success);">18.2%</p>
+                        </div>
+                        <div class="metric-card" style="text-align: center;">
+                            <h4 style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--spacing-2);">CONVERSION RATE</h4>
+                            <p style="font-size: var(--text-3xl); font-weight: 700; color: var(--color-info);">4.7%</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-4);">Real-time optimization suggestions available</p>
+                        <div class="flex gap-4 justify-center">
+                            <button class="btn btn-secondary">View Insights</button>
+                            <button class="btn btn-gradient">Optimize Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitor Intelligence Suite -->
+    <section class="section" style="background: var(--color-bg-secondary);">
+        <div class="container">
+            <div class="text-center mb-12">
+                <h2 class="mb-4">Competitor <span class="text-gradient">Intelligence Suite</span></h2>
+                <p style="font-size: var(--text-xl); max-width: 600px; margin: 0 auto;">
+                    Stay ahead with real-time competitor analysis and market positioning
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div class="card glass-effect">
+                    <h3 class="mb-6">Market Share Analysis</h3>
+                    <div style="position: relative; height: 200px; margin-bottom: var(--spacing-6);">
+                        <div style="position: absolute; bottom: 0; left: 0; width: 30%; height: 65%; background: var(--color-brand-accent); border-radius: var(--radius-md) var(--radius-md) 0 0; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-weight: 700;">You: 32%</span>
+                        </div>
+                        <div style="position: absolute; bottom: 0; left: 35%; width: 25%; height: 45%; background: var(--color-bg-accent); border-radius: var(--radius-md) var(--radius-md) 0 0;"></div>
+                        <div style="position: absolute; bottom: 0; left: 65%; width: 20%; height: 35%; background: var(--color-bg-accent); border-radius: var(--radius-md) var(--radius-md) 0 0;"></div>
+                        <div style="position: absolute; bottom: 0; left: 90%; width: 10%; height: 25%; background: var(--color-bg-accent); border-radius: var(--radius-md) var(--radius-md) 0 0;"></div>
+                    </div>
+                    <p style="color: var(--color-text-secondary);">Leading market position with 32% share in premium creator management</p>
+                </div>
+                
+                <div class="card glass-effect">
+                    <h3 class="mb-6">Competitive Advantages</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: var(--spacing-4);">
+                            <span style="color: var(--color-success); margin-right: var(--spacing-3);">✓</span>
+                            <span>48% faster campaign execution than industry average</span>
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--spacing-4);">
+                            <span style="color: var(--color-success); margin-right: var(--spacing-3);">✓</span>
+                            <span>2.3x higher engagement rates across all platforms</span>
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--spacing-4);">
+                            <span style="color: var(--color-success); margin-right: var(--spacing-3);">✓</span>
+                            <span>Exclusive AI-powered trend prediction technology</span>
+                        </li>
+                        <li style="display: flex; align-items: center;">
+                            <span style="color: var(--color-success); margin-right: var(--spacing-3);">✓</span>
+                            <span>Premium creator network with 18M+ combined reach</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Features CTA -->
+    <section class="section">
+        <div class="container text-center">
+            <div class="gradient-border" style="max-width: 800px; margin: 0 auto;">
+                <div style="padding: var(--spacing-12);">
+                    <h2 class="mb-4">Ready to <span class="text-gradient">Transform Your Data</span>?</h2>
+                    <p class="mb-8" style="font-size: var(--text-xl);">
+                        Join industry leaders using our advanced analytics platform
+                    </p>
+                    <div class="flex gap-4 justify-center">
+                        <a href="media-kit.html" class="btn btn-gradient">View Media Kit Generator</a>
+                        <a href="contact.html" class="btn btn-secondary">Schedule Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
     <!-- Footer -->
     <footer style="background: var(--color-bg-secondary); padding: var(--spacing-8) 0; border-top: 1px solid var(--color-bg-accent);">
-        <div class="container text-center">
-            <p style="color: var(--color-text-muted);">
-                © 2025 SocialCloud Management. Premium Demo.
-            </p>
+        <div class="container">
+            <div class="grid grid-cols-3 gap-8 mb-6">
+                <div>
+                    <h4 class="mb-4" style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">SOCIALCLOUD MANAGEMENT</h4>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">
+                        Strategic talent orchestration for premium brands.
+                    </p>
+                    <div>
+                        <p style="font-size: var(--text-sm); color: var(--color-text-secondary);">
+                            <strong>Email:</strong> contact@socialcloudmgmt.com
+                        </p>
+                        <p style="font-size: var(--text-sm); color: var(--color-text-secondary);">
+                            <strong>Business Hours:</strong> Mon-Fri 9AM-6PM EST
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="mb-4" style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">SERVICES</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-2"><a href="index.html#services" class="footer-link" style="font-size: var(--text-sm);">Strategic Influence Orchestration</a></li>
+                        <li class="mb-2"><a href="index.html#services" class="footer-link" style="font-size: var(--text-sm);">Elite Creator Representation</a></li>
+                        <li class="mb-2"><a href="index.html#services" class="footer-link" style="font-size: var(--text-sm);">Integrated Brand Amplification</a></li>
+                        <li class="mb-2"><a href="index.html#services" class="footer-link" style="font-size: var(--text-sm);">Strategic Presence Architecture</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="mb-4" style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">CONNECT</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="mb-2"><a href="talents.html" class="footer-link" style="font-size: var(--text-sm);">Elite Creator Portfolio</a></li>
+                        <li class="mb-2"><a href="about.html" class="footer-link" style="font-size: var(--text-sm);">About</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link" style="font-size: var(--text-sm);">Contact</a></li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="#" class="social-link" aria-label="LinkedIn" style="color: var(--color-text-secondary); font-size: var(--text-sm); margin-right: var(--spacing-4);">LinkedIn</a>
+                        <a href="#" class="social-link" aria-label="Twitter" style="color: var(--color-text-secondary); font-size: var(--text-sm);">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--color-bg-accent); padding-top: var(--spacing-4); text-align: center;">
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted);">
+                    © 2025 SocialCloud Management. All rights reserved. | 
+                    <a href="media-kit.html" style="color: var(--color-brand-accent); text-decoration: none; font-weight: 600;">View Media Kit Generator →</a>
+                </p>
+                <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--spacing-2);">
+                    Designed & Developed by <a href="https://multimedium.dev" target="_blank" rel="noopener" style="color: var(--color-brand-accent); text-decoration: none; font-weight: 600;">multimedium.dev</a>
+                </p>
+            </div>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/talents-data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/loading.js"></script>
+    <script src="assets/js/premium-effects.js"></script>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+                mobileMenu.style.display = 'block';
+                menuBtn.innerHTML = '✕';
+            } else {
+                mobileMenu.style.display = 'none';
+                menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
+            }
+        }
+    </script>
 
     <script>
         // Animate numbers on load
