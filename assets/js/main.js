@@ -233,13 +233,12 @@ function toggleMobileMenu() {
   const menuBtn = document.querySelector('.mobile-menu-btn');
 
   if (mobileMenu) {
-    mobileMenu.classList.toggle('active');
-
-    // Update button icon
-    if (mobileMenu.classList.contains('active')) {
-      menuBtn.innerHTML = '✕';
+    if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+      mobileMenu.style.display = 'block';
+      menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative; transform: rotate(45deg);"></span>';
     } else {
-      menuBtn.innerHTML = '☰';
+      mobileMenu.style.display = 'none';
+      menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
     }
   }
 }
@@ -251,9 +250,9 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', () => {
       const mobileMenu = document.getElementById('mobile-menu');
       const menuBtn = document.querySelector('.mobile-menu-btn');
-      if (mobileMenu && mobileMenu.classList.contains('active')) {
-        mobileMenu.classList.remove('active');
-        menuBtn.innerHTML = '☰';
+      if (mobileMenu) {
+        mobileMenu.style.display = 'none';
+        menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
       }
     });
   });

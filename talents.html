@@ -144,34 +144,38 @@
 
 <body>
     <!-- Header Navigation -->
-    <header class="glass-effect" style="position: fixed; width: 100%; top: 0; z-index: var(--z-sticky); transition: all var(--transition-base);">
-        <nav class="container" style="padding: var(--spacing-4) var(--spacing-6);">
+    <header style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
+        <div class="container" style="padding: var(--spacing-4) var(--spacing-6);">
             <div class="flex justify-between items-center">
-                <div class="flex items-center gap-4">
-                    <a href="index.html" class="flex items-center" style="text-decoration: none;">
-                        <img src="/socialcloud-logo.png" alt="SocialCloud Management" style="height: 40px; width: auto;">
-                    </a>
-                </div>
-                <ul class="flex gap-8" style="list-style: none;">
-                    <li><a href="index.html" style="color: var(--color-text-secondary); font-weight: 500;">Home</a></li>
-                    <li><a href="talents.html" style="color: var(--color-text-primary); font-weight: 500;">Talent</a></li>
-                    <li><a href="index.html#services" style="color: var(--color-text-secondary); font-weight: 500;">Services</a></li>
-                    <li><a href="about.html" style="color: var(--color-text-secondary); font-weight: 500;">About</a></li>
-                    <li><a href="index.html#contact" class="btn btn-gradient" style="padding: var(--spacing-2) var(--spacing-5);">Contact Us</a></li>
-                </ul>
+                <a href="index.html" class="flex items-center">
+                    <img src="/socialcloud-logo.png" alt="SocialCloud Management" style="height: 40px; width: auto;">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav flex gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="talents.html" class="nav-link active">Talents</a>
+                    <a href="index.html#services" class="nav-link">Services</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="display: none; background: none; border: none; color: var(--color-text-primary); font-size: 1.5rem; cursor: pointer;" aria-label="Toggle mobile menu">
                     <span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>
                 </button>
             </div>
-        </nav>
-        <div id="mobile-menu" class="mobile-menu" style="display: none;">
-            <ul style="list-style: none; padding: var(--spacing-4) 0; border-top: 1px solid var(--color-bg-accent); margin-top: var(--spacing-4);">
-                <li style="margin-bottom: var(--spacing-3);"><a href="index.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Home</a></li>
-                <li style="margin-bottom: var(--spacing-3);"><a href="talents.html" class="nav-link active" style="color: var(--color-text-primary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Talents</a></li>
-                <li style="margin-bottom: var(--spacing-3);"><a href="index.html#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Services</a></li>
-                <li style="margin-bottom: var(--spacing-3);"><a href="about.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">About</a></li>
-                <li><a href="contact.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Contact</a></li>
-            </ul>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu" style="display: none;">
+                <ul style="list-style: none; padding: var(--spacing-4) 0; border-top: 1px solid var(--color-bg-accent); margin-top: var(--spacing-4); display: flex; flex-direction: column;">
+                    <li style="margin-bottom: var(--spacing-3);"><a href="index.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Home</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="talents.html" class="nav-link active" style="color: var(--color-text-primary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Talents</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="index.html#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Services</a></li>
+                    <li style="margin-bottom: var(--spacing-3);"><a href="about.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">About</a></li>
+                    <li><a href="contact.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </header>
 
@@ -343,12 +347,12 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const menuBtn = document.querySelector('.mobile-menu-btn');
 
-            if (mobileMenu.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
-                menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
-            } else {
-                mobileMenu.classList.add('active');
+            if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+                mobileMenu.style.display = 'block';
                 menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative; transform: rotate(45deg);"></span>';
+            } else {
+                mobileMenu.style.display = 'none';
+                menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
             }
         }
 
@@ -359,7 +363,7 @@
                 link.addEventListener('click', function() {
                     const mobileMenu = document.getElementById('mobile-menu');
                     const menuBtn = document.querySelector('.mobile-menu-btn');
-                    mobileMenu.classList.remove('active');
+                    mobileMenu.style.display = 'none';
                     menuBtn.innerHTML = '<span style="display: inline-block; width: 20px; height: 2px; background: currentColor; position: relative;"></span>';
                 });
             });

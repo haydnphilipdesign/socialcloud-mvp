@@ -32,7 +32,7 @@
 
 <body>
     <!-- Header Navigation -->
-    <header class="glass-effect" style="position: fixed; width: 100%; top: 0; z-index: var(--z-sticky); transition: all var(--transition-base); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201, 169, 97, 0.1);">
+    <header style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;">
         <nav class="container" style="padding: var(--spacing-5) var(--spacing-6);">
             <div class="flex justify-between items-center">
                 <a href="#home" class="flex items-center">
@@ -56,7 +56,7 @@
 
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="mobile-menu" style="display: none;">
-                <ul style="list-style: none; padding: var(--spacing-4) 0; border-top: 1px solid var(--color-bg-accent); margin-top: var(--spacing-4);">
+                <ul style="list-style: none; padding: var(--spacing-4) 0; border-top: 1px solid var(--color-bg-accent); margin-top: var(--spacing-4); display: flex; flex-direction: column;">
                     <li style="margin-bottom: var(--spacing-3);"><a href="index.html" class="nav-link active" style="color: var(--color-text-primary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Home</a></li>
                     <li style="margin-bottom: var(--spacing-3);"><a href="talents.html" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Talents</a></li>
                     <li style="margin-bottom: var(--spacing-3);"><a href="index.html#services" class="nav-link" style="color: var(--color-text-secondary); font-weight: 500; display: block; padding: var(--spacing-2) 0;">Services</a></li>
