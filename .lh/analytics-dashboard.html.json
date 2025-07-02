@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1751485228467,
@@ -16,6 +16,10 @@
                 {
                     "date": 1751486108370,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -701,13 +701,13 @@\n         </div>\n     </footer>\n \n     <!-- JavaScript -->\n-    <script src=\"assets/js/talents-data.js\"></script>\n-    <script src=\"assets/js/main.js\"></script>\n-    <script src=\"assets/js/loading.js\"></script>\n-    <script src=\"assets/js/premium-effects.js\"></script>\n-    <script src=\"assets/js/mobile-effects.js\"></script>\n+    <script src=\"assets/js/talents-data.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/main.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/loading.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/premium-effects.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/mobile-effects.js?v=1.0.1\"></script>\n \n     <!-- Mobile Menu JavaScript -->\n     <script>\n         function toggleMobileMenu() {\n"
+                },
+                {
+                    "date": 1751486633659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -750,7 +750,10 @@\n                 }, 100 * index);\n             });\n         });\n     </script>\n+\n+    <!-- Cloudflare Web Analytics -->\n+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"YOUR_CLOUDFLARE_TOKEN_HERE\"}'></script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1751485228467,

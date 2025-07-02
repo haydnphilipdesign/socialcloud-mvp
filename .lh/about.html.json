@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1751484870411,
@@ -20,6 +20,10 @@
                 {
                     "date": 1751486008828,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,15 +7,20 @@\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n     <title>About Us | SocialCloud Management</title>\n     <meta name=\"description\" content=\"Learn about SocialCloud Management - your partner in digital talent management and influencer marketing.\">\n \n+    <!-- Cache Control Meta Tags -->\n+    <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">\n+    <meta http-equiv=\"Pragma\" content=\"no-cache\">\n+    <meta http-equiv=\"Expires\" content=\"0\">\n+\n     <!-- Fonts -->\n     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n     <link href=\"https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">\n \n     <!-- Styles -->\n-    <link rel=\"stylesheet\" href=\"assets/css/styles.css\">\n+    <link rel=\"stylesheet\" href=\"assets/css/styles.css?v=1.0.1\">\n </head>\n \n <body>\n     <!-- Header -->\n"
+                },
+                {
+                    "date": 1751486595331,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -271,7 +271,10 @@\n                 });\n             });\n         });\n     </script>\n+\n+    <!-- Cloudflare Web Analytics -->\n+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"YOUR_CLOUDFLARE_TOKEN_HERE\"}'></script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1751484870411,
