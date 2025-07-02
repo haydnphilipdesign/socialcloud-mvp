@@ -1986,6 +1986,18 @@ a:not(.btn):hover {
         padding: 0 var(--spacing-2);
     }
     
+    /* Portfolio demonstration banner mobile styles */
+    section[style*="background: linear-gradient(135deg, var(--color-brand-accent), var(--color-brand-primary))"] {
+        padding: var(--spacing-3) 0 !important;
+        margin-top: 70px !important;
+    }
+    
+    section[style*="background: linear-gradient(135deg, var(--color-brand-accent), var(--color-brand-primary))"] p {
+        font-size: 0.875rem !important;
+        padding: 0 var(--spacing-2) !important;
+        line-height: 1.4 !important;
+    }
+    
     /* Stats section mobile */
     .text-5xl {
         font-size: var(--text-3xl) !important;
@@ -2498,6 +2510,19 @@ a:not(.btn):hover {
     
     .talent-grid-home .card:last-child {
         margin-bottom: 0;
+    }
+    
+    /* Portfolio demonstration banner mobile styles for small screens */
+    section[style*="background: linear-gradient(135deg, var(--color-brand-accent), var(--color-brand-primary))"] {
+        padding: var(--spacing-2) 0 !important;
+        margin-top: 65px !important;
+    }
+    
+    section[style*="background: linear-gradient(135deg, var(--color-brand-accent), var(--color-brand-primary))"] p {
+        font-size: 0.8rem !important;
+        padding: 0 var(--spacing-3) !important;
+        line-height: 1.3 !important;
+        text-align: center !important;
     }
     
     /* Mobile premium experience enhancements */
