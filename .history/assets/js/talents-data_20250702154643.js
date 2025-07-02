@@ -86,7 +86,7 @@ const officialTalents = [{
         name: "Farzy",
         slug: "farzy",
         bio: "Entertainment content creator known for engaging personality and creative content.",
-        image: "assets/images/talents/farzy.jpeg",
+        image: "/assets/images/talents/farzy.jpeg",
         platforms: [
             { platform: "TikTok", followers: 340000 },
             { platform: "Instagram", followers: 120000 },
@@ -102,7 +102,7 @@ const officialTalents = [{
         name: "Dankcube",
         slug: "dankcube",
         bio: "Lifestyle & Comedy Creator known for entertaining content and strong engagement.",
-        image: "assets/images/talents/dankcube.jpg",
+        image: "/assets/images/talents/dankcube.jpg",
         platforms: [
             { platform: "TikTok", followers: 890000 },
             { platform: "Instagram", followers: 560000 },
@@ -118,7 +118,7 @@ const officialTalents = [{
         name: "liamfp",
         slug: "liamfp",
         bio: "Creative content creator with a focus on entertainment and lifestyle content.",
-        image: "assets/images/talents/liamfp.jpeg",
+        image: "/assets/images/talents/liamfp.jpeg",
         platforms: [
             { platform: "YouTube", followers: 125000 },
             { platform: "TikTok", followers: 190000 },
@@ -134,7 +134,7 @@ const officialTalents = [{
         name: "Deji",
         slug: "deji",
         bio: "Multi-platform entertainment powerhouse and professional boxer.",
-        image: "assets/images/talents/Deji.png",
+        image: "/assets/images/talents/Deji.png",
         platforms: [
             { platform: "YouTube", followers: 10600000 },
             { platform: "Instagram", followers: 4200000 },
@@ -150,7 +150,7 @@ const officialTalents = [{
         name: "Jonathan Wright",
         slug: "jonathan-wright",
         bio: "Professional content creator and digital strategist.",
-        image: "assets/images/talents/JonathanWright.jpg",
+        image: "/assets/images/talents/JonathanWright.jpg",
         platforms: [
             { platform: "YouTube", followers: 200000 },
             { platform: "LinkedIn", followers: 45000 },

@@ -109,7 +109,6 @@ h6 {
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    color: var(--color-text-primary);
 }
 
 h1 {
@@ -925,8 +924,7 @@ a:hover {
 /* Portrait orientation fixes */
 @media (max-width: 480px) and (orientation: portrait) {
     /* Hero section mobile spacing fix for portrait */
-    #home,
-    section[style*="min-height: 100vh"] {
+    #home {
         margin-top: -60px !important;
         padding-top: 120px !important;
     }
@@ -938,44 +936,6 @@ a:hover {
         text-wrap: balance;
         orphans: 2;
         widows: 2;
-    }
-    
-    /* Mobile premium effects */
-    .card {
-        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        will-change: transform;
-    }
-    
-    .card:active {
-        transform: translateY(-4px) scale(0.98);
-        box-shadow: 0 12px 30px rgba(99, 102, 241, 0.2);
-    }
-    
-    /* Enhanced mobile button effects */
-    .btn {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.2s ease;
-        min-height: 44px;
-        min-width: 44px;
-    }
-    
-    .btn:active {
-        transform: scale(0.95);
-        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    }
-    
-    /* Mobile navigation enhancements */
-    .mobile-menu-btn {
-        min-height: 44px;
-        min-width: 44px;
-        transition: all 0.3s ease;
-    }
-    
-    .mobile-nav {
-        backdrop-filter: blur(20px);
-        background: rgba(10, 10, 10, 0.95);
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
     }
 }
 
@@ -1970,8 +1930,7 @@ a:not(.btn):hover {
     }
     
     /* Additional Hero adjustments from consolidated 480px breakpoint */
-    #home,
-    section[style*="min-height: 100vh"] {
+    #home {
         min-height: 80vh;
         margin-top: -60px !important;
         padding-top: 120px !important;
@@ -2467,8 +2426,7 @@ a:not(.btn):hover {
 
 @media (max-width: 480px) {
     /* Hero section mobile spacing fix */
-    #home,
-    section[style*="min-height: 100vh"] {
+    #home {
         margin-top: -60px !important;
         padding-top: 120px !important;
     }
@@ -2498,84 +2456,6 @@ a:not(.btn):hover {
     
     .talent-grid-home .card:last-child {
         margin-bottom: 0;
-    }
-    
-    /* Mobile premium experience enhancements */
-    
-    /* Enhanced touch feedback for all interactive elements */
-    .btn, .card, .talent-card, .nav-link, .mobile-menu-btn {
-        -webkit-tap-highlight-color: transparent;
-        touch-action: manipulation;
-        user-select: none;
-    }
-    
-    /* Mobile-optimized animations */
-    .card {
-        transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .card:active {
-        transform: scale(0.98) translateY(2px);
-    }
-    
-    /* Mobile navigation improvements */
-    .mobile-nav {
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        background: rgba(10, 10, 10, 0.95);
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .mobile-nav a {
-        padding: 1rem 1.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.2s ease;
-    }
-    
-    .mobile-nav a:active {
-        background: rgba(99, 102, 241, 0.1);
-        transform: translateX(4px);
-    }
-    
-    /* Enhanced mobile typography */
-    h1, h2, h3 {
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    
-    /* Mobile-optimized loading states */
-    .loading {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .loading::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-        animation: shimmer 1.5s infinite;
-    }
-    
-    @keyframes shimmer {
-        0% { left: -100%; }
-        100% { left: 100%; }
-    }
-    
-    /* Mobile scroll enhancements */
-    .scroll-smooth {
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Mobile-specific glassmorphism */
-    .glass-effect {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
     }
 }
 

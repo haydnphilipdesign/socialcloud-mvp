@@ -1,0 +1,10 @@
+<svg width="120" height="50" viewBox="0 0 120 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-text { font-family: 'Arial', sans-serif; font-weight: bold; fill: #666; }
+    </style>
+  </defs>
+  <path d="M8 30 L12 20 L16 25 L20 20 L24 30 L8 30" fill="#666"/>
+  <text x="30" y="28" class="logo-text" font-size="12">DRAFT</text>
+  <text x="30" y="40" class="logo-text" font-size="12">KINGS</text>
+</svg>

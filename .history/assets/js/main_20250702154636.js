@@ -95,7 +95,7 @@ function createTalentCard(talent) {
         return `
       <img src="${imageSrc}" alt="${altText}" loading="lazy"
            style="width: 100%; height: 280px; object-fit: cover; object-position: center; border-radius: var(--radius-lg);"
-           onerror="this.src='assets/images/talents/placeholder-default.svg'; this.onerror=null;">
+           onerror="this.src='/assets/images/talents/placeholder-default.svg'; this.onerror=null;">
     `;
     };
 

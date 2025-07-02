@@ -1,0 +1,10 @@
+<svg width="140" height="50" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-text { font-family: 'Arial', sans-serif; font-weight: bold; fill: #666; }
+    </style>
+  </defs>
+  <path d="M8 15 L8 35 L15 35 L15 25 L20 25 L25 35 L30 35 L24 25 Q25 20 20 20 L15 20 L15 15 L8 15 M15 20 L20 20 Q22 22 20 24 L15 24" fill="#666"/>
+  <text x="35" y="25" class="logo-text" font-size="10">THE REIMAN</text>
+  <text x="35" y="37" class="logo-text" font-size="10">AGENCY</text>
+</svg>

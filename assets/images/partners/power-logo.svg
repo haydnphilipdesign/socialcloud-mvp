@@ -1,0 +1,9 @@
+<svg width="100" height="50" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-text { font-family: 'Arial', sans-serif; font-weight: bold; fill: #666; }
+    </style>
+  </defs>
+  <circle cx="15" cy="25" r="8" fill="#666"/>
+  <text x="30" y="30" class="logo-text" font-size="16">POWER</text>
+</svg>
