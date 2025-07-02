@@ -2434,17 +2434,7 @@ a:not(.btn):hover {
         max-width: 100% !important;
         min-width: 100% !important;
         width: 100% !important;
-        height: auto;
         margin-bottom: 1.5rem;
-    }
-    
-    .talent-grid-home .card .talent-card-image {
-        height: 300px;
-    }
-    
-    .talent-grid-home .card .talent-card-image img {
-        object-fit: contain !important;
-        object-position: center !important;
     }
     
     .talent-grid-home .card:last-child {
