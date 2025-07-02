@@ -2492,8 +2492,8 @@ a:not(.btn):hover {
     }
     
     .talent-grid-home .card .talent-card-image img {
-        object-fit: contain !important;
-        object-position: center !important;
+        object-fit: cover !important;
+        object-position: center 20% !important;
     }
     
     .talent-grid-home .card:last-child {
@@ -2599,8 +2599,8 @@ a:not(.btn):hover {
     }
     
     .talent-grid-home .card .talent-card-image img {
-        object-fit: contain !important;
-        object-position: center !important;
+        object-fit: cover !important;
+        object-position: center 20% !important;
     }
     
     .talent-grid-home .card:last-child {
