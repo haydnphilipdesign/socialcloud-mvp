@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1751485228467,
@@ -20,6 +20,10 @@
                 {
                     "date": 1751486633659,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -750,7 +750,10 @@\n                 }, 100 * index);\n             });\n         });\n     </script>\n+\n+    <!-- Cloudflare Web Analytics -->\n+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"YOUR_CLOUDFLARE_TOKEN_HERE\"}'></script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1751486814647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -750,10 +750,7 @@\n                 }, 100 * index);\n             });\n         });\n     </script>\n-\n-    <!-- Cloudflare Web Analytics -->\n-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"YOUR_CLOUDFLARE_TOKEN_HERE\"}'></script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1751485228467,
