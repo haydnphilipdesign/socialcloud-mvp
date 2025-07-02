@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1751485228467,
@@ -24,6 +24,10 @@
                 {
                     "date": 1751486814647,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -750,10 +750,7 @@\n                 }, 100 * index);\n             });\n         });\n     </script>\n-\n-    <!-- Cloudflare Web Analytics -->\n-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"YOUR_CLOUDFLARE_TOKEN_HERE\"}'></script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1751490250295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -266,10 +266,19 @@\n     </header>\n \n     <!-- Main Content -->\n     <main id=\"main-content\">\n+        <!-- Portfolio Demonstration Notice -->\n+        <section style=\"background: linear-gradient(135deg, var(--color-brand-accent), var(--color-brand-primary)); padding: var(--spacing-4) 0; text-align: center; margin-top: 80px;\">\n+            <div class=\"container\">\n+                <p style=\"color: white; font-weight: 600; margin: 0;\">\n+                    🚀 Portfolio Demonstration: This analytics dashboard showcases the type of custom solutions I can build for your website\n+                </p>\n+            </div>\n+        </section>\n+\n         <!-- Dashboard Hero with Lost Revenue Alert -->\n-        <section class=\"section\" style=\"min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-top: -80px; padding-top: 80px; padding-bottom: 4rem; background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);\">\n+        <section class=\"section\" style=\"min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; margin-top: 0; padding-top: 80px; padding-bottom: 4rem; background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);\">\n             <div style=\"position: absolute; top: 20px; right: 20px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-lg); padding: var(--spacing-4); max-width: 300px;\">\n                 <div class=\"flex items-center gap-3\">\n                     <span style=\"font-size: var(--text-2xl);\">⚠️</span>\n                     <div>\n@@ -285,8 +294,11 @@\n                         <h1 class=\"mb-4\">Without <span class=\"text-gradient\">Analytics</span>, You're Flying Blind</h1>\n                         <p style=\"font-size: var(--text-xl); color: var(--color-text-secondary); max-width: 600px;\">\n                             Your competitors use real-time data to win campaigns. Here's what you're missing:\n                         </p>\n+                        <p style=\"font-size: var(--text-lg); max-width: 700px; margin: var(--spacing-4) 0 0; color: var(--color-text-secondary); font-style: italic;\">\n+                            This is an example of the custom analytics solutions I can develop for your business\n+                        </p>\n                     </div>\n                     <div class=\"live-indicator\">\n                         Live Data\n                     </div>\n"
                 }
             ],
             "date": 1751485228467,
