@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1751484895558,
@@ -12,6 +12,14 @@
                 {
                     "date": 1751485215055,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     <title>Our Creators | SocialCloud Management</title>\n     <meta name=\"description\" content=\"Meet the talented creators we represent across gaming, lifestyle, and entertainment.\">\n \n     <!-- Favicon -->\n-    <link rel=\"icon\" type=\"image/png\" href=\"/socialcloud-logo.png\">\n+    <link rel=\"icon\" type=\"image/png\" href=\"assets/images/socialcloud-logo.png\">\n \n     <!-- Performance optimizations -->\n     <link rel=\"preload\" href=\"assets/css/styles.css\" as=\"style\">\n     <link rel=\"preload\" href=\"assets/js/talents-roster.js\" as=\"script\">\n@@ -147,9 +147,9 @@\n     <header style=\"background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;\">\n         <div class=\"container\" style=\"padding: var(--spacing-4) var(--spacing-6);\">\n             <div class=\"flex justify-between items-center\">\n                 <a href=\"index.html\" class=\"flex items-center\">\n-                    <img src=\"/socialcloud-logo.png\" alt=\"SocialCloud Management\" style=\"height: 40px; width: auto;\">\n+                    <img src=\"assets/images/socialcloud-logo.png\" alt=\"SocialCloud Management\" style=\"height: 40px; width: auto;\">\n                 </a>\n \n                 <!-- Desktop Navigation -->\n                 <nav class=\"desktop-nav flex gap-8\">\n"
+                },
+                {
+                    "date": 1751486036264,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,13 @@\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n     <title>Our Creators | SocialCloud Management</title>\n     <meta name=\"description\" content=\"Meet the talented creators we represent across gaming, lifestyle, and entertainment.\">\n \n+    <!-- Cache Control Meta Tags -->\n+    <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">\n+    <meta http-equiv=\"Pragma\" content=\"no-cache\">\n+    <meta http-equiv=\"Expires\" content=\"0\">\n+\n     <!-- Favicon -->\n     <link rel=\"icon\" type=\"image/png\" href=\"assets/images/socialcloud-logo.png\">\n \n     <!-- Performance optimizations -->\n@@ -18,9 +23,9 @@\n     <link rel=\"dns-prefetch\" href=\"//fonts.googleapis.com\">\n     <link rel=\"preconnect\" href=\"//fonts.gstatic.com\" crossorigin>\n \n     <!-- CSS -->\n-    <link rel=\"stylesheet\" href=\"assets/css/styles.css\">\n+    <link rel=\"stylesheet\" href=\"assets/css/styles.css?v=1.0.1\">\n     <style>\n         /* Additional styles for filters */\n         \n         .filter-section {\n"
+                },
+                {
+                    "date": 1751486048110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -342,11 +342,11 @@\n         </div>\n     </footer>\n \n     <!-- JavaScript -->\n-    <script src=\"assets/js/talents-data.js\"></script>\n-    <script src=\"assets/js/talents-roster.js\"></script>\n-    <script src=\"assets/js/mobile-effects.js\"></script>\n+    <script src=\"assets/js/talents-data.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/talents-roster.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/mobile-effects.js?v=1.0.1\"></script>\n \n     <script>\n         // Mobile menu functionality\n         function toggleMobileMenu() {\n"
                 }
             ],
             "date": 1751484895558,

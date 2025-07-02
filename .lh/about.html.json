@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1751484870411,
@@ -16,6 +16,10 @@
                 {
                     "date": 1751485204894,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n     <header style=\"background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000;\">\n         <div class=\"container\" style=\"padding: var(--spacing-4) var(--spacing-6);\">\n             <div class=\"flex justify-between items-center\">\n                 <a href=\"index.html\" class=\"flex items-center\">\n-                    <img src=\"/socialcloud-logo.png\" alt=\"SocialCloud Management\" style=\"height: 40px; width: auto;\">\n+                    <img src=\"assets/images/socialcloud-logo.png\" alt=\"SocialCloud Management\" style=\"height: 40px; width: auto;\">\n                 </a>\n \n                 <!-- Desktop Navigation -->\n                 <nav class=\"desktop-nav flex gap-8\">\n"
+                },
+                {
+                    "date": 1751486008828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,15 +7,20 @@\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n     <title>About Us | SocialCloud Management</title>\n     <meta name=\"description\" content=\"Learn about SocialCloud Management - your partner in digital talent management and influencer marketing.\">\n \n+    <!-- Cache Control Meta Tags -->\n+    <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">\n+    <meta http-equiv=\"Pragma\" content=\"no-cache\">\n+    <meta http-equiv=\"Expires\" content=\"0\">\n+\n     <!-- Fonts -->\n     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n     <link href=\"https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">\n \n     <!-- Styles -->\n-    <link rel=\"stylesheet\" href=\"assets/css/styles.css\">\n+    <link rel=\"stylesheet\" href=\"assets/css/styles.css?v=1.0.1\">\n </head>\n \n <body>\n     <!-- Header -->\n"
                 }
             ],
             "date": 1751484870411,

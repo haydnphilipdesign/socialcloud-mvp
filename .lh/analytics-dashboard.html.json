@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1751485228467,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751486094623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,13 @@\n     <title>Analytics Dashboard | SocialCloud Management - Premium Features</title>\n     <meta name=\"description\" content=\"Advanced real-time analytics, AI-powered insights, and performance tracking for strategic talent management. Unlock data-driven creator partnerships.\">\n     <meta name=\"keywords\" content=\"analytics dashboard, talent analytics, creator insights, performance tracking, influencer metrics\">\n \n+    <!-- Cache Control Meta Tags -->\n+    <meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\">\n+    <meta http-equiv=\"Pragma\" content=\"no-cache\">\n+    <meta http-equiv=\"Expires\" content=\"0\">\n+\n     <!-- Open Graph Meta Tags -->\n     <meta property=\"og:title\" content=\"Analytics Dashboard | SocialCloud Management\">\n     <meta property=\"og:description\" content=\"Advanced analytics and AI-powered insights for talent management. Real-time performance tracking and predictive analytics.\">\n     <meta property=\"og:image\" content=\"assets/images/socialcloud-logo.png\">\n@@ -25,9 +30,9 @@\n     <link rel=\"dns-prefetch\" href=\"//fonts.googleapis.com\">\n     <link rel=\"preconnect\" href=\"//fonts.gstatic.com\" crossorigin>\n \n     <!-- CSS -->\n-    <link rel=\"stylesheet\" href=\"assets/css/styles.css\">\n+    <link rel=\"stylesheet\" href=\"assets/css/styles.css?v=1.0.1\">\n     <style>\n         /* Dashboard specific styles */\n         \n         .dashboard-grid {\n"
+                },
+                {
+                    "date": 1751486108370,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -701,13 +701,13 @@\n         </div>\n     </footer>\n \n     <!-- JavaScript -->\n-    <script src=\"assets/js/talents-data.js\"></script>\n-    <script src=\"assets/js/main.js\"></script>\n-    <script src=\"assets/js/loading.js\"></script>\n-    <script src=\"assets/js/premium-effects.js\"></script>\n-    <script src=\"assets/js/mobile-effects.js\"></script>\n+    <script src=\"assets/js/talents-data.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/main.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/loading.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/premium-effects.js?v=1.0.1\"></script>\n+    <script src=\"assets/js/mobile-effects.js?v=1.0.1\"></script>\n \n     <!-- Mobile Menu JavaScript -->\n     <script>\n         function toggleMobileMenu() {\n"
                 }
             ],
             "date": 1751485228467,
